@@ -1,0 +1,241 @@
+
+/* computer version */
+.resume {
+    height: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+/* introduction */
+.intro {
+    display: grid;
+    grid-template-areas:    "profile-picture about-me"
+                            "my-name info-icons";
+}
+
+.profile-picture {
+    width: 350px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+}
+
+.about-me {
+    width: 90%;
+    padding-left: 50px;
+}
+
+.name-icons {
+    display: flex;
+}
+
+/* name */
+
+.my-name {
+    width: 350px;
+    font-size: 2rem;
+    background-color: RGB(98,195,219);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-name h3 {
+    margin: 0;
+}
+
+/* icons */
+
+.info-icons li {
+    list-style-type: none;
+    display: flex;
+}
+
+.info-icons img {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.info-icons p {
+    margin: 0;
+}
+
+/* list */
+.resume-list {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.resume-list div {
+    height: auto;
+}
+
+/* working experiences */
+
+.working-experience {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.working-experience h2 {
+    font-size: 1.2rem;
+    margin: 25px 0 0;
+    height: auto;
+}
+
+.working-experience div {
+    height: auto;
+}
+
+.working-name {
+    text-align: end;
+    margin: 0 20px 0 0;
+}
+
+.working-name h4 {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    color: RGB(98,195,219);
+}
+
+.working-name p {
+    margin-top: 0;
+}
+
+.working-space {
+    min-height: 50px;
+}
+
+/* description */
+.working-description p {
+    margin-top: 10px;
+    padding-top: 5px;
+}
+
+
+/* skills */
+
+.extra-info {
+    margin-left: 20px;
+}
+
+.extra-info div {
+    height: auto;
+}
+
+.extra-info h2 {
+    font-size: 1.2rem;
+    margin: 25px 0 0;
+}
+
+.extra-info ul {
+    padding-left: 10px;
+}
+
+.extra-info li {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+
+
+    .intro {
+        grid-template-areas:    "profile-picture"
+                                "my-name"
+                                "about-me"
+                                "info-icons";
+    }
+
+}
+
+
+
+/* @media only screen and (max-width: 480px) {
+
+    .resume-computer {
+        display: none;
+    }
+
+    .resume-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile-picture-mobile {
+        width: 100%;
+        display: flex;
+    }
+
+    .profile-picture-mobile img {
+        width: 100%;
+        height: auto;
+    }
+
+    .my-name-mobile {
+        background-color: RGB(98,195,219);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: white;
+        height: 100px;
+    }
+
+    .my-name-mobile h3 {
+        margin: 0;
+    }
+
+    .resume-mobile h2 {
+        font-size: 2rem;
+    }
+
+    .resume-mobile p {
+        font-size: 1rem;
+        text-align: justify;
+    }
+
+    .info-icons-mobile ul {
+        padding-left: 10px;
+        margin: 0;
+    }
+
+    .info-icons-mobile li {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .info-icons-mobile img {
+        height: 30px;
+    }
+
+    .info-icons-mobile p {
+        font-size: 1rem;
+    }
+
+    .working-name-mobile h4 {
+        color: RGB(98,195,219);
+        margin: 0;
+        font-size: 1.25rem;
+    }
+
+    .working-name-mobile p {
+        margin: 0;
+        font-size: 0.75rem;
+    }
+
+    .working-description-mobile p {
+        margin-top: 5px;
+    }
+
+} */

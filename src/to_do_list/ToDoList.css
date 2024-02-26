@@ -1,0 +1,86 @@
+
+.to-do-list {
+    display: grid;
+}
+
+.add-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.task-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+input {
+    margin: 10px 0;
+}
+
+#task-name {
+    width: 300px;
+}
+
+#task-description {
+    height: 100px;
+    width: 300px;
+    resize: none;
+}
+
+#submitTaskButton {
+    width: 100px;
+    margin: 10px 30%;
+}
+
+.tasks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 200px;
+}
+
+.tasks div {
+    margin: 5px;
+}
+
+.task {
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: 19fr 1fr;
+    padding: 10px 5px;
+}
+
+.task h3 {
+    margin: 0;
+}
+
+.task p {
+    margin: 0;
+}
+
+.task-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.task img {
+    width: 20px;
+    height: auto;
+    margin: 5px 0;
+}
+
+.save-list {
+    display: flex;
+    justify-content: center;
+}
+
+.save-list button {
+    width: 200px;
+    height: 100px;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    
+}
