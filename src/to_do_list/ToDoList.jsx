@@ -2,6 +2,12 @@
 import { useState } from 'react';
 import './ToDoList.css';
 import Task from './Task.jsx';
+import { addToDoTask } from './task-slices/toDoListSlice.js';
+import { removeToDoTask } from './task-slices/toDoListSlice.js';
+import { addInProgressTask } from './task-slices/inProgressListSlice.js';
+import { removeInProgressTask } from './task-slices/inProgressListSlice.js';
+import { addFinishedTask } from './task-slices/finishedListSlice.js';
+import { removeFinishedTask } from './task-slices/finishedListSlice.js';
 
 const ToDoList = () => {
 
@@ -123,60 +129,67 @@ const ToDoList = () => {
 
 
 
+
     return (
+        
         <div className='to-do-list'>
             <div className='add-task'>
-                <h2>Make Task</h2>
+                <h2>Make a Task</h2>
                 <form className='task-input' onSubmit={submitTask}>
                     <label for='task-name'>Task name</label>
                     <input type='text' id='task-name' required minlength='1' onChange={taskNameSetter} value={taskName}></input>
                     <label for='task-description'>Task description</label>
                     <textarea id='task-description' required minlength='1' onChange={taskDescriptionSetter} value={taskDescription}></textarea>
-                    <input type='submit' value='Add task' id='submitTaskButton'></input>
+                    <input className='add-task-button' type='submit' value='Add task' id='submit-task-button'></input>
                 </form>
             </div>
             <div className='tasks'>
                 <div className='to-do'>
                     <h2>To do tasks</h2>
-                    {toDoList.map((task) => (
-                        <Task
-                            key={task.taskId}
-                            name={task.taskName} 
-                            description={task.taskDescription} 
-                            deleteTaskFromToDoList={() => deleteTaskFromToDoList(task.taskId)}
-                            moveTaskToToDoList={() => moveTaskToToDoList(task)}
-                            moveTaskToInProgressList={() => moveTaskToInProgressList(task)}
-                            moveTaskToFinishedList={() => moveTaskToFinishedList(task)}
-                        />
-                    ))}
+                    <div className='task-list'>
+                        {toDoList.map((task) => (
+                            <Task
+                                key={task.taskId}
+                                name={task.taskName} 
+                                description={task.taskDescription} 
+                                deleteTaskFromToDoList={() => deleteTaskFromToDoList(task.taskId)}
+                                moveTaskToInProgressList={() => moveTaskToInProgressList(task)}
+                                moveTaskToFinishedList={() => moveTaskToFinishedList(task)}
+                            />
+                        ))}
+                    </div>
                 </div>
                 <div className='in-progress'>
                     <h2>In progress tasks</h2>
-                    {inProgressList.map((task) => (
-                        <Task
-                            key={task.taskId}
-                            name={task.taskName} 
-                            description={task.taskDescription} 
-                            deleteTaskFromToDoList={() => deleteTaskFromInProgressList(task.taskId)}
-                            moveTaskToToDoList={() => moveTaskToToDoList(task)}
-                            moveTaskToInProgressList={() => moveTaskToInProgressList(task)}
-                            moveTaskToFinishedList={() => moveTaskToFinishedList(task)}
-                        />
-                    ))}
+                    <div className='task-list'>
+                        {inProgressList.map((task) => (
+                            <Task
+                                key={task.taskId}
+                                name={task.taskName} 
+                                description={task.taskDescription} 
+                                deleteTaskFromToDoList={() => deleteTaskFromInProgressList(task.taskId)}
+                                moveTaskToToDoList={() => moveTaskToToDoList(task)}
+                                moveTaskToInProgressList={() => moveTaskToInProgressList(task)}
+                                moveTaskToFinishedList={() => moveTaskToFinishedList(task)}
+                            />
+                        ))}
+                    </div>
                 </div>
                 <div className='finished'>
                     <h2>Finished tasks</h2>
-                    {finishedList.map((task) => (
-                        <Task
-                            key={task.taskId}
-                            name={task.taskName} 
-                            description={task.taskDescription} 
-                            deleteTaskFromToDoList={() => deleteTaskFromFinishedList(task.taskId)}
-                            moveTaskToToDoList={() => moveTaskToToDoList(task)}
-                            moveTaskToInProgressList={() => moveTaskToInProgressList(task)}
-                            moveTaskToFinishedList={() => moveTaskToFinishedList(task)}
-                        />
-                    ))}
+                    <div className='task-list'>
+                        {finishedList.map((task) => (
+                            <Task
+                                key={task.taskId}
+                                name={task.taskName} 
+                                description={task.taskDescription} 
+                                deleteTaskFromToDoList={() => deleteTaskFromFinishedList(task.taskId)}
+                                moveTaskToToDoList={() => moveTaskToToDoList(task)}
+                                moveTaskToInProgressList={() => moveTaskToInProgressList(task)}
+                                moveTaskToFinishedList={() => moveTaskToFinishedList(task)}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className='save-list'>

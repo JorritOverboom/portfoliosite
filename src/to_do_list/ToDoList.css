@@ -30,7 +30,7 @@ input {
     resize: none;
 }
 
-#submitTaskButton {
+#submit-task-button {
     width: 100px;
     margin: 10px 30%;
 }
@@ -38,11 +38,33 @@ input {
 .tasks {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    min-height: 200px;
 }
 
-.tasks div {
-    margin: 5px;
+.to-do,
+.in-progress,
+.finished {
+    min-width: 400px;
+    margin: 0 10px;
+}
+
+.tasks h2 {
+    border-bottom: 2px solid black;
+}
+
+.task-list {
+    min-height: 100%;
+}
+
+.to-do .move-to-to-do {
+    display: none;
+}
+
+.in-progress .move-to-in-progress {
+    display: none;
+}
+
+.finished .move-to-finished {
+    display: none;
 }
 
 .task {
@@ -50,6 +72,7 @@ input {
     display: grid;
     grid-template-columns: 19fr 1fr;
     padding: 10px 5px;
+    margin: 10px 0;
 }
 
 .task h3 {
@@ -63,7 +86,7 @@ input {
 .task-buttons {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
 }
 
 .task img {
@@ -81,6 +104,38 @@ input {
     width: 200px;
     height: 100px;
     font-size: 2rem;
-    margin-bottom: 10px;
-    
+    margin: 50px 0;
+}
+
+@media only screen and (max-width: 480px) {
+
+    .task-input {
+        justify-content: center;
+    }
+
+    #submit-task-button {
+        height: 50px;
+        margin: 10px 33%;
+    }
+
+    .tasks {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .to-do,
+    .in-progress,
+    .finished {
+        min-width: 100%;
+        margin: 0;
+    }
+
+    .task h3 {
+        font-size: 1.25rem;
+    }
+
+    .task p {
+        font-size: 1rem;
+    }
+
 }

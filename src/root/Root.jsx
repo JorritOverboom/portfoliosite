@@ -1,7 +1,7 @@
 import { NavLink, Link, Outlet, useNavigate, useOutlet } from 'react-router-dom';
 import './Root.css'
 import Home from '../home/Home.jsx';
-import menu from "./Images/Hamburger_icon.svg.png";
+import menu from "./images/Hamburger_icon.svg.png";
 
 const Root = () => {
 

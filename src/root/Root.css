@@ -4,7 +4,7 @@
 .all {
     display: grid;
     grid-template-rows: 1fr 20fr;
-    height: 97.5vh;
+    height: 97.8vh;
 }
 
 .navMob {
@@ -68,10 +68,7 @@ h1 {
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
-    min-width: 60%;
-    max-width: 90%;
-    padding-right: 10px;
-    margin: 10px min(10%) 0;
+    padding: 0 15% 0;
     overflow-y: auto;
     word-break: break-word;
 }
@@ -107,8 +104,8 @@ h1 {
     /* content mobile*/
 
     .outlet {
-        margin: 0 10px 0 15px;
-        padding-right: 5px;
+        margin: 0;
+        padding: 3%;
     }
 
     .outlet p {
