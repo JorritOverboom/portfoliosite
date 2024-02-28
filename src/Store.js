@@ -6,8 +6,8 @@ import { finishedListSlice } from './to_do_list/task-slices/finishedListSlice';
 
 export const store = configureStore({
     reducer: {
-        toDoList: toDoListSlice,
-        inProgressList: inProgressListSlice,
-        finishedList: finishedListSlice
+        toDoList: toDoListSlice.reducer,
+        inProgressList: inProgressListSlice.reducer,
+        finishedList: finishedListSlice.reducer
     },
 });

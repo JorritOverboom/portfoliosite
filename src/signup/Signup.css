@@ -1,0 +1,13 @@
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up-form h2 {
+    text-align: center;
+}
+
+#sign-up-submit {
+    margin: 50px 0 0;
+}

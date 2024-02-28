@@ -30,9 +30,9 @@ input {
     resize: none;
 }
 
-#submit-task-button {
+#add-task-submit {
     width: 100px;
-    margin: 10px 30%;
+    align-self: center;
 }
 
 .tasks {

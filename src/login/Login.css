@@ -1,0 +1,13 @@
+
+.log-in-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.log-in-form h2 {
+    text-align: center;
+}
+
+#log-in-submit {
+    margin: 50px 0 0;
+}

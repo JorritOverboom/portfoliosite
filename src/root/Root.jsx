@@ -1,19 +1,9 @@
-import { NavLink, Link, Outlet, useNavigate, useOutlet } from 'react-router-dom';
+import { NavLink, Link, Outlet, useOutlet } from 'react-router-dom';
 import './Root.css'
 import Home from '../home/Home.jsx';
 import menu from "./images/Hamburger_icon.svg.png";
 
 const Root = () => {
-
-    const navigate = useNavigate();
-
-    const goBack = () => {
-        navigate(-1);
-    };
-
-    const goForward = () => {
-        navigate(1);
-    };
 
     const outlet = useOutlet();
 
@@ -29,7 +19,7 @@ const Root = () => {
                     <li><NavLink to='/to-do-list' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>To do list</NavLink></li>
                 </ul>
                 <div className='login'>
-                    <p><Link to='/login' className='link'>Log in</Link></p>
+                    <p><Link to='/log-in' className='link'>Log in</Link></p>
                 </div>
             </div>
             <div className='navMob'>

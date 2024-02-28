@@ -12,10 +12,10 @@ function Task(props) {
                 <p>{props.description}</p>
             </div>
             <div className='task-buttons'>
-                <img src={delete_icon} onClick={props.deleteTaskFromToDoList} title="Delete this task"></img>
-                <img className='move-to-to-do' src={to_do_icon} onClick={props.moveTaskToToDoList} title='Move this task to the to do list'></img>
-                <img className='move-to-in-progress' src={in_progress_icon} onClick={props.moveTaskToInProgressList} title='Move this task to the in progress list'></img>
-                <img className='move-to-finished' src={finished_icon} onClick={props.moveTaskToFinishedList} title='Move this task to the finished list'></img>
+                <img src={delete_icon} title="Delete this task" onClick={props.removeTaskFromToDo}></img>
+                <img className='move-to-to-do' src={to_do_icon} title='Move this task to the to do list' onClick={props.moveTaskToToDo}></img>
+                <img className='move-to-in-progress' src={in_progress_icon} title='Move this task to the in progress list' onClick={props.moveTaskToInProgress}></img>
+                <img className='move-to-finished' src={finished_icon} title='Move this task to the finished list' onClick={props.moveTaskToFinished}></img>
             </div>
         </div>
     );
