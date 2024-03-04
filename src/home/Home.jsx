@@ -18,7 +18,6 @@ const Home = () => {
                 <li>Log in page (which can be navigated to by clicking on the word on the topright of the website, or through the menu on the topright on a mobile): to log in to your profile.</li>
             </ul>
             <p>By signing up for a profile and logging in to it, you can save your to do list.</p>
-            <p>Additionally you can go back or forward a page by clicking on the corresponding button, or arrow on mobile, at the bottom of the website.</p>
             <p>This website has been modified to be displayed on a computer browser and on a smartphone.</p>
         </div>
     )

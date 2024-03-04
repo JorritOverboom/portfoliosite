@@ -29,7 +29,6 @@ div::-webkit-scrollbar-thumb {
 html {
   margin: 0;
   padding: 0;
-  border: 5px solid black;
 }
 
 code {

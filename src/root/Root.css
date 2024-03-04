@@ -4,7 +4,7 @@
 .all {
     display: grid;
     grid-template-rows: 1fr 20fr;
-    height: 97.8vh;
+    height: 100vh;
 }
 
 .navMob {
@@ -16,7 +16,8 @@
 .navBar {
     display: grid;
     grid-template: 50px / 1fr 1fr 1fr;
-    border: 5px solid green;
+    border-bottom: 1px solid black;
+    padding: 10px 10px 0;
 }
 
 h1 {
@@ -24,6 +25,10 @@ h1 {
     margin: 0;
     margin-left: 5px;
     text-decoration: none;
+}
+
+.home-h1 {
+    color: black;
 }
 
 .link {
