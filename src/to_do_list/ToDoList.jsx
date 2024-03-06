@@ -1,9 +1,9 @@
 
 import './ToDoList.css';
 import Task from './Task.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToDoTask, removeToDoTask } from './task-slices/toDoListSlice.js';
+import { addToDoTask, removeToDoTask, fetchInitialToDoState } from './task-slices/toDoListSlice.js';
 import { addInProgressTask, removeInProgressTask } from './task-slices/inProgressListSlice.js';
 import { addFinishedTask, removeFinishedTask } from './task-slices/finishedListSlice.js';
 
@@ -11,13 +11,18 @@ const ToDoList = () => {
 
     const dispatch = useDispatch();
 
-    const toDoList = useSelector((state) => state.toDoList);
-    const inProgressList = useSelector((state) => state.inProgressList);
-    const finishedList = useSelector((state) => state.finishedList);
+    const toDoList = useSelector((state) => state.toDoList.tasks);
+    const inProgressList = useSelector((state) => state.inProgressList.tasks);
+    const finishedList = useSelector((state) => state.finishedList.tasks);
 
     const [ taskName, setTaskName ] = useState('');
     const [ taskDescription, setTaskDescription ] = useState('');
     const [ taskId, setTaskId ] = useState(0);
+
+    useEffect(() => {
+        dispatch(fetchInitialToDoState());
+    }, []);
+
 
     const taskNameSetter = ({target}) => {
         setTaskName(target.value);
