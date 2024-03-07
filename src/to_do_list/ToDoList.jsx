@@ -3,9 +3,9 @@ import './ToDoList.css';
 import Task from './Task.jsx';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToDoTask, removeToDoTask, fetchInitialToDoState } from './task-slices/toDoListSlice.js';
-import { addInProgressTask, removeInProgressTask } from './task-slices/inProgressListSlice.js';
-import { addFinishedTask, removeFinishedTask } from './task-slices/finishedListSlice.js';
+import { getToDoTasksFromDataBase, getToDoTasksFromState, removeTaskFromToDo, createNewTask, moveTaskToInProgressFromToDo, moveTaskToFinishedFromToDo } from './task-slices/toDoListSlice.js';
+import { getInProgressTasksFromDataBase, getInProgressTasksFromState, removeTaskFromInProgress, moveTaskToToDoFromInProgress, moveTaskToFinishedFromInProgress } from './task-slices/inProgressListSlice.js';
+import { getFinishedTasksFromDataBase, getFinishedTasksFromState, removeTaskFromFinished, moveTaskToToDoFromFinished, moveTaskToInProgressFromFinished } from './task-slices/finishedListSlice.js';
 
 const ToDoList = () => {
 
@@ -14,14 +14,36 @@ const ToDoList = () => {
     const toDoList = useSelector((state) => state.toDoList.tasks);
     const inProgressList = useSelector((state) => state.inProgressList.tasks);
     const finishedList = useSelector((state) => state.finishedList.tasks);
+    const refreshToDoList = useSelector((state) => state.toDoList.status);
+    const refreshInProgressList = useSelector((state) => state.inProgressList.status);
+    const refreshFinishedList = useSelector((state) => state.finishedList.status);
 
     const [ taskName, setTaskName ] = useState('');
     const [ taskDescription, setTaskDescription ] = useState('');
-    const [ taskId, setTaskId ] = useState(0);
 
     useEffect(() => {
-        dispatch(fetchInitialToDoState());
+        dispatch(getToDoTasksFromDataBase());
+        dispatch(getInProgressTasksFromDataBase());
+        dispatch(getFinishedTasksFromDataBase());
     }, []);
+
+    useEffect(() => {
+        if (refreshToDoList === 'succeeded'){
+            dispatch(getToDoTasksFromDataBase());
+        }
+    });
+
+    useEffect(() => {
+        if (refreshInProgressList === 'succeeded'){
+            dispatch(getInProgressTasksFromDataBase());
+        }
+    });
+
+    useEffect(() => {
+        if (refreshFinishedList === 'succeeded'){
+            dispatch(getFinishedTasksFromDataBase());
+        }
+    });
 
 
     const taskNameSetter = ({target}) => {
@@ -35,51 +57,54 @@ const ToDoList = () => {
     const submitTask = (event) => {
         event.preventDefault();
         if (taskName.length >= 1 && taskDescription.length >= 1){
-            dispatch(addToDoTask({
-                taskId: taskId,
-                taskName: taskName,
-                taskDescription: taskDescription,
-                id: taskId
+            dispatch(createNewTask({
+                name: taskName,
+                description: taskDescription,
+                status: 'todo'
             }));
         }
-        setTaskId((prevId) => prevId +1);
         setTaskName('');
         setTaskDescription('');
     };
 
     const deleteTaskFromToDo = (id) => {
-        dispatch(removeToDoTask({id: id}));
+        dispatch(removeTaskFromToDo(id));
     };
 
     const deleteTaskFromInProgress = (id) => {
-        dispatch(removeInProgressTask({id: id}));
+        dispatch(removeTaskFromInProgress(id));
     };
 
     const deleteTaskFromFinished = (id) => {
-        dispatch(removeFinishedTask({id: id}));
+        dispatch(removeTaskFromFinished(id));
     };
 
-    const moveTaskToToDo = (task) => {
-        dispatch(addToDoTask(task));
-        dispatch(removeInProgressTask({id: task.id}));
-        dispatch(removeFinishedTask({id: task.id}));
+    const moveTaskFromToDoToInProgress = (id) => {
+        dispatch(moveTaskToInProgressFromToDo(id));
     };
 
-    const moveTaskToInProgress = (task) => {
-        dispatch(addInProgressTask(task));
-        dispatch(removeToDoTask({id: task.id}));
-        dispatch(removeFinishedTask({id: task.id}));
+    const moveTaskFromToDoToFinished = (id) => {
+        dispatch(moveTaskToFinishedFromToDo(id));
     };
 
-    const moveTaskToFinished = (task) => {
-        dispatch(addFinishedTask(task));
-        dispatch(removeToDoTask({id: task.id}));
-        dispatch(removeInProgressTask({id: task.id}));
+    const moveTaskFromInProgressToToDo = (id) => {
+        dispatch(moveTaskToToDoFromInProgress(id));
+    };
+
+    const moveTaskFromInProgressToFinished = (id) => {
+        dispatch(moveTaskToFinishedFromInProgress(id));
+    };
+
+    const moveTaskFromFinishedToToDo = (id) => {
+        dispatch(moveTaskToToDoFromFinished(id));
+    };
+
+    const moveTaskFromFinishedToInProgress = (id) => { 
+        dispatch(moveTaskToInProgressFromFinished(id));
     };
 
 
     return (
-        
         <div className='to-do-list'>
             <div className='add-task'>
                 <h2>Make a Task</h2>
@@ -97,12 +122,12 @@ const ToDoList = () => {
                     <div className='task-list'>
                         {toDoList.map((task) => (
                             <Task
-                                key={task.taskId}
-                                name={task.taskName}
-                                description={task.taskDescription}
+                                key={task.id}
+                                name={task.name}
+                                description={task.description}
                                 removeTaskFromToDo={() => deleteTaskFromToDo(task.id)}
-                                moveTaskToInProgress={() => moveTaskToInProgress(task)}
-                                moveTaskToFinished={() => moveTaskToFinished(task)}
+                                moveTaskToInProgress={() => moveTaskFromToDoToInProgress(task.id)}
+                                moveTaskToFinished={() => moveTaskFromToDoToFinished(task.id)}
                             />
                         ))}
                     </div>
@@ -112,12 +137,12 @@ const ToDoList = () => {
                     <div className='task-list'>
                         {inProgressList.map((task) => (
                             <Task
-                                key={task.taskId}
-                                name={task.taskName}
-                                description={task.taskDescription}
+                                key={task.id}
+                                name={task.name}
+                                description={task.description}
                                 removeTaskFromToDo={() => deleteTaskFromInProgress(task.id)}
-                                moveTaskToToDo={() => moveTaskToToDo(task)}
-                                moveTaskToFinished={() => moveTaskToFinished(task)}
+                                moveTaskToToDo={() => moveTaskFromInProgressToToDo(task.id)}
+                                moveTaskToFinished={() => moveTaskFromInProgressToFinished(task.id)}
                             />
                         ))}
                     </div>
@@ -127,21 +152,17 @@ const ToDoList = () => {
                     <div className='task-list'>
                         {finishedList.map((task) => (
                             <Task
-                                key={task.taskId}
-                                name={task.taskName}
-                                description={task.taskDescription}
+                                key={task.id}
+                                name={task.name}
+                                description={task.description}
                                 removeTaskFromToDo={() => deleteTaskFromFinished(task.id)}
-                                moveTaskToToDo={() => moveTaskToToDo(task)}
-                                moveTaskToInProgress={() => moveTaskToInProgress(task)}
+                                moveTaskToToDo={() => moveTaskFromFinishedToToDo(task.id)}
+                                moveTaskToInProgress={() => moveTaskFromFinishedToInProgress(task.id)}
                             />
                         ))}
                     </div>
                 </div>
             </div>
-            <div className='save-list'>
-                <button>Save list</button>
-            </div>
-            
         </div>
     )
 }
