@@ -47,7 +47,7 @@ export const inProgressListSlice = createSlice({
     initialState: {tasks: [], status: 'idle', error: null},
     reducers: {
         getInProgressTasksFromState: (state, action) => {
-            return action.payload;
+            state.tasks = action.payload;
         }
     },
     extraReducers: (builder) => {

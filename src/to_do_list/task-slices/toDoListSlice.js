@@ -58,7 +58,7 @@ export const toDoListSlice = createSlice({
     initialState: {tasks: [], status: 'idle', error: null},
     reducers: {
         getToDoTasksFromState: (state, action) => {
-            return action.payload;
+            state.tasks = action.payload;
         }
     },
     extraReducers: (builder) => {

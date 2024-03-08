@@ -47,7 +47,7 @@ export const finishedListSlice = createSlice({
     initialState: {tasks: [], status: 'idle', error: null},
     reducers: {
         getFinishedTasksFromState: (state, action) => {
-            return action.payload;
+            state.tasks = action.payload;
         }
     },
     extraReducers: (builder) => {
