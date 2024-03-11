@@ -2,10 +2,23 @@ import { NavLink, Link, Outlet, useOutlet } from 'react-router-dom';
 import './Root.css'
 import Home from '../home/Home.jsx';
 import menu from "./images/Hamburger_icon.svg.png";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getToDoTasksFromDataBase } from '../to_do_list/task-slices/toDoListSlice.js';
+import { getInProgressTasksFromDataBase } from '../to_do_list/task-slices/inProgressListSlice.js';
+import { getFinishedTasksFromDataBase } from '../to_do_list/task-slices/finishedListSlice.js';
 
 const Root = () => {
 
     const outlet = useOutlet();
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getToDoTasksFromDataBase());
+        dispatch(getInProgressTasksFromDataBase());
+        dispatch(getFinishedTasksFromDataBase());
+    }, []);
 
     return (
         <div className='all'>

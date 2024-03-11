@@ -7,7 +7,7 @@ export const fetchToDoTasks = async () => {
     });
 
     if(!res.ok) {
-        throw new Error('Failed to fetch to do tasks');
+        throw new Error('Failed to fetch to do tasks from database');
     }
     return res.json();
 };
@@ -21,7 +21,7 @@ export const fetchInProgressTasks = async () => {
     });
 
     if(!res.ok) {
-        throw new Error('Failed to fetch in progress tasks');
+        throw new Error('Failed to fetch in progress tasks from database');
     }
     return res.json();
 };
@@ -35,7 +35,7 @@ export const fetchFinishedTasks = async () => {
     });
 
     if(!res.ok) {
-        throw new Error('Failed to fetch finished tasks');
+        throw new Error('Failed to fetch finished tasks from database');
     }
     return res.json();
 };
@@ -48,6 +48,11 @@ export const addNewTask = async (newToDo) => {
         },
         body: JSON.stringify(newToDo),
     });
+
+    if(!res.ok) {
+        throw new Error('Failed to add new task to database');
+    }
+
     return res.json();
 };
 
@@ -57,8 +62,9 @@ export const deleteTask = async (id) => {
     });
 
     if(!res.ok) {
-        throw new Error('Failed to delete task');
+        throw new Error('Failed to delete task in database');
     }
+
 };
 
 export const updateTaskToToDo = async (id) => {
@@ -67,7 +73,7 @@ export const updateTaskToToDo = async (id) => {
     });
 
     if(!res.ok) {
-        throw new Error('Failed to move task');
+        throw new Error('Failed to move task in database');
     }
 
     return res.json();
@@ -79,7 +85,7 @@ export const updateTaskToInProgress = async (id) => {
     });
 
     if(!res.ok) {
-        throw new Error('Failed to move task');
+        throw new Error('Failed to move task in database');
     }
 
     return res.json();
@@ -91,7 +97,7 @@ export const updateTaskToFinished = async (id) => {
     });
 
     if(!res.ok) {
-        throw new Error('Failed to move task');
+        throw new Error('Failed to move task in database');
     }
 
     return res.json();

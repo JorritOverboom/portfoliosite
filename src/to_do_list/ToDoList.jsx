@@ -1,50 +1,23 @@
 
 import './ToDoList.css';
 import Task from './Task.jsx';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getToDoTasksFromDataBase, getToDoTasksFromState, removeTaskFromToDo, createNewTask, moveTaskToInProgressFromToDo, moveTaskToFinishedFromToDo } from './task-slices/toDoListSlice.js';
-import { getInProgressTasksFromDataBase, getInProgressTasksFromState, removeTaskFromInProgress, moveTaskToToDoFromInProgress, moveTaskToFinishedFromInProgress } from './task-slices/inProgressListSlice.js';
-import { getFinishedTasksFromDataBase, getFinishedTasksFromState, removeTaskFromFinished, moveTaskToToDoFromFinished, moveTaskToInProgressFromFinished } from './task-slices/finishedListSlice.js';
+import { v4 as uuidv4 } from 'uuid';
+import { addTaskToToDo, removeTaskFromToDo, createNewTask, moveTaskToInProgressFromToDo, moveTaskToFinishedFromToDo } from './task-slices/toDoListSlice.js';
+import { addTaskToInProgress, removeTaskFromInProgress, moveTaskToToDoFromInProgress, moveTaskToFinishedFromInProgress } from './task-slices/inProgressListSlice.js';
+import { addTaskToFinished, removeTaskFromFinished, moveTaskToToDoFromFinished, moveTaskToInProgressFromFinished } from './task-slices/finishedListSlice.js';
 
 const ToDoList = () => {
 
     const dispatch = useDispatch();
-
+    
     const toDoList = useSelector((state) => state.toDoList.tasks);
     const inProgressList = useSelector((state) => state.inProgressList.tasks);
     const finishedList = useSelector((state) => state.finishedList.tasks);
-    const refreshToDoList = useSelector((state) => state.toDoList.status);
-    const refreshInProgressList = useSelector((state) => state.inProgressList.status);
-    const refreshFinishedList = useSelector((state) => state.finishedList.status);
 
     const [ taskName, setTaskName ] = useState('');
     const [ taskDescription, setTaskDescription ] = useState('');
-
-    useEffect(() => {
-        dispatch(getToDoTasksFromDataBase());
-        dispatch(getInProgressTasksFromDataBase());
-        dispatch(getFinishedTasksFromDataBase());
-    }, []);
-
-    useEffect(() => {
-        if (refreshToDoList === 'succeeded'){
-            dispatch(getToDoTasksFromDataBase());
-        }
-    });
-
-    useEffect(() => {
-        if (refreshInProgressList === 'succeeded'){
-            dispatch(getInProgressTasksFromDataBase());
-        }
-    });
-
-    useEffect(() => {
-        if (refreshFinishedList === 'succeeded'){
-            dispatch(getFinishedTasksFromDataBase());
-        }
-    });
-
 
     const taskNameSetter = ({target}) => {
         setTaskName(target.value);
@@ -58,13 +31,14 @@ const ToDoList = () => {
         event.preventDefault();
         if (taskName.length >= 1 && taskDescription.length >= 1){
             dispatch(createNewTask({
+                id: uuidv4(),
                 name: taskName,
                 description: taskDescription,
                 status: 'todo'
             }));
+            setTaskName('');
+            setTaskDescription('');
         }
-        setTaskName('');
-        setTaskDescription('');
     };
 
     const deleteTaskFromToDo = (id) => {
@@ -81,26 +55,32 @@ const ToDoList = () => {
 
     const moveTaskFromToDoToInProgress = (id) => {
         dispatch(moveTaskToInProgressFromToDo(id));
+        dispatch(addTaskToInProgress(toDoList.find(task => task.id === id)));
     };
 
     const moveTaskFromToDoToFinished = (id) => {
         dispatch(moveTaskToFinishedFromToDo(id));
+        dispatch(addTaskToFinished(toDoList.find(task => task.id === id)));
     };
 
     const moveTaskFromInProgressToToDo = (id) => {
         dispatch(moveTaskToToDoFromInProgress(id));
+        dispatch(addTaskToToDo(inProgressList.find(task => task.id === id)));
     };
 
     const moveTaskFromInProgressToFinished = (id) => {
         dispatch(moveTaskToFinishedFromInProgress(id));
+        dispatch(addTaskToFinished(inProgressList.find(task => task.id === id)));
     };
 
     const moveTaskFromFinishedToToDo = (id) => {
         dispatch(moveTaskToToDoFromFinished(id));
+        dispatch(addTaskToToDo(finishedList.find(task => task.id === id)));
     };
 
     const moveTaskFromFinishedToInProgress = (id) => { 
         dispatch(moveTaskToInProgressFromFinished(id));
+        dispatch(addTaskToInProgress(finishedList.find(task => task.id === id)));
     };
 
 

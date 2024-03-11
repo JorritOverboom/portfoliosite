@@ -1,10 +1,24 @@
 
 import './Signup.css';
+import { useState } from 'react';
 
 const Signup = () => {
+
+    const submitUser = (event) => {
+        // event.preventDefault();
+        // if (userName.length >= 1 && password.length >= 1){
+        //     dispatch(createUser({
+        //         username: userName,
+        //         password: password
+        //     }));
+        // }
+        // setUsername('');
+        // setPassword('');
+    };
+
     return (
         <div className='sign-up'>
-            <form className='sign-up-form'>
+            <form className='sign-up-form' onSubmit={submitUser}>
                 <h2>Sign up</h2>
                 <label htmlFor='username'>Username</label>
                 <input type='text' id='username' name='username' required />

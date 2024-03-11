@@ -2,9 +2,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchInProgressTasks, deleteTask, updateTaskToToDo, updateTaskToFinished } from '../../utils/tasksAPI.js';
 
-export const getInProgressTasksFromDataBase = createAsyncThunk('inProgressList/getInProgressTasksFromDataBase', async () => {
+export const getInProgressTasksFromDataBase = createAsyncThunk('inProgressList/getInProgressTasksFromDataBase', () => {
     try {
-        const data = await fetchInProgressTasks();
+        const data = fetchInProgressTasks();
         return data;
     } catch (error) {
         console.error('Error fetching inital state:', error);
@@ -12,30 +12,30 @@ export const getInProgressTasksFromDataBase = createAsyncThunk('inProgressList/g
     }
 });
 
-export const removeTaskFromInProgress = createAsyncThunk('inProgressList/removeTask', async (id) => {
+export const removeTaskFromInProgress = createAsyncThunk('inProgressList/removeTask', (id) => {
     try {
-        const data = await deleteTask(id);
-        return data;
+        deleteTask(id);
+        return id;
     } catch (error) {
         console.error('Error removing task:', error);
         throw error;
     }
 });
 
-export const moveTaskToToDoFromInProgress = createAsyncThunk('inProgressList/moveTaskToToDoFromInProgress', async (id) => {
+export const moveTaskToToDoFromInProgress = createAsyncThunk('inProgressList/moveTaskToToDoFromInProgress', (id) => {
     try {
-        const res = await updateTaskToToDo(id);
-        return res;
+        updateTaskToToDo(id);
+        return id;
     } catch (error) {
         console.error('Error moving task to to-do:', error);
         throw error;
     }
 });
 
-export const moveTaskToFinishedFromInProgress = createAsyncThunk('inProgressList/moveTaskToFinishedFromInProgress', async (id) => {
+export const moveTaskToFinishedFromInProgress = createAsyncThunk('inProgressList/moveTaskToFinishedFromInProgress', (id) => {
     try {
-        const res = await updateTaskToFinished(id);
-        return res;
+        updateTaskToFinished(id);
+        return id;
     } catch (error) {
         console.error('Error moving task to finished:', error);
         throw error;
@@ -46,8 +46,14 @@ export const inProgressListSlice = createSlice({
     name: 'inProgressList',
     initialState: {tasks: [], status: 'idle', error: null},
     reducers: {
-        getInProgressTasksFromState: (state, action) => {
-            state.tasks = action.payload;
+        addTaskToInProgress: (state, action) => {
+            const task = {
+                id: action.payload.id,
+                name: action.payload.name,
+                description: action.payload.description,
+                status: 'inprogress'
+            }
+            state.tasks.push(task);
         }
     },
     extraReducers: (builder) => {
@@ -99,5 +105,5 @@ export const inProgressListSlice = createSlice({
     }
 });
 
-export const { getInProgressTasksFromState } = inProgressListSlice.actions;
+export const { addTaskToInProgress } = inProgressListSlice.actions;
 export default inProgressListSlice.reducer;

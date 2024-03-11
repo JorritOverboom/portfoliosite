@@ -27,9 +27,9 @@ exports.getFinishedTasks = (req, res) => {
     });
 };
 
-exports.createTask= (req, res) => {
-    const { name, description, status } = req.body;
-    pool.query('INSERT INTO tasks (name, description, status) VALUES ($1, $2, $3)', [name, description, status], (error, results) => {
+exports.createTask = (req, res) => {
+    const { id, name, description, status } = req.body;
+    pool.query('INSERT INTO tasks (id, name, description, status) VALUES ($1, $2, $3, $4)', [id, name, description, status], (error, results) => {
         if (error) {
             throw error;
         }
@@ -37,20 +37,18 @@ exports.createTask= (req, res) => {
     });
 };
 
-exports.deleteTask = async (req, res) => {
-    const id = parseInt(req.params.id);
-    try {
-        await pool.query('DELETE FROM tasks WHERE id = $1', [id]);
+exports.deleteTask = (req, res) => {
+    const id = req.params.id;
+    pool.query('DELETE FROM tasks WHERE id = $1', [id], (error, results) => {
+        if (error) {
+            throw error;
+        }
         res.status(200).send(`Task deleted with ID ${id}`);
-    } catch (error) {
-        return res.status(400).json({
-            error
-        })
-    }
+    });
 };
 
 exports.updateTaskToToDo = (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     pool.query('UPDATE tasks SET status = $1 WHERE id = $2', ['todo', id], (error, results) => {
         if (error) {
             throw error;
@@ -60,7 +58,7 @@ exports.updateTaskToToDo = (req, res) => {
 };
 
 exports.updateTaskToInProgress = (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     pool.query('UPDATE tasks SET status = $1 WHERE id = $2', ['inprogress', id], (error, results) => {
         if (error) {
             throw error;
@@ -70,7 +68,7 @@ exports.updateTaskToInProgress = (req, res) => {
 };
 
 exports.updateTaskToFinished = (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     pool.query('UPDATE tasks SET status = $1 WHERE id = $2', ['finished', id], (error, results) => {
         if (error) {
             throw error;

@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchToDoTasks, addNewTask, deleteTask, updateTaskToInProgress, updateTaskToFinished } from '../../utils/tasksAPI.js';
 
 
-export const getToDoTasksFromDataBase = createAsyncThunk('toDoList/getToDoTasksFromDataBase', async () => {
+export const getToDoTasksFromDataBase = createAsyncThunk('toDoList/getToDoTasksFromDataBase', () => {
     try {
-        const data = await fetchToDoTasks();
+        const data = fetchToDoTasks();
         return data;
     } catch (error) {
         console.error('Error fetching updated to-do list:', error);
@@ -13,40 +13,40 @@ export const getToDoTasksFromDataBase = createAsyncThunk('toDoList/getToDoTasksF
     }
 });
 
-export const createNewTask = createAsyncThunk('toDoList/createNewTask', async (newTask) => {
+export const createNewTask = createAsyncThunk('toDoList/createNewTask', (newTask) => {
     try {
-        const data = await addNewTask(newTask);
-        return data;
+        addNewTask(newTask);
+        return newTask;
     } catch (error) {
         console.error('Error adding new task:', error);
         throw error;
     }
 });
 
-export const removeTaskFromToDo = createAsyncThunk('toDoList/removeTask', async (id) => {
+export const removeTaskFromToDo = createAsyncThunk('toDoList/removeTask', (id) => {
     try {
-        const data = await deleteTask(id);
-        return data;
+        deleteTask(id);
+        return id;
     } catch (error) {
         console.error('Error removing task:', error);
         throw error;
     }
 });
 
-export const moveTaskToInProgressFromToDo = createAsyncThunk('toDoList/moveTaskToInProgressFromToDo', async (id) => {
+export const moveTaskToInProgressFromToDo = createAsyncThunk('toDoList/moveTaskToInProgressFromToDo', (id) => {
     try {
-        const res = await updateTaskToInProgress(id);
-        return res;
+        updateTaskToInProgress(id);
+        return id;
     } catch (error) {
         console.error('Error moving task to in progress:', error);
         throw error;
     }
 });
 
-export const moveTaskToFinishedFromToDo = createAsyncThunk('toDoList/moveTaskToFinishedFromToDo', async (id) => {
+export const moveTaskToFinishedFromToDo = createAsyncThunk('toDoList/moveTaskToFinishedFromToDo', (id) => {
     try {
-        const res = await updateTaskToFinished(id);
-        return res;
+        updateTaskToFinished(id);
+        return id;
     } catch (error) {
         console.error('Error moving task to finished:', error);
         throw error;
@@ -57,8 +57,14 @@ export const toDoListSlice = createSlice({
     name: 'toDoList',
     initialState: {tasks: [], status: 'idle', error: null},
     reducers: {
-        getToDoTasksFromState: (state, action) => {
-            state.tasks = action.payload;
+        addTaskToToDo: (state, action) => {
+            const task = {
+                id: action.payload.id,
+                name: action.payload.name,
+                description: action.payload.description,
+                status: 'todo'
+            }
+            state.tasks.push(task);
         }
     },
     extraReducers: (builder) => {
@@ -121,5 +127,5 @@ export const toDoListSlice = createSlice({
     }
 });
 
-export const { getToDoTasksFromState } = toDoListSlice.actions;
+export const { addTaskToToDo } = toDoListSlice.actions;
 export default toDoListSlice.reducer;
