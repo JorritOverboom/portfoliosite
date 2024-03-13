@@ -1,24 +1,44 @@
-import { NavLink, Link, Outlet, useOutlet } from 'react-router-dom';
+
 import './Root.css'
 import Home from '../home/Home.jsx';
 import menu from "./images/Hamburger_icon.svg.png";
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getToDoTasksFromDataBase } from '../to_do_list/task-slices/toDoListSlice.js';
-import { getInProgressTasksFromDataBase } from '../to_do_list/task-slices/inProgressListSlice.js';
-import { getFinishedTasksFromDataBase } from '../to_do_list/task-slices/finishedListSlice.js';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Link, Outlet, useOutlet, useLocation } from 'react-router-dom';
+import { logoutUser, checkLoggedIn } from '../utils/usersAPI';
 
 const Root = () => {
 
     const outlet = useOutlet();
+    const location = useLocation();
 
-    const dispatch = useDispatch();
+    const [ loggedIn, setLoggedIn ] = useState(false);
+
+    const logSetter = async() => {
+        try {
+            const response = await checkLoggedIn();
+            const loggedInValue = response?.loggedIn || false;
+            setLoggedIn(loggedInValue);
+        } catch (error) {
+            console.log('Error in logSetter', error);
+            setLoggedIn(false);
+        }
+    };
 
     useEffect(() => {
-        dispatch(getToDoTasksFromDataBase());
-        dispatch(getInProgressTasksFromDataBase());
-        dispatch(getFinishedTasksFromDataBase());
-    }, []);
+        logSetter();
+    }, [location.pathname]);
+
+    const logout = () => {
+        logoutUser();
+    };
+
+    const accessToDoList = () => {
+        if (loggedIn === true) {
+            return ('/to-do-list');
+        } else {
+            return ('/login')
+        }
+    }
 
     return (
         <div className='all'>
@@ -29,10 +49,10 @@ const Root = () => {
                 <ul className='menu'>
                     <li><NavLink to='/study' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Study</NavLink></li>
                     <li><NavLink to='/resume' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Resume</NavLink></li>
-                    <li><NavLink to='/to-do-list' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>To do list</NavLink></li>
+                    <li><NavLink to={accessToDoList()} className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>To do list</NavLink></li>
                 </ul>
                 <div className='login'>
-                    <p><Link to='/log-in' className='link'>Log in</Link></p>
+                { loggedIn ? (<Link to='/login' onClick={logout} className='link'>Logout</Link>) : (<Link to='/login' className='link'>Log in</Link>)}
                 </div>
             </div>
             <div className='navMob'>

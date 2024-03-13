@@ -1,7 +1,8 @@
+
 const express = require('express');
 const tasksRoutes = express.Router();
 
-const { createTask, getToDoTasks, getInProgressTasks, getFinishedTasks, deleteTask, updateTaskToToDo, updateTaskToInProgress, updateTaskToFinished } = require('../controllers/tasksController.js');
+const { createTask, getToDoTasks, getInProgressTasks, getFinishedTasks, deleteTask, updateTaskToToDo, updateTaskToInProgress, updateTaskToFinished, addDefaultTasks } = require('../controllers/tasksController.js');
 
 tasksRoutes.get('/getToDoTasks', getToDoTasks);
 tasksRoutes.get('/getInProgressTasks', getInProgressTasks);

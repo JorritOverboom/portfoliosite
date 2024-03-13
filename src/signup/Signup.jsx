@@ -1,35 +1,111 @@
 
 import './Signup.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+import { checkExistingUser, addNewUser, addDefaultTasks } from '../utils/usersAPI';
+const bcrypt = require('bcryptjs');
 
 const Signup = () => {
 
-    const submitUser = (event) => {
-        // event.preventDefault();
-        // if (userName.length >= 1 && password.length >= 1){
-        //     dispatch(createUser({
-        //         username: userName,
-        //         password: password
-        //     }));
-        // }
-        // setUsername('');
-        // setPassword('');
+    const navigate = useNavigate();
+
+    const [ username, setUsername ] = useState('');
+    const [ confirmUsername, setConfirmUsername ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ confirmPassword, setConfirmPassword ] = useState('');
+
+    const [ usernamesMatch, setUsernamesMatch ] = useState(null);
+    const [ usernameAllLetters, setUsernameAllLetters ] = useState(null);
+    const [ usernameHasThreeCharacters, setUsernameHasThreeCharacters ] = useState(null);
+    const [ passwordsMatch, setPasswordsMatch ] = useState(null);
+    const [ passwordHasEightCharacters, setPasswordHasEightCharacters ] = useState(null);
+    const [ passwordHasOneCapitalLetter, setPasswordHasOneCapitalLetter ] = useState(null);
+    const [ passwordHasOneSymbol, setPasswordHasOneSymbol ] = useState(null);
+
+    const usernameSetter = ({target}) => {
+        setUsername(target.value);
     };
+
+    const confirmUsernameSetter = ({target}) => {
+        setConfirmUsername(target.value);
+    };
+
+    const passwordSetter = ({target}) => {
+        setPassword(target.value);
+    };
+
+    const confirmPasswordSetter = ({target}) => {
+        setConfirmPassword(target.value);
+    };
+
+    useEffect(() => {
+        setUsernamesMatch(username === confirmUsername && username.length > 0);
+        setUsernameAllLetters(/^[a-zA-Z]*$/.test(username) && username.length > 0);
+        setUsernameHasThreeCharacters(username.length >= 3);
+        setPasswordsMatch(password === confirmPassword && password.length > 0);
+        setPasswordHasEightCharacters(password.length >= 8);
+        setPasswordHasOneCapitalLetter(/[A-Z]/.test(password));
+        setPasswordHasOneSymbol(/[!@#$%^&*]/.test(password));
+    }, [username, confirmUsername, password, confirmPassword]);
+
+    const submitUser = async (event) => {
+        event.preventDefault();
+        if (usernamesMatch && usernameAllLetters && usernameHasThreeCharacters && passwordsMatch && passwordHasEightCharacters && passwordHasOneCapitalLetter && passwordHasOneSymbol) {
+            const newUserId = uuidv4();
+            const salt = bcrypt.genSaltSync(10);
+            const hashedPassword = bcrypt.hashSync(password, salt);
+            const newUser = {
+                id: newUserId,
+                username: username,
+                password: hashedPassword
+            };
+
+            try {
+                const existingUserResponse = await checkExistingUser(username);
+                if (!existingUserResponse.userDoesNotExist) {
+                    alert('Username already exists');
+                    return;
+                } else if (existingUserResponse.userDoesNotExist) {
+                    await addNewUser(newUser);
+                    await addDefaultTasks(newUserId);
+                    alert('Account created!');
+                    navigate('/login');
+                } else {
+                    alert('Error creating account');
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
+                alert('Error creating account');
+            }
+        }
+    };
+
 
     return (
         <div className='sign-up'>
             <form className='sign-up-form' onSubmit={submitUser}>
                 <h2>Sign up</h2>
                 <label htmlFor='username'>Username</label>
-                <input type='text' id='username' name='username' required />
+                <input type='text' id='username' name='username' onChange={usernameSetter} value={username} required />
                 <label htmlFor='username-confirm'>Confirm username</label>
-                <input type='text' id='username-confirm' name='username-confirm' required />
+                <input type='text' id='username-confirm' name='username-confirm' onChange={confirmUsernameSetter} value={confirmUsername} required />
                 <label htmlFor='password'>Password</label>
-                <input type='password' id='password' name='password' required />
+                <input type='password' id='password' name='password' onChange={passwordSetter} value={password} required />
                 <label htmlFor='password-confirm'>Confirm password</label>
-                <input type='password' id='password-confirm' name='password-confirm' required />
+                <input type='password' id='password-confirm' name='password-confirm' onChange={confirmPasswordSetter} value={confirmPassword} required />
                 <input type='submit' id='sign-up-submit' value='Sign up' />
             </form>
+            <ul>
+                <li className={usernamesMatch ? 'green' : 'red'}>Username and Confirm Username have to match</li>
+                <li className={usernameAllLetters ? 'green' : 'red'}>Usernames only allow alphabet letters</li>
+                <li className={usernameHasThreeCharacters ? 'green' : 'red'}>Usernames need at least 3 characters</li>
+                <li className={passwordsMatch ? 'green' : 'red'}>Password and Confirm Password have to match</li>
+                <li className={passwordHasEightCharacters ? 'green' : 'red'}>Passwords need at least 8 characters</li>
+                <li className={passwordHasOneCapitalLetter ? 'green' : 'red'}>Passwords need at least 1 capital letter</li>
+                <li className={passwordHasOneSymbol ? 'green' : 'red'}>Passwords need at least 1 symbol</li>
+            </ul>
         </div>
     )
 }

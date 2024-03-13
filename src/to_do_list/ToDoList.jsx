@@ -1,20 +1,32 @@
 
 import './ToDoList.css';
 import Task from './Task.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addTaskToToDo, removeTaskFromToDo, createNewTask, moveTaskToInProgressFromToDo, moveTaskToFinishedFromToDo } from './task-slices/toDoListSlice.js';
 import { addTaskToInProgress, removeTaskFromInProgress, moveTaskToToDoFromInProgress, moveTaskToFinishedFromInProgress } from './task-slices/inProgressListSlice.js';
 import { addTaskToFinished, removeTaskFromFinished, moveTaskToToDoFromFinished, moveTaskToInProgressFromFinished } from './task-slices/finishedListSlice.js';
+import { getToDoTasksFromDataBase } from '../to_do_list/task-slices/toDoListSlice.js';
+import { getInProgressTasksFromDataBase } from '../to_do_list/task-slices/inProgressListSlice.js';
+import { getFinishedTasksFromDataBase } from '../to_do_list/task-slices/finishedListSlice.js';
+import { checkLoggedIn } from '../utils/usersAPI';
+import { useNavigate } from 'react-router-dom';
 
 const ToDoList = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     
     const toDoList = useSelector((state) => state.toDoList.tasks);
     const inProgressList = useSelector((state) => state.inProgressList.tasks);
     const finishedList = useSelector((state) => state.finishedList.tasks);
+
+    useEffect(() => {
+        dispatch(getToDoTasksFromDataBase());
+        dispatch(getInProgressTasksFromDataBase());
+        dispatch(getFinishedTasksFromDataBase());
+    }, []);
 
     const [ taskName, setTaskName ] = useState('');
     const [ taskDescription, setTaskDescription ] = useState('');
