@@ -1,37 +1,23 @@
 
-export const checkExistingUser = async (username) => {
-    const res = await fetch('/api/users/checkExistingUser', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username }),
-    });
-    return res.json();
-}
+export const createUser = async (newUser) => {
+    try {
+        const res = await fetch('/api/users/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser),
+        });
 
-export const addNewUser = async (newUser) => {
-    const res = await fetch('/api/users/createUser', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newUser),
-    });
-    return res.json();
-};
-
-export const addDefaultTasks = async (newUserId) => {
-    const res = await fetch('/api/users/addDefaultTasks', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ user_id: newUserId }),
-    });
-
-    if(!res.ok) {
-        throw new Error('Failed to add default tasks to database');
+        if(!res.ok) {
+            const data = await res.json();
+            return data;
+        };
+        console.log(res);
+        return res;
+    }
+    catch (error) {
+        console.log('Create user failed', error);
     }
 };
 

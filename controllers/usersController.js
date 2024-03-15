@@ -1,40 +1,35 @@
 
 const pool = require('../models/database');
+const bcrypt = require('bcryptjs');
+const { v4: uuidv4 } = require('uuid');
+const { addDefaultTasks } = require('./tasksController');
 
-exports.checkExistingUser = (req, res) => {
-    const { username } = req.body;
-    pool.query('SELECT * FROM users WHERE username = $1', [username], (error, results) => {
-        if (error) {
-            console.log(error);
-            res.status(500).json({ message: 'Error checking for existing user' });
-        }
-        if (results.rows.length > 0) {
-            res.status(200).json({ userDoesNotExist: false, message: 'User already exists'});
-        } else {
-            res.status(404).json({ userDoesNotExist: true, message: 'User does not exist'});
-        }
-    });
-}
+exports.createUser = async (req, res) => {
+    const { username, password } = req.body;
+    const id = uuidv4();
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
 
-exports.createUser = (req, res) => {
-    const { id, username, password } = req.body;
-    pool.query('INSERT INTO users (id, username, password) VALUES ($1, $2, $3)', [id, username, password], (error, results) => {
-        if (error) {
-            console.log(error);
-            res.status(500).json({ message: 'Error adding user' });
-        }
-        res.status(201).json({ message: 'User added successfully' })
-    });
+    try {
+        await pool.query('INSERT INTO users (id, username, password) VALUES ($1, $2, $3)', [id, username, hashedPassword]);
+
+        await addDefaultTasks(id);
+
+        return res.status(201).json({ message: 'User added successfully' });
+    } catch (error) {
+        if (error.code === '23505') {
+            return res.status(409).json({ message: 'Username already exists' });
+        };
+        return res.status(500).json({ message: 'Error adding user' });
+    }
 };
 
 exports.findByUsername = (username, cb) => {
     pool.query('SELECT * FROM users WHERE username = $1', [username], (error, results) => {
         if (error) {
-            console.log('findByUsername has an error', error)
             return cb(error);
         }
         if (results.rows.length === 0) {
-            console.log('findByUsername has no user')
             return cb(null, false);
         }
         return cb(null, results.rows[0]);

@@ -87,8 +87,8 @@ exports.createTask = (req, res) => {
     });
 };
 
-exports.addDefaultTasks = (req, res) => {
-    const { user_id } = req.body;
+exports.addDefaultTasks = async (id) => {
+    const user_id = id;
     const defaultTasks = [
         {
             id: uuidv4(),
@@ -112,10 +112,8 @@ exports.addDefaultTasks = (req, res) => {
             user_id
         },
     ];
-    pool.query('INSERT INTO tasks (id, name, description, status, user_id) VALUES ($1, $2, $3, $4, $5), ($6, $7, $8, $9, $10), ($11, $12, $13, $14, $15)', [defaultTasks[0].id, defaultTasks[0].name, defaultTasks[0].description, defaultTasks[0].status, defaultTasks[0].user_id, defaultTasks[1].id, defaultTasks[1].name, defaultTasks[1].description, defaultTasks[1].status, defaultTasks[1].user_id, defaultTasks[2].id, defaultTasks[2].name, defaultTasks[2].description, defaultTasks[2].status, defaultTasks[2].user_id], (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(201).send(`Default tasks added`);
-    });
+
+    await Promise.all(defaultTasks.map(task => {
+        return pool.query('INSERT INTO tasks (id, name, description, status, user_id) VALUES ($1, $2, $3, $4, $5)', [task.id, task.name, task.description, task.status, task.user_id]);
+    }));
 };

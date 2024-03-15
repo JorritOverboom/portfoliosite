@@ -1,8 +1,7 @@
 
 const express = require('express');
 const usersRoutes = express.Router();
-const { createUser, checkExistingUser } = require('../controllers/usersController');
-const { addDefaultTasks } = require('../controllers/tasksController');
+const { createUser } = require('../controllers/usersController');
 const passport = require('passport');
 
 
@@ -37,16 +36,13 @@ usersRoutes.get('/checkLoggedIn', (req, res) => {
 usersRoutes.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {
-            console.log('passport.authenticate has an error', err);
             return next(err);
         }
         if (!user) {
-            console.log('passport.authenticate has no user')
             return res.status(401).json({ ok: false, message: 'Invalid username or password' });
         }
         req.logIn(user, (err) => {
             if (err) {
-                console.log('passport.authenticate req.logIn has an error', err);
                 return next(err);
             }
             return res.status(200).json({ ok: true, message: 'Logged in successfully' });
@@ -54,9 +50,7 @@ usersRoutes.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
-usersRoutes.post('/checkExistingUser', checkExistingUser);
-usersRoutes.post('/createUser', createUser);
-usersRoutes.post('/addDefaultTasks', addDefaultTasks);
+usersRoutes.post('/signup', createUser);
 
 
 module.exports = usersRoutes;

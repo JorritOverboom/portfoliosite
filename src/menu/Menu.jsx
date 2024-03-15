@@ -21,7 +21,7 @@ const Menu = () => {
                 <li><NavLink to='/resume' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Resume</NavLink></li>
                 <li><NavLink to='/to-do-list' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>To do list</NavLink></li>
                 <li><NavLink to='/profile' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Profile</NavLink></li>
-                <li><NavLink to='/log-in' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Log in</NavLink></li>
+                <li><NavLink to='/login' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Log in</NavLink></li>
             </ul>
         </div>
     )

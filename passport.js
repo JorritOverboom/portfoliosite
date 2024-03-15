@@ -9,20 +9,16 @@ passport.use(new LocalStrategy(
         findByUsername(username, (err, user) => {
             const userPassword = user.password;
             if (userPassword === undefined) {
-                console.log('new localstrategy has no database user password')
                 return done(null, false);
             }
-            const matchedPassword = bcrypt.compareSync(password, userPassword);
             if (err) {
-                console.log('new localstrategy has an error', err)
                 return done(err);
             }
             if (!user) {
-                console.log('new localstrategy has no user')
                 return done(null, false);
             }
+            const matchedPassword = bcrypt.compareSync(password, userPassword);
             if (!matchedPassword) {
-                console.log('new localstrategy has no matched password')
                 return done(null, false);
             }
             return done(null, user);

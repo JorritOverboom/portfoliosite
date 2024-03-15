@@ -1,10 +1,8 @@
 
 import './Signup.css';
 import { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
-import { checkExistingUser, addNewUser, addDefaultTasks } from '../utils/usersAPI';
-const bcrypt = require('bcryptjs');
+import { createUser } from '../utils/usersAPI';
 
 const Signup = () => {
 
@@ -49,39 +47,37 @@ const Signup = () => {
         setPasswordHasOneSymbol(/[!@#$%^&*]/.test(password));
     }, [username, confirmUsername, password, confirmPassword]);
 
+    const checkIfSubmitIsValid = () => {
+        return usernamesMatch && usernameAllLetters && usernameHasThreeCharacters && passwordsMatch && passwordHasEightCharacters && passwordHasOneCapitalLetter && passwordHasOneSymbol;
+    };
+
     const submitUser = async (event) => {
         event.preventDefault();
-        if (usernamesMatch && usernameAllLetters && usernameHasThreeCharacters && passwordsMatch && passwordHasEightCharacters && passwordHasOneCapitalLetter && passwordHasOneSymbol) {
-            const newUserId = uuidv4();
-            const salt = bcrypt.genSaltSync(10);
-            const hashedPassword = bcrypt.hashSync(password, salt);
-            const newUser = {
-                id: newUserId,
-                username: username,
-                password: hashedPassword
-            };
-
+        if (checkIfSubmitIsValid()) {
             try {
-                const existingUserResponse = await checkExistingUser(username);
-                if (!existingUserResponse.userDoesNotExist) {
-                    alert('Username already exists');
-                    return;
-                } else if (existingUserResponse.userDoesNotExist) {
-                    await addNewUser(newUser);
-                    await addDefaultTasks(newUserId);
+                const newUser = { username, password };
+                const response = await createUser(newUser);
+                console.log(response);
+                if (response.ok) {
                     alert('Account created!');
                     navigate('/login');
-                } else {
-                    alert('Error creating account');
                     return;
                 }
-            } catch (error) {
+
+                if (response.message === 'Username already exists') {
+                    alert('Username already exists');
+                    return;
+                }
+
+                alert('Error creating account');
+                return;
+            }
+            catch (error) {
                 console.log(error);
                 alert('Error creating account');
             }
         }
     };
-
 
     return (
         <div className='sign-up'>
