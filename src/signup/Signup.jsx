@@ -9,11 +9,9 @@ const Signup = () => {
     const navigate = useNavigate();
 
     const [ username, setUsername ] = useState('');
-    const [ confirmUsername, setConfirmUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ confirmPassword, setConfirmPassword ] = useState('');
 
-    const [ usernamesMatch, setUsernamesMatch ] = useState(null);
     const [ usernameAllLetters, setUsernameAllLetters ] = useState(null);
     const [ usernameHasThreeCharacters, setUsernameHasThreeCharacters ] = useState(null);
     const [ passwordsMatch, setPasswordsMatch ] = useState(null);
@@ -25,10 +23,6 @@ const Signup = () => {
         setUsername(target.value);
     };
 
-    const confirmUsernameSetter = ({target}) => {
-        setConfirmUsername(target.value);
-    };
-
     const passwordSetter = ({target}) => {
         setPassword(target.value);
     };
@@ -38,17 +32,16 @@ const Signup = () => {
     };
 
     useEffect(() => {
-        setUsernamesMatch(username === confirmUsername && username.length > 0);
         setUsernameAllLetters(/^[a-zA-Z]*$/.test(username) && username.length > 0);
         setUsernameHasThreeCharacters(username.length >= 3);
         setPasswordsMatch(password === confirmPassword && password.length > 0);
         setPasswordHasEightCharacters(password.length >= 8);
         setPasswordHasOneCapitalLetter(/[A-Z]/.test(password));
         setPasswordHasOneSymbol(/[!@#$%^&*]/.test(password));
-    }, [username, confirmUsername, password, confirmPassword]);
+    }, [username, password, confirmPassword]);
 
     const checkIfSubmitIsValid = () => {
-        return usernamesMatch && usernameAllLetters && usernameHasThreeCharacters && passwordsMatch && passwordHasEightCharacters && passwordHasOneCapitalLetter && passwordHasOneSymbol;
+        return usernameAllLetters && usernameHasThreeCharacters && passwordsMatch && passwordHasEightCharacters && passwordHasOneCapitalLetter && passwordHasOneSymbol;
     };
 
     const submitUser = async (event) => {
@@ -85,8 +78,6 @@ const Signup = () => {
                 <h2>Sign up</h2>
                 <label htmlFor='username'>Username</label>
                 <input type='text' id='username' name='username' onChange={usernameSetter} value={username} required />
-                <label htmlFor='username-confirm'>Confirm username</label>
-                <input type='text' id='username-confirm' name='username-confirm' onChange={confirmUsernameSetter} value={confirmUsername} required />
                 <label htmlFor='password'>Password</label>
                 <input type='password' id='password' name='password' onChange={passwordSetter} value={password} required />
                 <label htmlFor='password-confirm'>Confirm password</label>
@@ -94,7 +85,6 @@ const Signup = () => {
                 <input type='submit' id='sign-up-submit' value='Sign up' />
             </form>
             <ul>
-                <li className={usernamesMatch ? 'green' : 'red'}>Username and Confirm Username have to match</li>
                 <li className={usernameAllLetters ? 'green' : 'red'}>Usernames only allow alphabet letters</li>
                 <li className={usernameHasThreeCharacters ? 'green' : 'red'}>Usernames need at least 3 characters</li>
                 <li className={passwordsMatch ? 'green' : 'red'}>Password and Confirm Password have to match</li>
