@@ -17,11 +17,9 @@ const Menu = () => {
             </div>
             <ul className='menuMob'>
                 <li><NavLink to='/' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Home</NavLink></li>
-                <li><NavLink to='/study' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Study</NavLink></li>
-                <li><NavLink to='/resume' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Resume</NavLink></li>
-                <li><NavLink to='/to-do-list' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>To do list</NavLink></li>
-                <li><NavLink to='/profile' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Profile</NavLink></li>
-                <li><NavLink to='/login' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Log in</NavLink></li>
+                <li><NavLink to='/study' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>My Skills</NavLink></li>
+                <li><NavLink to='/to-do-list' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Demo: to do list</NavLink></li>
+                <li><NavLink to='/resume' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>About Me</NavLink></li>
             </ul>
         </div>
     )

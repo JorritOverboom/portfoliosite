@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../utils/usersAPI';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -20,32 +22,39 @@ const Login = () => {
         setPassword(target.value);
     };
 
+    const notifySuccess = () => toast.success('Log in successful');
+    const notifyFailure = () => toast.error('Failed to log in. Please try again');
+
     const submitLogin = async (event) => {
         event.preventDefault();
         try {
             const result = await loginUser({ username, password });
 
             if (result.message) {
+                const notifyMessage = () => toast.error(result.message);
                 console.log('submitLogin has a message:', result.message)
-                alert(result.message);
+                notifyMessage();
                 return;
             }
 
             if (result.ok) {
-                alert('Logged in successfully');
-                navigate('/to-do-list');
+                notifySuccess();
+                setTimeout(() => {
+                    navigate('/to-do-list');
+                }, 1500);
             } 
 
         } catch (error) {
             console.log(error);
-            alert('Failed to log in. Please try again');
+            notifyFailure();
         }
     };
 
     return (
         <div className='log-in'>
+            <ToastContainer autoClose={2000} hideProgressBar={true}/>
             <form className='log-in-form' onSubmit={submitLogin}>
-                <h2>Log in</h2>
+                <h2>Log in to get access to the to do list</h2>
                 <label htmlFor='username'>Username</label>
                 <input type='text' id='username' name='username' onChange={ usernameSetter } value={username} required />
                 <label htmlFor='password'>Password</label>

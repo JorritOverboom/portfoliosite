@@ -92,22 +92,22 @@ exports.addDefaultTasks = async (id) => {
     const defaultTasks = [
         {
             id: uuidv4(),
-            name: 'this is a to do task',
-            description: 'The buttons to the right allow you to:\n1) delete this task\n2) move this task to the in progress list\n3) move this task to the finished list',
+            name: 'This is a to do task',
+            description: 'The buttons below allow you to:<br>1) delete this task<br>2) move this task to the in progress list<br>3) move this task to the finished list',
             status: 'todo',
             user_id
         },
         {
             id: uuidv4(),
-            name: 'this is an in progress task',
-            description: 'The buttons to the right allow you to:\n1) delete this task\n2) move this task to the to do list\n3) move this task to the finished list',
+            name: 'This is an in progress task',
+            description: 'The buttons below allow you to:<br>1) delete this task<br>2) move this task to the to do list<br>3) move this task to the finished list',
             status: 'inprogress',
             user_id
         },
         {
             id: uuidv4(),
-            name: 'this is a finished task',
-            description: 'The buttons to the right allow you to:\n1) delete this task\n2) move this task to the to do list\n3) move this task to the in progress list',
+            name: 'This is a finished task',
+            description: 'The buttons below allow you to:<br>1) delete this task<br>2) move this task to the to do list<br>3) move this task to the in progress list',
             status: 'finished',
             user_id
         },

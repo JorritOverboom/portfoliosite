@@ -1,0 +1,111 @@
+
+/* computer version */
+.about-me {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 10px 0;
+}
+
+
+/* introduction computer */
+.intro {
+    width: 100%;
+    display: grid; 
+    grid-template-rows: auto auto;
+    grid-template-columns: 30% 70%;       
+    grid-template-areas:
+        "profile-picture about-me "
+        "my-name info-icons";               
+}
+
+.profile-picture {
+    display: flex;
+    align-items: flex-end;
+    grid-area: profile-picture;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+}
+
+.about-me-description {
+    padding-left: 50px;
+    grid-area: about-me;
+}
+
+/* name */
+
+.my-name {
+    font-size: 2rem;
+    background-color: RGB(98,195,219);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: my-name;
+}
+
+.my-name h3 {
+    margin: 0;
+}
+
+/* icons */
+
+.info-icons {
+    grid-area: info-icons;
+}
+
+.info-icons li {
+    list-style-type: none;
+    display: flex;
+}
+
+.info-icons img {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.info-icons p {
+    margin: 0;
+}
+
+
+@media only screen and (max-width: 480px) {
+    
+    /* introduction mobile */
+    .about-me h2 {
+        font-size: 1.75rem;
+    }
+    
+    .about-me p {
+        text-align: justify;
+    }
+
+    .intro {
+        grid-template-areas:
+            "profile-picture"
+            "my-name"
+            "about-me"
+            "info-icons";
+        grid-template-columns: 100%;
+    }
+
+    .my-name {
+        padding: 20px 0;
+    }
+
+    .about-me-description {
+        padding: 0;
+    }
+
+    .info-icons ul {
+        padding-left: 0;
+    }
+
+    
+}

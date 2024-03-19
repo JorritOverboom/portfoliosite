@@ -1,13 +1,26 @@
 
+/* to do list computer */
 .to-do-list {
     display: grid;
 }
 
+/* taskmaker computer */
 .add-task {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.logout-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 15px;
+}
+
+.logout-container button {
+    font-size: 1.5rem;
 }
 
 .task-input {
@@ -35,6 +48,7 @@ input {
     align-self: center;
 }
 
+/* tasklist computer */
 .tasks {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -55,6 +69,15 @@ input {
     min-height: 100%;
 }
 
+/* individual task computer */
+.task {
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: minmax(100px, 1fr) 30px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
 .to-do .move-to-to-do {
     display: none;
 }
@@ -67,26 +90,33 @@ input {
     display: none;
 }
 
-.task {
-    border: 2px solid black;
-    display: grid;
-    grid-template-columns: 19fr 1fr;
-    padding: 10px 5px;
-    margin: 10px 0;
-}
-
 .task h3 {
-    margin: 0;
+    margin: 0 0 10px;
 }
 
 .task p {
-    margin: 0;
+    margin: 0 0 10px;
 }
 
 .task-buttons {
     display: flex;
-    flex-direction: column;
-    justify-content: start;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.task-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-button-description {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+}
+
+.task-button p {
+    margin: 0 0 0 5px;
 }
 
 .task img {
@@ -95,19 +125,18 @@ input {
     margin: 5px 0;
 }
 
-.save-list {
-    display: flex;
-    justify-content: center;
-}
-
-.save-list button {
-    width: 200px;
-    height: 100px;
-    font-size: 2rem;
-    margin: 50px 0;
-}
-
+/* to do list mobile */
 @media only screen and (max-width: 480px) {
+
+    /* taskmaker mobile */
+
+    .logout-container {
+        margin: 0;
+    }
+
+    .logout-container button {
+        font-size: 1rem;
+    }
 
     .task-input {
         justify-content: center;
@@ -118,6 +147,7 @@ input {
         margin: 10px 33%;
     }
 
+    /* tasklist mobile */
     .tasks {
         display: flex;
         flex-direction: column;
@@ -130,12 +160,17 @@ input {
         margin: 0;
     }
 
+    /* individual task mobile */
     .task h3 {
         font-size: 1.25rem;
     }
 
     .task p {
         font-size: 1rem;
+    }
+
+    .task-button p {
+        font-size: 0.6rem;
     }
 
 }

@@ -1,23 +1,31 @@
 
-/* computer version */
+/* root computer */
 
 .all {
     display: grid;
     grid-template-rows: 1fr 20fr;
     height: 100vh;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .navMob {
     display: none;
 }
 
-/* navigation bar computer */
+/* root navigation bar computer */
 
 .navBar {
     display: grid;
-    grid-template: 50px / 1fr 1fr 1fr;
+    grid-template: 50px / 1fr 1fr;
     border-bottom: 1px solid black;
     padding: 10px 10px 0;
+    margin: 0 30px;
+    font-size: 1.5rem;
+}
+
+.name {
+    display: flex;
+    align-items: flex-end;
 }
 
 h1 {
@@ -28,60 +36,50 @@ h1 {
 }
 
 .home-h1 {
-    color: black;
-}
-
-.link {
     text-decoration: none;
-}
-
-.login {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-
-.login p {
-    margin: 0;
-    margin-right: 5px;
-    font-size: 1.5rem;
+    color: black;
+    font-size: 2.5rem;
 }
 
 .menu {
     display: flex;
-    justify-content: space-between;
-    align-content: center;
-    padding: 0 50px;
+    justify-content: right;
+    align-items: flex-end;
+    padding: 0;
+    margin: 0 5px 0 0;
 }
 
 .menu li {
     list-style-type: none;
+    margin-left: 30px;
 }
 
 .activeNavLink {
     font-weight: bold;
     text-decoration: none;
+    color: black;
 }
 
 .inactiveNavLink {
     text-decoration: none;
+    color: black;
 }
 
-/* content computer */
+/* outlet computer */
 .outlet {
     display: flex;
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
-    padding: 0 15% 0;
     overflow-y: auto;
     word-break: break-word;
+    padding: 0 15% 0;
 }
 
 /* mobile version */
 
 @media only screen and (max-width: 480px) {
-    .navBar {
+    .navBar-parent {
         display: none;
     }
 
@@ -95,6 +93,7 @@ h1 {
 
     .nameMob {
         font-size: 1.5rem;
+        color: black
     }
 
     .link {

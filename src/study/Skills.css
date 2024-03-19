@@ -1,0 +1,55 @@
+
+/* my skills computer */
+.skills {
+    width: 70%;
+}
+
+.skills p {
+    text-align: justify;
+    font-size: 1rem;
+}
+
+/* introduction computer */
+.skills-intro, .full-stack, .certificate {
+    margin-bottom: 60px;
+}
+
+/* codecademy modules computer */
+.modules {
+    display: grid;
+    grid-template-areas: 
+        'module1 module2'
+        'module3 module4';
+    justify-content: center;
+    gap: 0 100px;
+}
+
+.module1 {
+    grid-area: module1;
+}
+
+.module2 {
+    grid-area: module2;
+}
+
+.module3 {
+    grid-area: module3;
+}
+
+.module4 {
+    grid-area: module4;
+}
+
+/* codecademy certificate computer */
+.certificate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.certificate-container img {
+    width: 70%;
+}
+
+/* github reference */

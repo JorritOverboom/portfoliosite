@@ -1,10 +1,13 @@
 
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
     return (
         <div className='home'>
-            <h2>Welcome</h2>
+            <p>Hi there! My name is Jorrit, and I am passionate about &lt;C0DE/&gt; and travel.</p>
+            <p>Learn more about <Link to='/study' className='home-link'>my skills</Link> or try my <Link to='/to-do-list' className='home-link'>demo</Link>.</p>
+            {/* <h2>Welcome</h2>
             <p>Hello, welcome to my website. My name is Jorrit Overboom and for the past couple of months I have studied and finished the 'Full-Stack Engineer' course on Codecademy.com.</p>
             <p>This website is meant as a display of my newly learnt skills. Aside of the obvious front-end display, it also has a back-end. Please browse through it to learn more about who I am and what I have learned through the course.</p>
             <br></br>
@@ -18,7 +21,7 @@ const Home = () => {
                 <li>Log in page (which can be navigated to by clicking on the word on the topright of the website, or through the menu on the topright on a mobile): to log in to your profile.</li>
             </ul>
             <p>By signing up for a profile and logging in to it, you can save your to do list.</p>
-            <p>This website has been modified to be displayed on a computer browser and on a smartphone.</p>
+            <p>This website has been modified to be displayed on a computer browser and on a smartphone.</p> */}
         </div>
     )
 }

@@ -10,7 +10,7 @@ import { addTaskToFinished, removeTaskFromFinished, moveTaskToToDoFromFinished, 
 import { getToDoTasksFromDataBase } from '../to_do_list/task-slices/toDoListSlice.js';
 import { getInProgressTasksFromDataBase } from '../to_do_list/task-slices/inProgressListSlice.js';
 import { getFinishedTasksFromDataBase } from '../to_do_list/task-slices/finishedListSlice.js';
-import { checkLoggedIn } from '../utils/usersAPI';
+import { logoutUser } from '../utils/usersAPI';
 import { useNavigate } from 'react-router-dom';
 
 const ToDoList = () => {
@@ -28,6 +28,11 @@ const ToDoList = () => {
         dispatch(getFinishedTasksFromDataBase());
     }, []);
 
+    const logout = async () => {
+        await logoutUser()
+        navigate('/login')
+    }
+
     const [ taskName, setTaskName ] = useState('');
     const [ taskDescription, setTaskDescription ] = useState('');
 
@@ -42,10 +47,11 @@ const ToDoList = () => {
     const submitTask = (event) => {
         event.preventDefault();
         if (taskName.length >= 1 && taskDescription.length >= 1){
+            const formattedDescription = taskDescription.replace(/\n/g, '<br>');
             dispatch(createNewTask({
                 id: uuidv4(),
                 name: taskName,
-                description: taskDescription,
+                description: formattedDescription,
                 status: 'todo'
             }));
             setTaskName('');
@@ -95,11 +101,13 @@ const ToDoList = () => {
         dispatch(addTaskToInProgress(finishedList.find(task => task.id === id)));
     };
 
-
     return (
         <div className='to-do-list'>
+            <div className='logout-container'>
+                <button onClick={logout}>Logout</button>
+            </div>
             <div className='add-task'>
-                <h2>Make a Task</h2>
+                <h2>Add a Task</h2>
                 <form className='task-input' onSubmit={submitTask}>
                     <label htmlFor='task-name'>Task name</label>
                     <input type='text' id='task-name' required minlength='1' onChange={taskNameSetter} value={taskName}></input>

@@ -3,6 +3,8 @@ import './Signup.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../utils/usersAPI';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
 
@@ -44,36 +46,42 @@ const Signup = () => {
         return usernameAllLetters && usernameHasThreeCharacters && passwordsMatch && passwordHasEightCharacters && passwordHasOneCapitalLetter && passwordHasOneSymbol;
     };
 
+    const notifySuccess = () => toast.success('Account created');
+    const notifyUsernameExists = () => toast.error('Username already exists');
+    const notifyFailure = () => toast.error('Error creating account');
+
     const submitUser = async (event) => {
         event.preventDefault();
         if (checkIfSubmitIsValid()) {
             try {
                 const newUser = { username, password };
                 const response = await createUser(newUser);
+                
                 console.log(response);
                 if (response.ok) {
-                    alert('Account created!');
-                    navigate('/login');
-                    return;
+                    notifySuccess();
+                    setTimeout(() => {
+                        navigate('/login');
+                    }, 1500);
                 }
 
                 if (response.message === 'Username already exists') {
-                    alert('Username already exists');
+                    notifyUsernameExists();
                     return;
                 }
 
-                alert('Error creating account');
                 return;
             }
             catch (error) {
                 console.log(error);
-                alert('Error creating account');
+                notifyFailure();
             }
         }
     };
 
     return (
         <div className='sign-up'>
+            <ToastContainer autoClose={2000} hideProgressBar={true}/>
             <form className='sign-up-form' onSubmit={submitUser}>
                 <h2>Sign up</h2>
                 <label htmlFor='username'>Username</label>

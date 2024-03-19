@@ -1,31 +1,9 @@
 
 import './Resume.css';
-import profile_image from './Images/profile_picture.JPG';
-import location_image from './Images/location.png';
-import birthday_image from './Images/birthday.png';
-import license_image from './Images/license.png';
 
 const Resume = () => {
     return (
         <div className='resume'>
-            <div className='intro'>
-                <div className='profile-picture'><img src={profile_image}></img></div>
-                <div className='about-me'>
-                    <h2>About me</h2>
-                    <p>My name is Jorrit Overboom, I am 32 years of age and I live in Breda, The Netherlands. For the past 9 years of my life I have been, on and off, backpacking around the world, having taken on a variety of jobs to finance the journey. Even though traveling around the world is a neverending quest, I am at a point in my life in which I want to settle down and learn a real trade. Having worked so many different jobs I easily adapt to new situations and learn fast. Even though my original trade started as a salesman, I have now taken interest in programming. Mathematics at school was my favourite subject and I enjoy making puzzles. Coding to me is like puzzling and I enjoy finding a solution to make a code work. Being new in this field I am hoping to land a junior position as a software developer so I can learn the trade and gain insight in how this sector works.</p>
-                </div>  
-                <div className='my-name'>
-                    <h3>Jorrit Overboom</h3>
-                </div>
-                <div className='info-icons'>
-                    <ul>
-                        <li><img src={location_image}></img><p>Breda, The Netherlands</p></li>
-                        <li><img src={birthday_image}></img><p>17-09-1991</p></li>
-                        <li><img src={license_image}></img><p>Driving license</p></li>
-                    </ul>
-                </div>
-            </div>
-            <div className='resume-list'>
                 <div className='working-experience'>
                     <div className='working-name'><h2>Working Experiences</h2></div>
                     <div></div>
@@ -79,18 +57,21 @@ const Resume = () => {
                         <p>In late 2016 I worked as a mover in Perth. This involved me going around the city for months, going to the clients their houses to either move all their stuff into trucks or move all their stuff into their new houses from the truck. This job was challenging for its long hours (12 hours a day) and scorching heat (40 degrees summer).</p>
                     </div>
                     <div className='working-name'>
-                        <h4>Hospality</h4>
-                        <p>Breda, The Netherlands</p>
-                    </div>
-                    <div className='working-description'>
-                        <p>From 2012 until 2018 I have bartended at Mezz and Belcrum Beach in Breda.</p>
-                    </div>
-                    <div className='working-name'>
                         <h4>Stagehand</h4>
                         <p>The Netherlands and Belgium</p>
                     </div>
                     <div className='working-description'>
-                        <p>In the summer of 2012 I helped build festivals and events like Lowlands, Pukkelpop, Cirque Du Soleil and many others. The work involved me carrying around anything that was asked of me.</p>
+                        <p>In the summer of 2012 I helped setup and teardown festivals and events like Lowlands, Pukkelpop, Cirque Du Soleil and many others. The work involved me carrying around anything that was asked of me.</p>
+                    </div>
+                    <div className='working-name'>
+                        <h4>Volunteer</h4>
+                        <p>Breda, The Netherlands</p>
+                    </div>
+                    <div className='working-description'>
+                        <p>From 2010 until present I volunteer at Breda Barst, a yearly music festival, in Breda. Throughout the years I have been helping to setup and teardown the festival, bartend, help create decorative assets, stagemanaging and, for 2 years, I helped program the hiphop stage there.</p>
+                        <p>In 2011, 2012 and 2016 I have helped setup and teardown Boogiedown festival.</p>
+                        <p>From 2012 until 2019 I have bartended at Mezz in Breda/</p>
+                        <p>From 2014 until 2017 I have bartended at Belcrum Beach in Breda/</p>
                     </div>
                     <div className='working-name'>
                         <h4>Salesman</h4>
@@ -143,7 +124,6 @@ const Resume = () => {
                         <ul>
                             <li>Dutch: mother tongue</li>
                             <li>English: fluent</li>
-                            <li>German: basic</li>
                         </ul>
                     </div>
                     <div className='hobbys'>
@@ -162,7 +142,6 @@ const Resume = () => {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 
