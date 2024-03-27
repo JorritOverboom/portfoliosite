@@ -63,24 +63,24 @@ export const logoutUser = async () => {
     }
 };
 
-export const checkLoggedIn = async () => {
-    try {
-        const res = await fetch('/api/users/checkLoggedIn', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+// export const checkLoggedIn = async () => {
+//     try {
+//         const res = await fetch('/api/users/checkLoggedIn', {
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//         });
 
-        if(!res.ok) {
-            throw new Error('Failed to check if user is logged in');
-        }
+//         if(!res.ok) {
+//             throw new Error('Failed to check if user is logged in');
+//         }
 
-        const data = await res.json();
+//         const data = await res.json();
 
-        return data;
-    }
-    catch (error) {
-        console.log('Check failed', error);
-    }
-}
+//         return data;
+//     }
+//     catch (error) {
+//         console.log('Check failed', error);
+//     }
+// }

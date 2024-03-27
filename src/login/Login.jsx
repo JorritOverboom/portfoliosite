@@ -1,15 +1,18 @@
 
 import './Login.css';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../utils/usersAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { login } from '../login/loginSlice';
 
 const Login = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -38,10 +41,11 @@ const Login = () => {
             }
 
             if (result.ok) {
+                dispatch(login());
                 notifySuccess();
                 setTimeout(() => {
                     navigate('/to-do-list');
-                }, 1500);
+                }, 1000);
             } 
 
         } catch (error) {

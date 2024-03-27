@@ -8,13 +8,15 @@ import ToDoList from './to_do_list/ToDoList.jsx';
 import Login from './login/Login.jsx'; 
 import Signup from './signup/Signup.jsx';
 import Menu from './menu/Menu.jsx';
+import Travel from './travel/Travel.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={ <Root />} >
     <Route path='/home' element={ <Home /> } />
     <Route path='/skills' element={ <Skills /> } />
-    <Route path='/about-me' element={ <AboutMe /> } />
     <Route path='/to-do-list' element={ <ToDoList /> } />
+    <Route path='/about-me' element={ <AboutMe /> } />
+    <Route path='/travel' element={ <Travel /> } />
     <Route path='/login' element={ <Login /> } />
     <Route path='/sign-up' element={ <Signup /> } />
     <Route path='/menu' element={ <Menu /> } />

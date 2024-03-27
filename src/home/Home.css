@@ -1,8 +1,8 @@
 
 /* home path computer */
 .home-path {
-    background-image: url('../Pictures/jorritlandschap_medium.jpg');
-    background-size: 100%;
+    background-image: url('../Pictures/jorritlandschap_high.jpg');
+    background-size: auto 130%;
 }
 
 .home {
@@ -27,7 +27,7 @@
 }
 
 .home-path .navBar {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .home-path .home-h1 {
@@ -44,9 +44,11 @@
 
 /* home path mobile */
 @media only screen and (max-width: 480px) {
+    
+
     .home-path {
-        background-size: auto 100%;
-        background-position: 40%
+        background-size: auto 130%;
+        background-position: 25% 0;
     }
 
     .home-path .nameMob {
@@ -56,14 +58,16 @@
     .outlet-home {
         display: flex;
         justify-content: center;
-        width: 100%;
-        height: 100%;
+        align-content: center;
+        justify-self: center;
+        width: 80%;
+        height: 110%;
         margin: 0;
         padding: 0;
     }
 
     .home {
-        margin: 0 3%;
+        margin: 0;
         padding: 0;
     }
 }

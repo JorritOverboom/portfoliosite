@@ -4,10 +4,8 @@
 .resume {
     display: grid;
     grid-template-columns: 3fr 1fr;
-}
-
-.resume div {
-    height: auto;
+    padding-bottom: 10%;
+    margin-top: 4%;
 }
 
 /* working experiences */
@@ -32,7 +30,7 @@
     margin: 0 20px 0 0;
 }
 
-.working-name h4 {
+.working-name h5 {
     margin: 10px 0 0;
     font-size: 1.2rem;
     color: RGB(98,195,219);

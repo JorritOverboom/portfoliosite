@@ -19,3 +19,14 @@
 .red {
     color: red;
 } 
+
+@media (max-width: 480px) {
+    .sign-up {
+        width: 90%;
+    }
+
+    #sign-up-submit {
+        width: 50%;
+        align-self: center;
+    }
+}

@@ -1,17 +1,23 @@
 
+.skills a {
+    color: RGB(98,195,219);
+}
+
 /* my skills computer */
 .skills {
-    width: 70%;
+    width: 60%;
 }
 
 .skills p {
-    text-align: justify;
     font-size: 1rem;
 }
 
-/* introduction computer */
-.skills-intro, .full-stack, .certificate {
+.skills-intro, .modules, .certificate {
     margin-bottom: 60px;
+}
+
+.skills-intro {
+    width: 70%;
 }
 
 /* codecademy modules computer */
@@ -20,8 +26,6 @@
     grid-template-areas: 
         'module1 module2'
         'module3 module4';
-    justify-content: center;
-    gap: 0 100px;
 }
 
 .module1 {
@@ -40,6 +44,15 @@
     grid-area: module4;
 }
 
+.modules h4 {
+    margin-bottom: 0;
+}
+
+.modules ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
 /* codecademy certificate computer */
 .certificate-container {
     display: flex;
@@ -49,7 +62,37 @@
 }
 
 .certificate-container img {
-    width: 70%;
+    width: 100%;
 }
 
 /* github reference */
+.github {
+    width: 70%;
+    margin-bottom: 15%;
+}
+
+
+/* skills mobile */
+
+ @media (max-width: 480px) {
+    .skills {
+        width: 90%;
+    }
+
+    .skills p {
+        font-size: 0.9rem;
+    }
+
+    .modules {
+        grid-template-areas: 
+            'module1'
+            'module2'
+            'module3'
+            'module4';
+        gap: 0 50px;
+    }
+
+    .certificate-container img {
+        width: 100%;
+    }
+}

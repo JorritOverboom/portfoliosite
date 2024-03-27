@@ -1,0 +1,215 @@
+
+/* travel computer */
+
+.travel {
+    margin: 0 0 5%;
+    padding: 0 15%
+}
+
+.travel-box {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* travel introduction */
+
+.travel-year-introduction {
+    display: flex;
+    flex-direction: row;
+}
+
+.travel-year-intro-info {
+    height: 400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "year photo"
+        "title photo"
+        "expand photo";
+    padding: 3% 0;
+}
+
+.travel-year {
+    grid-area: year;
+    font-weight: bold;
+}
+
+.travel-year p {
+    margin: 0;
+    color: RGB(98,195,219);
+    font-family: 'space grotesk';
+    font-size: 1.5rem;
+}
+
+.travel-title {
+    grid-area: title;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    padding-right: 5%;
+}
+
+.travel-extend-box {
+    grid-area: expand;
+    display: flex;
+    align-items: end;
+}
+
+.travel-extend-box div {
+    font-family: 'space grotesk';
+    border: 1px solid black;
+    padding: 0 5px;
+}
+
+.travel-year-intro-photo {
+    grid-area: photo;
+    width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.travel-year-intro-photo img {
+    max-height: auto;
+    max-width: 100%;
+}
+
+/* travel story */
+
+.year-story {
+    width: 60%;
+    margin: 5% 0;
+}
+
+.year-story p {
+    margin: 0 0 15px;
+}
+
+/* travel photos */
+
+.year-photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F0F0;
+    padding: 5%;
+    margin-bottom: 5%;
+}
+
+.travel-photo {
+    width: 110%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5%;
+}
+
+.photo-section p {
+    margin: 16px 0 0;
+}
+
+.travel-photo-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.travel-photo-container img {
+    max-height: auto;
+    max-width: 100%;
+    margin: 0;
+}
+
+.differentPhoto {
+    width: 30px;
+    height: auto;
+}
+
+.previousPhoto {
+    transform: rotate(180deg);
+}
+
+/* travel mobile */
+@media (max-width: 480px) {
+
+    .travel-box {
+        padding: 0 2%;
+    }
+
+    /* introduction travel mobile */
+
+    .travel-year-intro-info {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "year"
+            "title"
+            "photo"
+            "expand";
+        margin: 0 0 50px;
+    }
+
+    .travel-year-intro-photo {
+        padding: 0;
+        margin: 0 0 50px;
+        max-width: 100%;
+    }
+
+    .travel-year-intro-photo img {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    /* content travel mobile */
+
+    .year-story {
+        column-count: 1;
+        padding: 0;
+        text-align: justify;
+    }
+
+    /* travel photos mobile */
+
+    .travel-photo {
+        width: 100%;
+        display: grid;
+        grid-template-areas:
+            "photo-section photo-section"
+            "previousPhoto nextPhoto";
+    }
+
+    .photo-section {
+        grid-area: photo-section;
+    }
+
+    .previousPhoto {
+        grid-area: previousPhoto;
+    }
+
+    .nextPhoto {
+        grid-area: nextPhoto;
+        justify-self: end;
+    }
+
+    .travel-photo-container img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .differentPhoto {
+        width: 50%;
+        margin: 0 0 50px;
+    }
+
+}

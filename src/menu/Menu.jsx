@@ -17,9 +17,10 @@ const Menu = () => {
             </div>
             <ul className='menuMob'>
                 <li><NavLink to='/' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Home</NavLink></li>
-                <li><NavLink to='/study' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>My Skills</NavLink></li>
+                <li><NavLink to='/skills' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>My Skills</NavLink></li>
                 <li><NavLink to='/to-do-list' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Demo: to do list</NavLink></li>
-                <li><NavLink to='/resume' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>About Me</NavLink></li>
+                <li><NavLink to='/about-me' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>About Me</NavLink></li>
+                <li><NavLink to='/travel' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>My Travels</NavLink></li>
             </ul>
         </div>
     )

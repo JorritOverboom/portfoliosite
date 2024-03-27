@@ -72,9 +72,11 @@ input {
 /* individual task computer */
 .task {
     border: 2px solid black;
+    border-radius: 25px;
+    box-shadow: 2px 2px;
     display: grid;
     grid-template-rows: minmax(100px, 1fr) 30px;
-    padding: 5px;
+    padding: 2% 5%;
     margin: 10px 0;
 }
 
@@ -148,6 +150,7 @@ input {
     }
 
     /* tasklist mobile */
+
     .tasks {
         display: flex;
         flex-direction: column;
@@ -157,7 +160,11 @@ input {
     .in-progress,
     .finished {
         min-width: 100%;
-        margin: 0;
+        margin: 0 0 50px;;
+    }
+
+    .to-do-list h2 {
+        text-align: center;
     }
 
     /* individual task mobile */

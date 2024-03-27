@@ -4,6 +4,7 @@ import Task from './Task.jsx';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { logout } from '../login/loginSlice.js';
 import { addTaskToToDo, removeTaskFromToDo, createNewTask, moveTaskToInProgressFromToDo, moveTaskToFinishedFromToDo } from './task-slices/toDoListSlice.js';
 import { addTaskToInProgress, removeTaskFromInProgress, moveTaskToToDoFromInProgress, moveTaskToFinishedFromInProgress } from './task-slices/inProgressListSlice.js';
 import { addTaskToFinished, removeTaskFromFinished, moveTaskToToDoFromFinished, moveTaskToInProgressFromFinished } from './task-slices/finishedListSlice.js';
@@ -15,9 +16,10 @@ import { useNavigate } from 'react-router-dom';
 
 const ToDoList = () => {
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+    const dispatch = useDispatch();
+
+    const loggedIn = useSelector((state) => state.login.loggedIn);
     const toDoList = useSelector((state) => state.toDoList.tasks);
     const inProgressList = useSelector((state) => state.inProgressList.tasks);
     const finishedList = useSelector((state) => state.finishedList.tasks);
@@ -28,10 +30,19 @@ const ToDoList = () => {
         dispatch(getFinishedTasksFromDataBase());
     }, []);
 
-    const logout = async () => {
-        await logoutUser()
-        navigate('/login')
-    }
+    useEffect(() => {
+        if (!loggedIn) {
+            navigate('/login');
+        };
+    }, [loggedIn]);
+
+    const logoutHandler = async () => {
+        const result = await logoutUser();
+        if (result.ok) {
+            dispatch(logout());
+            navigate('/login');
+        }
+    };
 
     const [ taskName, setTaskName ] = useState('');
     const [ taskDescription, setTaskDescription ] = useState('');
@@ -104,10 +115,10 @@ const ToDoList = () => {
     return (
         <div className='to-do-list'>
             <div className='logout-container'>
-                <button onClick={logout}>Logout</button>
+                <button onClick={logoutHandler}>Logout</button>
             </div>
             <div className='add-task'>
-                <h2>Add a Task</h2>
+                <h2>Create a Task</h2>
                 <form className='task-input' onSubmit={submitTask}>
                     <label htmlFor='task-name'>Task name</label>
                     <input type='text' id='task-name' required minlength='1' onChange={taskNameSetter} value={taskName}></input>

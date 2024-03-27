@@ -1,5 +1,5 @@
 
-/* root computer */
+/* top view css properties */
 
 .all {
     display: grid;
@@ -7,6 +7,12 @@
     height: 100vh;
     font-family: 'Noto Sans', sans-serif;
 }
+
+h2, h3, h4, h5, h6 {
+    font-family: 'space grotesk', sans-serif;
+}
+
+/* root computer */
 
 .navMob {
     display: none;
@@ -17,10 +23,11 @@
 .navBar {
     display: grid;
     grid-template: 50px / 1fr 1fr;
-    border-bottom: 1px solid black;
-    padding: 10px 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 1% 10px;
     margin: 0 30px;
     font-size: 1.5rem;
+    font-family: 'space grotesk', sans-serif;
 }
 
 .name {
@@ -44,9 +51,10 @@ h1 {
 .menu {
     display: flex;
     justify-content: right;
-    align-items: flex-end;
+    align-items: center;
     padding: 0;
     margin: 0 5px 0 0;
+    letter-spacing: 2px;
 }
 
 .menu li {
@@ -56,7 +64,6 @@ h1 {
 
 .activeNavLink {
     font-weight: bold;
-    text-decoration: none;
     color: black;
 }
 
@@ -72,7 +79,6 @@ h1 {
     align-content: center;
     flex-wrap: wrap;
     overflow-y: auto;
-    word-break: break-word;
     padding: 0 15% 0;
 }
 

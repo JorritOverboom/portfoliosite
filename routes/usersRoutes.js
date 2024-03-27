@@ -25,16 +25,16 @@ usersRoutes.get('/profile', (req, res) => {
     }
 });
 
-usersRoutes.get('/checkLoggedIn', (req, res) => {
-    if (req.isAuthenticated()) {
-        res.json({ loggedIn: true });
-    } else {
-        res.json({ loggedIn: false });
-    }
-});
+// usersRoutes.get('/checkLoggedIn', (req, res) => {
+//     if (req.isAuthenticated()) {
+//         res.json({ loggedIn: true });
+//     } else {
+//         res.json({ loggedIn: false });
+//     }
+// });
 
 usersRoutes.post('/login', (req, res, next) => {
-    passport.authenticate('local', (err, user, info) => {
+    passport.authenticate('local', (err, user) => {
         if (err) {
             return next(err);
         }
