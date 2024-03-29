@@ -2,10 +2,14 @@
 /* computer version */
 .about-me {
     height: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-content: center;
-    margin: 10px 0;
+}
+
+.about-me h2{
+    margin: 50px 0;
 }
 
 
@@ -16,7 +20,8 @@
     grid-template-columns: 30% 70%;       
     grid-template-areas:
         "profile-picture about-me"
-        "my-name info-icons";               
+        "my-name info-icons";  
+    column-gap: 50px;             
 }
 
 .profile-picture {
@@ -31,9 +36,14 @@
 }
 
 .about-me-description {
-    width: 70%;
-    padding-left: 50px;
+    width: 100%;
     grid-area: about-me;
+}
+
+@media (max-width: 1700px) {
+    .about-me-description {
+        width: 100%;
+    }
 }
 
 /* name */
@@ -56,6 +66,10 @@
 
 .info-icons {
     grid-area: info-icons;
+}
+
+.info-icons ul {
+    padding-left: 0;
 }
 
 .info-icons li {

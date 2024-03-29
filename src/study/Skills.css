@@ -5,7 +5,11 @@
 
 /* my skills computer */
 .skills {
-    width: 60%;
+    width: 90%;
+}
+
+.skills h2 {
+    margin: 50px 0;
 }
 
 .skills p {
@@ -18,6 +22,11 @@
 
 .skills-intro {
     width: 70%;
+    margin-bottom: 2%;
+}
+
+.skills-intro h3 {
+    margin-bottom: 1%;
 }
 
 /* codecademy modules computer */
@@ -26,6 +35,7 @@
     grid-template-areas: 
         'module1 module2'
         'module3 module4';
+    width: 80%;
 }
 
 .module1 {
@@ -76,11 +86,17 @@
 
  @media (max-width: 480px) {
     .skills {
-        width: 90%;
+        width: 100%;
     }
 
     .skills p {
         font-size: 0.9rem;
+        text-align: justify;
+    }
+
+    .skills-intro {
+        width: 100%;
+        margin: 40px 0;
     }
 
     .modules {
@@ -93,6 +109,10 @@
     }
 
     .certificate-container img {
+        width: 100%;
+    }
+
+    .github {
         width: 100%;
     }
 }

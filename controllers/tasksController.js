@@ -1,6 +1,7 @@
 
 const pool = require('../models/database');
 const { v4: uuidv4 } = require('uuid');
+const xss = require('xss');
 
 exports.getToDoTasks = (req, res) => {
     const user_id = req.user.id;
@@ -46,7 +47,7 @@ exports.deleteTask = (req, res) => {
 exports.updateTaskToToDo = (req, res) => {
     const id = req.params.id;
     const user_id = req.user.id;
-    pool.query('UPDATE tasks SET status = $1 WHERE id = $2 AND user_id = $3', ['todo', id, user_id], (error, results) => {
+    pool.query('UPDATE tasks SET status = \'todo\' WHERE id = $1 AND user_id = $2', [id, user_id], (error, results) => {
         if (error) {
             throw error;
         }
@@ -57,7 +58,7 @@ exports.updateTaskToToDo = (req, res) => {
 exports.updateTaskToInProgress = (req, res) => {
     const id = req.params.id;
     const user_id = req.user.id;
-    pool.query('UPDATE tasks SET status = $1 WHERE id = $2 AND user_id = $3', ['inprogress', id, user_id], (error, results) => {
+    pool.query('UPDATE tasks SET status = \'inprogress\' WHERE id = $1 AND user_id = $2', [id, user_id], (error, results) => {
         if (error) {
             throw error;
         }
@@ -68,7 +69,7 @@ exports.updateTaskToInProgress = (req, res) => {
 exports.updateTaskToFinished = (req, res) => {
     const id = req.params.id;
     const user_id = req.user.id;
-    pool.query('UPDATE tasks SET status = $1 WHERE id = $2 AND user_id = $3', ['finished', id, user_id], (error, results) => {
+    pool.query('UPDATE tasks SET status = \'finished\' WHERE id = $1 AND user_id = $2', [id, user_id], (error, results) => {
         if (error) {
             throw error;
         }
@@ -77,9 +78,12 @@ exports.updateTaskToFinished = (req, res) => {
 };
 
 exports.createTask = (req, res) => {
-    const { id, name, description, status } = req.body;
+    const { id, name, description } = req.body;
     const user_id = req.user.id;
-    pool.query('INSERT INTO tasks (id, name, description, status, user_id) VALUES ($1, $2, $3, $4, $5)', [id, name, description, status, user_id], (error, results) => {
+    const status = 'todo';
+    const sanitizedName = xss(name);
+    const sanitizedDescription = xss(description);
+    pool.query('INSERT INTO tasks (id, name, description, status, user_id) VALUES ($1, $2, $3, $4, $5)', [id, sanitizedName, sanitizedDescription, status, user_id], (error) => {
         if (error) {
             throw error;
         }

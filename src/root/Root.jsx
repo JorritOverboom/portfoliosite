@@ -21,7 +21,7 @@ const Root = () => {
             <div className='navBar-parent'>
                 <div className='navBar'>
                     <div className='name'>
-                        <h1><Link to='/' className='home-h1'>Jorrit Overboom</Link></h1>
+                        <h1><Link to='/' className='home-h1' id='name'>Jorrit Overboom</Link></h1>
                     </div>
                     <ul className='menu'>
                         <li><NavLink to='/skills' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>MY SKILLS</NavLink></li>

@@ -16,10 +16,11 @@ const Signup = () => {
 
     const [ usernameAllLetters, setUsernameAllLetters ] = useState(null);
     const [ usernameHasThreeCharacters, setUsernameHasThreeCharacters ] = useState(null);
-    const [ passwordsMatch, setPasswordsMatch ] = useState(null);
     const [ passwordHasEightCharacters, setPasswordHasEightCharacters ] = useState(null);
     const [ passwordHasOneCapitalLetter, setPasswordHasOneCapitalLetter ] = useState(null);
+    const [ passwordHasOneNumber, setPasswordHasOneNumber ] = useState(null);
     const [ passwordHasOneSymbol, setPasswordHasOneSymbol ] = useState(null);
+    const [ passwordsMatch, setPasswordsMatch ] = useState(null);
 
     const usernameSetter = ({target}) => {
         setUsername(target.value);
@@ -34,16 +35,25 @@ const Signup = () => {
     };
 
     useEffect(() => {
-        setUsernameAllLetters(/^[a-zA-Z]*$/.test(username) && username.length > 0);
+        setUsernameAllLetters(/^[a-zA-Z]+$/.test(username) && username.length > 0);
         setUsernameHasThreeCharacters(username.length >= 3);
-        setPasswordsMatch(password === confirmPassword && password.length > 0);
         setPasswordHasEightCharacters(password.length >= 8);
         setPasswordHasOneCapitalLetter(/[A-Z]/.test(password));
+        setPasswordHasOneNumber(/\d/.test(password));
         setPasswordHasOneSymbol(/[!@#$%^&*]/.test(password));
+        setPasswordsMatch(password === confirmPassword && password.length > 0);
     }, [username, password, confirmPassword]);
 
     const checkIfSubmitIsValid = () => {
-        return usernameAllLetters && usernameHasThreeCharacters && passwordsMatch && passwordHasEightCharacters && passwordHasOneCapitalLetter && passwordHasOneSymbol;
+        return (
+            usernameAllLetters && 
+            usernameHasThreeCharacters && 
+            passwordHasEightCharacters && 
+            passwordHasOneCapitalLetter && 
+            passwordHasOneNumber &&
+            passwordHasOneSymbol && 
+            passwordsMatch
+        );
     };
 
     const notifySuccess = () => toast.success('Account created');
@@ -62,7 +72,7 @@ const Signup = () => {
                     notifySuccess();
                     setTimeout(() => {
                         navigate('/login');
-                    }, 1500);
+                    }, 1000);
                 }
 
                 if (response.message === 'Username already exists') {
@@ -81,7 +91,7 @@ const Signup = () => {
 
     return (
         <div className='sign-up'>
-            <ToastContainer autoClose={2000} hideProgressBar={true}/>
+            <ToastContainer hideProgressBar={true}/>
             <form className='sign-up-form' onSubmit={submitUser}>
                 <h2>Sign up</h2>
                 <label htmlFor='username'>Username</label>
@@ -93,12 +103,13 @@ const Signup = () => {
                 <input type='submit' id='sign-up-submit' value='Sign up' />
             </form>
             <ul>
-                <li className={usernameAllLetters ? 'green' : 'red'}>Usernames only allow alphabet letters</li>
-                <li className={usernameHasThreeCharacters ? 'green' : 'red'}>Usernames need at least 3 characters</li>
-                <li className={passwordsMatch ? 'green' : 'red'}>Password and Confirm Password have to match</li>
-                <li className={passwordHasEightCharacters ? 'green' : 'red'}>Passwords need at least 8 characters</li>
-                <li className={passwordHasOneCapitalLetter ? 'green' : 'red'}>Passwords need at least 1 capital letter</li>
-                <li className={passwordHasOneSymbol ? 'green' : 'red'}>Passwords need at least 1 symbol</li>
+                <li className={usernameAllLetters ? 'green' : 'red'}>Username: Must contain only alphabet letters</li>
+                <li className={usernameHasThreeCharacters ? 'green' : 'red'}>Username: Must be at least 3 characters long</li>
+                <li className={passwordHasEightCharacters ? 'green' : 'red'}>Password: Must be at least 8 characters long</li>
+                <li className={passwordHasOneCapitalLetter ? 'green' : 'red'}>Password: Must contain at least 1 capital letter</li>
+                <li className={passwordHasOneNumber ? 'green' : 'red'}>Password: Must contain at least 1 number</li>
+                <li className={passwordHasOneSymbol ? 'green' : 'red'}>Password: Must contain at least 1 symbol</li>
+                <li className={passwordsMatch ? 'green' : 'red'}>Password and Confirm Password: Must match</li>
             </ul>
         </div>
     )

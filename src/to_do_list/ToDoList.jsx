@@ -13,6 +13,7 @@ import { getInProgressTasksFromDataBase } from '../to_do_list/task-slices/inProg
 import { getFinishedTasksFromDataBase } from '../to_do_list/task-slices/finishedListSlice.js';
 import { logoutUser } from '../utils/usersAPI';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ToDoList = () => {
 
@@ -36,12 +37,19 @@ const ToDoList = () => {
         };
     }, [loggedIn]);
 
+    const notifySuccess = () => toast.success('Log out successful');
+
     const logoutHandler = async () => {
         const result = await logoutUser();
+
         if (result.ok) {
-            dispatch(logout());
-            navigate('/login');
+            notifySuccess();
+            setTimeout(() => {
+               dispatch(logout()); 
+            }, 1500);
         }
+
+        return;
     };
 
     const [ taskName, setTaskName ] = useState('');
@@ -63,7 +71,6 @@ const ToDoList = () => {
                 id: uuidv4(),
                 name: taskName,
                 description: formattedDescription,
-                status: 'todo'
             }));
             setTaskName('');
             setTaskDescription('');
@@ -114,9 +121,7 @@ const ToDoList = () => {
 
     return (
         <div className='to-do-list'>
-            <div className='logout-container'>
-                <button onClick={logoutHandler}>Logout</button>
-            </div>
+            <ToastContainer hideProgressBar={true}/>
             <div className='add-task'>
                 <h2>Create a Task</h2>
                 <form className='task-input' onSubmit={submitTask}>
@@ -129,7 +134,7 @@ const ToDoList = () => {
             </div>
             <div className='tasks'>
                 <div className='to-do'>
-                    <h2>To do tasks</h2>
+                    <h3>To do</h3>
                     <div className='task-list'>
                         {toDoList.map((task) => (
                             <Task
@@ -144,7 +149,7 @@ const ToDoList = () => {
                     </div>
                 </div>
                 <div className='in-progress'>
-                    <h2>In progress tasks</h2>
+                    <h3>In progress</h3>
                     <div className='task-list'>
                         {inProgressList.map((task) => (
                             <Task
@@ -159,7 +164,7 @@ const ToDoList = () => {
                     </div>
                 </div>
                 <div className='finished'>
-                    <h2>Finished tasks</h2>
+                    <h3>Finished</h3>
                     <div className='task-list'>
                         {finishedList.map((task) => (
                             <Task
@@ -173,6 +178,9 @@ const ToDoList = () => {
                         ))}
                     </div>
                 </div>
+            </div>
+            <div className='logout-container'>
+                <button onClick={logoutHandler}>Logout</button>
             </div>
         </div>
     )

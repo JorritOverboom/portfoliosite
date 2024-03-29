@@ -3,6 +3,9 @@ export const travelStories = [
     {
         year: 2013,
         title: 'Baby steps',
+        countries: [
+            {name: 'Belgium', countryCode: 'BE'},
+        ],
         introPhoto: '../Pictures/2013/hitchhiking.JPG',
         story: [
             'At the age of 21, I started out as a bike messenger, a job that would turn out to be the job that would sponsor the majorit of my travels. Soon after I attempted my first hitchhiking journey: from Tilburg, The Netherlands, to Ghent, Belgium, accompanied by a friend who showed me the ropes. A while after I again attempted it: I hitched my way from Breda to Brussels in Belgium with another friend.',
@@ -18,6 +21,12 @@ export const travelStories = [
     {
         year: 2014,
         title: 'First solo journey',
+        countries: [
+            {name: 'Germany', countryCode: 'DE'},
+            {name: 'France', countryCode: 'FR'},
+            {name: 'Spain', countryCode: 'ES'},
+            {name: 'Portugal', countryCode: 'PT'},
+        ],
         introPhoto: '../Pictures/2014/solo_hitchhike.JPG',
         story: [
             "In the spring, I embarked on a hitchhiking adventure with another friend, journeying all the way to Hamburg. This marked the first time I spent an entire day hitchhiking.",
@@ -33,6 +42,9 @@ export const travelStories = [
     {
         year: 2015,
         title: 'Down under',
+        countries: [
+            {name: 'Australia', countryCode: 'AU'},
+        ],
         introPhoto: '../Pictures/2015/gold_coast.JPG',
         story: [
             "After saving up sufficient funds, I embarked on the journey to Australia with a one-year working holiday visa in hand. Throughout the year, I experienced an incredible adventure, hitchhiking around the entire country. Along the way, I found hospitality in the homes of friendly people I met and occasionally camped out under the stars or stayed in hostels to have some rest from the road.",
@@ -57,7 +69,25 @@ export const travelStories = [
     },
     {
         year: 2016,
-        title: 'How was home like again?',
+        title: 'What was home like again?',
+        countries: [
+            {name: 'Australia', countryCode: 'AU'},
+            {name: 'New Zealand', countryCode: 'NZ'},
+            {name: 'Singapore', countryCode: 'SG'},
+            {name: 'Thailand', countryCode: 'TH'},
+            {name: 'Belgium', countryCode: 'BE'},
+            {name: 'France', countryCode: 'FR'},
+            {name: 'Germany', countryCode: 'DE'},
+            {name: 'Poland', countryCode: 'PL'},
+            {name: 'Hungary', countryCode: 'HU'},
+            {name: 'Croatia', countryCode: 'HR'},
+            {name: 'Montenegro', countryCode: 'ME'},
+            {name: 'Albania', countryCode: 'AL'},
+            {name: 'Greece', countryCode: 'GR'},
+            {name: 'Turkey', countryCode: 'TR'},
+            {name: 'Bulgaria', countryCode: 'BG'},
+            {name: 'Serbia', countryCode: 'RS'},
+        ],
         introPhoto: '../Pictures/2016/free_camp_dubrovnik.JPG',
         story: [
             "My adventure in Australia eventually drew to a close, but with the extra savings I earned from my summer job I continued my travels. I ventured to New Zealand, where over a span of six weeks, I hitchhiked 5,000 kilometers, crisscrossing throughout the South Island.",
@@ -79,7 +109,16 @@ export const travelStories = [
     },
     {
         year: 2017,
-        title: 'Conquering Asia',
+        title: 'Exploring Asia',
+        countries: [
+            {name: 'Singapore', countryCode: 'SG'},
+            {name: 'Malaysia', countryCode: 'MY'},
+            {name: 'Thailand', countryCode: 'TH'},
+            {name: 'Myanmar', countryCode: 'MM'},
+            {name: 'Cambodia', countryCode: 'KH'},
+            {name: 'Japan', countryCode: 'JP'},
+            {name: 'France', countryCode: 'FR'},
+        ],
         introPhoto: '../Pictures/2017/temple_japan.JPG',
         story: [
             "At the onset of the new year, I flew to Singapore to reunite with friends. Subsequently, I arranged a visa for Myanmar and hitchhiked my way there, passing through Malaysia and Thailand. This was the first time hitchhiking in a completely different culture",
@@ -98,7 +137,16 @@ export const travelStories = [
     },
     {
         year: 2018,
-        title: 'A break from home',
+        title: 'A travel reminder',
+        countries: [
+            {name: 'France', countryCode: 'FR'},
+            {name: 'Italy', countryCode: 'IT'},
+            {name: 'Slovenia', countryCode: 'SI'},
+            {name: 'Croatia', countryCode: 'HR'},
+            {name: 'Montenegro', countryCode: 'ME'},
+            {name: 'Serbia', countryCode: 'RS'},
+            {name: 'Romania', countryCode: 'RO'},
+        ],
         introPhoto: '../Pictures/2018/montenegro.jpg',
         story: [
             "For the better part of the year, I settled in Breda, returning to my former job as a bike messenger. This period allowed me to replenish my savings for future travels and embrace the stability after the constant flux of life on the road.",
@@ -123,6 +171,18 @@ export const travelStories = [
     {
         year: 2019,
         title: 'Back to Asia and Australia',
+        countries: [
+            {name: 'Hong Kong', countryCode: 'HK'},
+            {name: 'China', countryCode: 'CN'},
+            {name: 'Thailand', countryCode: 'TH'},
+            {name: 'Cambodia', countryCode: 'KH'},
+            {name: 'Vietnam', countryCode: 'VN'},
+            {name: 'Laos', countryCode: 'LA'},
+            {name: 'Malaysia', countryCode: 'MY'},
+            {name: 'Singapore', countryCode: 'SG'},
+            {name: 'Australia', countryCode: 'AU'},
+            {name: 'New Zealand', countryCode: 'NZ'},
+        ],
         introPhoto: '../Pictures/2019/koh_rong_samloem.jpg',
         story: [
             "After having been back home for a year and a half, aside of the 'short' Europe trip I made the previous year, I flew to Hong Kong. There I organized my China visa before boarding a train bound for China after a week in the city. Attempting hitchhiking in China proved to be a unique challenge unlike any other country I had visited. With most locals unfamiliar with the concept, I soon switched to buses and trains for transportation.",
@@ -136,12 +196,12 @@ export const travelStories = [
             { path: '../Pictures/2019/happy_new_year.jpg', description: 'A very Happy New Year, Guilin, China' },
             { path: '../Pictures/2019/yuangshuo.jpg', description: 'Yangshuo, China' },
             { path: '../Pictures/2019/tiger_leaping_gorge.jpg', description: 'Tiger Leaping Gorge river, China' },
-            { path: '../Pictures/2019/ladder_china.jpg', description: 'Tiger Leaping Gorge ascend from the river, China' },
+            // { path: '../Pictures/2019/ladder_china.jpg', description: 'Tiger Leaping Gorge ascend from the river, China' },
             { path: '../Pictures/2019/koh_rong_samloem.jpg', description: 'Koh Rong Samloem, Cambodia' },
-            { path: '../Pictures/2019/cycling_hoi_an.jpg', description: 'Cycling in Hội An, Vietnam' },
-            { path: '../Pictures/2019/hoi_an_river_selfie.jpg', description: 'Hội An river cruise, Vietnam' },
+            { path: '../Pictures/2019/cycling_hoi_an.jpg', description: 'Cycling in Hoi An, Vietnam' },
+            { path: '../Pictures/2019/hoi_an_river_selfie.jpg', description: 'Hoi An river cruise, Vietnam' },
             { path: '../Pictures/2019/boat_vietnam.jpg', description: 'Fishing out of the Chàm Islands, Vietnam' },
-            { path: '../Pictures/2019/ninh_binh.jpg', description: 'Hilltop view, Ninh Binh, Vietnam' },
+            // { path: '../Pictures/2019/ninh_binh.jpg', description: 'Hilltop view, Ninh Binh, Vietnam' },
             // { path: '../Pictures/2019/woman_ninh_binh.jpg', description: 'Woman posing at hilltop view, Ninh Binh, Vietnam' },
             { path: '../Pictures/2019/village_laos.jpg', description: 'A village out of Muang Ngoy, Laos' },
             // { path: '../Pictures/2019/muang_ngoy.jpg', description: 'Muang Ngoy lookout, Laos' },
@@ -149,12 +209,16 @@ export const travelStories = [
             // { path: '../Pictures/2019/waterfall_laos_2.jpg', description: 'Waterfall, south of Laos' },
             // { path: '../Pictures/2019/laos_monks.jpg', description: 'Monks I met at a waterfall, south of Laos' },
             { path: '../Pictures/2019/malakka.jpg', description: 'Malakka river, Malaysia' },
-            { path: '../Pictures/2019/hot_water_beach.jpg', description: 'Kawhia Hot Water Beach, New Zealand' },
+            // { path: '../Pictures/2019/hot_water_beach.jpg', description: 'Kawhia Hot Water Beach, New Zealand' },
         ]
     },
     {
         year: 2020,
         title: 'Disaster!',
+        countries: [
+            {name: 'New Zealand', countryCode: 'NZ'},
+            {name: 'Australia', countryCode: 'AU'},
+        ],
         introPhoto: '../Pictures/2020/akaroa_hike.jpg',
         story: [
             "At the onset of the new year, I returned to the South Island of New Zealand to explore its breathtaking landscapes and seek out new job opportunities. However, as the COVID-19 pandemic began to unfold, casting uncertainty over my plans, I decided to seek refuge at my friend in Melbourne, Australia, to assess my options.",
@@ -173,6 +237,15 @@ export const travelStories = [
     {
         year: 2021,
         title: 'Home is not too bad',
+        countries: [
+            {name: 'The Netherlands', countryCode: 'NL'},
+            {name: 'Germany', countryCode: 'DE'},
+            {name: 'Austria', countryCode: 'AT'},
+            {name: 'Italy', countryCode: 'IT'},
+            {name: 'Slovakia', countryCode: 'SK'},
+            {name: 'Hungary', countryCode: 'HU'},
+            {name: 'France', countryCode: 'FR'},
+        ],
         introPhoto: '../Pictures/2021/smokkelroute.jpg',
         story: [
             "Due to the lockdowns and the absence of tourism, I took the opportunity to visit places in my own country like Amsterdam and Giethoorn, experiencing views that are unlikely to be seen again in the future.",
@@ -197,6 +270,11 @@ export const travelStories = [
     {
         year: 2022,
         title: 'Work work',
+        countries: [
+            {name: 'The Netherlands', countryCode: 'NL'},
+            {name: 'USA', countryCode: 'US'},
+            {name: 'Australia', countryCode: 'AU'},
+        ],
         introPhoto: '../Pictures/2022/couch_friends.jpg',
         story: [
             "I spent 8 months working as a wheelchair mechanic, a different trade than I had ever worked before. However this job was not the trade I would want to invest more of my life in, so I used the savings for one final departure with the intend to settle down after that trip.",
@@ -218,11 +296,21 @@ export const travelStories = [
     {
         year: 2023,
         title: 'One last time',
+        countries: [
+            {name: 'Australia', countryCode: 'AU'},
+            {name: 'Indonesia', countryCode: 'ID'},
+            {name: 'Singapore', countryCode: 'SG'},
+            {name: 'Thailand', countryCode: 'TH'},
+            {name: 'Germany', countryCode: 'DE'},
+            {name: 'Poland', countryCode: 'PL'},
+            {name: 'France', countryCode: 'FR'},
+            {name: 'Hungary', countryCode: 'HU'},
+        ],
         introPhoto: '../Pictures/2023/island_view.jpg',
         story: [
             "After the change of the new year, I jetted off to Perth to attend the wedding of a couple I met through a hitchhike back in 2016, shortly after my summer job there. Following the festivities, I traveled to Bali, Indonesia, seeking solitude due to a strong urge of being alone for a while so I could delve into personal projects. Immersed in video editing, devouring books, and experimenting with the programming course, which I eventually decided to focus on upon my return back home, I relished the opportunity for self-reflection and rest of my lifestyle.",
             "After three months of introspection, I resolved to pursue a career in web development. Before returning to Europe, I took two weeks to explore Bali's scenic wonders, visiting the islands around Bali such as Gili Air, Nusa Penida and others. En route home, I made a stop in my beloved city of Bangkok for two weeks before landing in Frankfurt.",
-            "Aware that this journey marked the end of my nomadic lifestyle for the foreseeable future, I embarked on a heartfelt tour across Europe, reconnecting with friends and family. From vibrant cities like Cologne, Hamburg, Berlin, and Munich in Germany, to cultural gems like Krakow, Budapest, Toulouse, Montauban, and the Ardèche in France, I treasured each reunion.",
+            "Aware that this journey marked the end of my nomadic lifestyle for the foreseeable future, I embarked on a heartfelt tour across Europe, reconnecting with friends and family. From vibrant cities like Cologne, Hamburg, Berlin, and Munich in Germany, to cultural gems like Krakow, Budapest, Toulouse, Montauban, and the Ardèche in France.",
             "Upon returning home in the summer, I dedicated myself to mastering programming through the 'full-stack engineer' course on Codecademy, embracing the next chapter of my journey with enthusiasm and determination.",
         ],
         photos: [
@@ -248,13 +336,16 @@ export const travelStories = [
             // { path: '../Pictures/2023/krakow.jpg', description: "St. Mary's Basilica, Krakow, Poland" },
             { path: '../Pictures/2023/bremen_village.jpg', description: 'House of a friend in a village outside of Bremen, Germany' },
             { path: '../Pictures/2023/lauzerte.jpg', description: 'Lauzerte, France' },
-            { path: '../Pictures/2023/boldogko_castle.jpg', description: 'Boldogkő castle, Hungary' },
+            // { path: '../Pictures/2023/boldogko_castle.jpg', description: 'Boldogkő castle, Hungary' },
         ]
     },
     {
         year: '?',
         title: 'Next stop',
-        introPhoto: '',
+        countries: [
+            {name: '???', countryCode: ''},
+        ],
+        introPhoto: '../Pictures/2024/looking_ahead.jpg',
         story: [
             "As I transition into a more settled phase focused on building a career, the prospect of future travel remains uncertain. However, I entertain the possibility of embarking on journeys equipped with a laptop, ready to work remotely once I have amassed sufficient years of experience. The allure of blending work and travel may beckon again in the future, offering new opportunities for exploration and adventures.",
         ],

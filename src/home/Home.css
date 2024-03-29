@@ -9,6 +9,10 @@
     color: white;
 }
 
+.home p {
+    font-family: 'space grotesk';
+}
+
 .home-link {
     color: white;
 }
@@ -16,9 +20,15 @@
 .outlet-home {
     justify-self: end;
     margin: 15% 0 0 0;
-    padding: 0 5% 0 15%;
+    padding: 0 10%;
     font-size: 2.5rem;
-    width: 40%;
+    width: 35%;
+}
+
+@media (max-width: 1500px) {
+    .outlet-home {
+        margin: 10% 0 0 0;
+    }
 }
 
 /* home path navigation bar computer */
@@ -45,8 +55,8 @@
 /* home path mobile */
 @media only screen and (max-width: 480px) {
     
-
     .home-path {
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../Pictures/jorritlandschap_high.jpg');
         background-size: auto 130%;
         background-position: 25% 0;
     }

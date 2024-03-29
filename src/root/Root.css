@@ -8,9 +8,20 @@
     font-family: 'Noto Sans', sans-serif;
 }
 
-h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'space grotesk', sans-serif;
 }
+
+h2 {
+    font-size: 2.5rem;
+    margin: 50px 0;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+
 
 /* root computer */
 
@@ -21,8 +32,8 @@ h2, h3, h4, h5, h6 {
 /* root navigation bar computer */
 
 .navBar {
-    display: grid;
-    grid-template: 50px / 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     padding: 1% 10px;
     margin: 0 30px;
@@ -35,12 +46,20 @@ h2, h3, h4, h5, h6 {
     align-items: flex-end;
 }
 
+#name:hover {
+    color: RGB(98,195,219);
+}
+
 h1 {
     font-size: 2rem;
     margin: 0;
     margin-left: 5px;
     text-decoration: none;
 }
+
+/* h1:hover {
+    color: RGB(98,195,219);
+} */
 
 .home-h1 {
     text-decoration: none;
@@ -60,16 +79,23 @@ h1 {
 .menu li {
     list-style-type: none;
     margin-left: 30px;
+    font-size: 1.2rem;
 }
 
 .activeNavLink {
     font-weight: bold;
     color: black;
+    text-underline-offset: 0.2em;
 }
 
 .inactiveNavLink {
     text-decoration: none;
     color: black;
+}
+
+.inactiveNavLink:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
 
 /* outlet computer */

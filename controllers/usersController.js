@@ -4,8 +4,31 @@ const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 const { addDefaultTasks } = require('./tasksController');
 
+const checkIfValidInput = ({ username, password }) => {
+    const usernameAllLetters = /^[a-zA-Z]+$/.test(username);
+    const usernameHasThreeCharacters = username.length >= 3;
+    const passwordHasEightCharacters = password.length >= 8;
+    const passwordHasOneCapitalLetter = /[A-Z]/.test(password);
+    const passwordHasOneNumber = /\d/.test(password);
+    const passwordHasOneSymbol = /[!@#$%^&*]/.test(password);
+
+    return (
+        usernameAllLetters &&
+        usernameHasThreeCharacters &&
+        passwordHasEightCharacters &&
+        passwordHasOneCapitalLetter &&
+        passwordHasOneNumber &&
+        passwordHasOneSymbol
+    );
+};
+
 exports.createUser = async (req, res) => {
     const { username, password } = req.body;
+
+    if (!checkIfValidInput({ username, password })) {
+        return res.status(400).json({ message: 'Invalid username or password' });
+    }
+
     const id = uuidv4();
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);

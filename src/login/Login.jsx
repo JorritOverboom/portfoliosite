@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../utils/usersAPI';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { login } from '../login/loginSlice';
 
 const Login = () => {
@@ -27,9 +26,34 @@ const Login = () => {
 
     const notifySuccess = () => toast.success('Log in successful');
     const notifyFailure = () => toast.error('Failed to log in. Please try again');
+    const notifyInputFailure = () => toast.error('Invalid username or password');
+
+    const checkIfValidInput = () => {
+        const usernameAllLetters = /^[a-zA-Z]+$/.test(username);
+        const usernameHasThreeCharacters = username.length >= 3;
+        const passwordHasEightCharacters = password.length >= 8;
+        const passwordHasOneCapitalLetter = /[A-Z]/.test(password);
+        const passwordHasOneNumber = /\d/.test(password);
+        const passwordHasOneSymbol = /[!@#$%^&*]/.test(password);
+
+        return (
+            usernameAllLetters &&
+            usernameHasThreeCharacters &&
+            passwordHasEightCharacters &&
+            passwordHasOneCapitalLetter &&
+            passwordHasOneNumber &&
+            passwordHasOneSymbol
+        );
+    };
 
     const submitLogin = async (event) => {
         event.preventDefault();
+
+        if (!checkIfValidInput()) {
+            notifyInputFailure();
+            return;
+        }
+
         try {
             const result = await loginUser({ username, password });
 
@@ -56,8 +80,8 @@ const Login = () => {
 
     return (
         <div className='log-in'>
-            <ToastContainer autoClose={2000} hideProgressBar={true}/>
-            <form className='log-in-form' onSubmit={submitLogin}>
+            <ToastContainer hideProgressBar={true}/>
+            <form className='log-in-form' onSubmit={submitLogin} >
                 <h2>Log in to get access to the to do list</h2>
                 <label htmlFor='username'>Username</label>
                 <input type='text' id='username' name='username' onChange={ usernameSetter } value={username} required />

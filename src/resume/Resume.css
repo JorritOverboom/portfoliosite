@@ -1,11 +1,15 @@
 
 
 /* list */
-.resume {
+.resume h3 {
+    margin: 50px 0;
+}
+
+.resume-list {
     display: grid;
     grid-template-columns: 3fr 1fr;
     padding-bottom: 10%;
-    margin-top: 4%;
+    column-gap: 20px;
 }
 
 /* working experiences */
@@ -26,7 +30,6 @@
 }
 
 .working-name {
-    text-align: end;
     margin: 0 20px 0 0;
 }
 

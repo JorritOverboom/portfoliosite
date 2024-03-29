@@ -12,17 +12,6 @@
     flex-direction: column;
 }
 
-.logout-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 15px;
-}
-
-.logout-container button {
-    font-size: 1.5rem;
-}
-
 .task-input {
     display: flex;
     flex-direction: column;
@@ -44,7 +33,9 @@ input {
 }
 
 #add-task-submit {
-    width: 100px;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 1.5rem;
     align-self: center;
 }
 
@@ -61,8 +52,9 @@ input {
     margin: 0 10px;
 }
 
-.tasks h2 {
-    border-bottom: 2px solid black;
+.tasks h3 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    padding-bottom: 5px;
 }
 
 .task-list {
@@ -71,13 +63,18 @@ input {
 
 /* individual task computer */
 .task {
-    border: 2px solid black;
+    border: 2px solid rgba(128, 128, 128, 0.2);
     border-radius: 25px;
-    box-shadow: 2px 2px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
     display: grid;
     grid-template-rows: minmax(100px, 1fr) 30px;
     padding: 2% 5%;
     margin: 10px 0;
+}
+
+.task h4 {
+    font-size: 1.25rem;
+    margin: 20px 0;
 }
 
 .to-do .move-to-to-do {
@@ -97,7 +94,7 @@ input {
 }
 
 .task p {
-    margin: 0 0 10px;
+    margin: 0 0 15px;
 }
 
 .task-buttons {
@@ -125,6 +122,19 @@ input {
     width: 20px;
     height: auto;
     margin: 5px 0;
+}
+
+/* logout button computer */
+
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.logout-container button {
+    font-size: 1.5rem;
 }
 
 /* to do list mobile */
@@ -178,6 +188,14 @@ input {
 
     .task-button p {
         font-size: 0.6rem;
+    }
+
+    .logout-container {
+        margin-bottom: 50px;
+    }
+
+    .logout-container button {
+        font-size: 1.5rem;
     }
 
 }

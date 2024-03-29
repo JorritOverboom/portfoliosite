@@ -3,7 +3,11 @@
 
 .travel {
     margin: 0 0 5%;
-    padding: 0 15%
+    width: 90%;
+}
+
+.travel h2 {
+    margin: 50px 0;
 }
 
 .travel-box {
@@ -15,19 +19,18 @@
 .travel-year-introduction {
     display: flex;
     flex-direction: row;
+    padding: 3% 0;
 }
 
 .travel-year-intro-info {
-    height: 400px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "year photo"
         "title photo"
+        "countries photo"
         "expand photo";
-    padding: 3% 0;
 }
 
 .travel-year {
@@ -50,10 +53,37 @@
     padding-right: 5%;
 }
 
+.travel-title h4 {
+    margin: 0;
+}
+
+.travel-countries {
+    grid-area: countries;
+    padding-right: 5%;
+}
+
+.flag {
+    width: 20px;
+
+}
+
+.country-container {
+    display: inline-flex;
+    margin: 0 10px 0 0;
+    padding: 0 5px;
+    background-color: rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+}
+
+.country-container p {
+    margin: 0;
+}
+
 .travel-extend-box {
     grid-area: expand;
     display: flex;
     align-items: end;
+    align-self: end;
 }
 
 .travel-extend-box div {
@@ -63,9 +93,9 @@
 }
 
 .travel-year-intro-photo {
+    height: 400px;
     grid-area: photo;
     width: 100%;
-    max-height: 100%;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -80,7 +110,7 @@
 
 .year-story {
     width: 60%;
-    margin: 5% 0;
+    margin: 4% 0 5% 0;
 }
 
 .year-story p {
@@ -133,8 +163,9 @@
 }
 
 .differentPhoto {
-    width: 30px;
+    width: 20px;
     height: auto;
+    cursor: pointer;
 }
 
 .previousPhoto {
@@ -144,25 +175,40 @@
 /* travel mobile */
 @media (max-width: 480px) {
 
-    .travel-box {
+    .outlet {
         padding: 0 2%;
+    }
+
+    .travel {
+        width: 95%;
+        padding: 0;
+    }
+
+    .travel-box {
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     /* introduction travel mobile */
 
     .travel-year-intro-info {
+        padding-top: 20px;
         grid-template-columns: 1fr;
         grid-template-areas:
             "year"
             "title"
             "photo"
+            "countries"
             "expand";
-        margin: 0 0 50px;
+    }
+
+    .travel-year-intro-info div {
+        margin-bottom: 10px;
     }
 
     .travel-year-intro-photo {
+        height: 250px;
         padding: 0;
-        margin: 0 0 50px;
         max-width: 100%;
     }
 
@@ -171,15 +217,29 @@
         max-width: 100%;
     }
 
+    .travel-countries {
+        margin-bottom: 20px;
+    }
+
+    .travel-countries p {
+        font-size: 1rem;
+    }
+    
+
     /* content travel mobile */
 
     .year-story {
         column-count: 1;
         padding: 0;
         text-align: justify;
+        width: 100%;
     }
 
     /* travel photos mobile */
+
+    .year-photos {
+        padding: 50px 0 0;
+    }
 
     .travel-photo {
         width: 100%;
@@ -191,6 +251,17 @@
 
     .photo-section {
         grid-area: photo-section;
+        margin: 0;
+        text-align: center;
+    }
+
+    .travel-photo-container img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .photo-description {
+        height: 70px;
     }
 
     .previousPhoto {
@@ -202,14 +273,10 @@
         justify-self: end;
     }
 
-    .travel-photo-container img {
-        max-height: 100%;
-        max-width: 100%;
-    }
-
     .differentPhoto {
-        width: 50%;
+        width: 30px;
         margin: 0 0 50px;
+        padding: 0 20px;
     }
 
 }

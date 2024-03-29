@@ -62,7 +62,7 @@ const Skills = () => {
             </div>
             <div className='github'>
                 <h3>My GitHub</h3>
-                <p>On my Github page you can read my README, where I describe the technical approach I have used for this website and where a display of the code used to build it can be found.</p>
+                <p>On my GitHub page you can read my README, where I describe the technical approach I have used for this website and where a display of the code used to build it, can be found via the link below:</p>
                 <p><a href='https://github.com/JorritOverboom/portfoliosite' target='_blank'>https://github.com/JorritOverboom/portfoliosite</a></p>
             </div>
         </div>

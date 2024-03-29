@@ -1,4 +1,8 @@
 
+.Toastify {
+    top: 500px;
+}
+
 .log-in {
     display: flex;
     justify-content: center;
