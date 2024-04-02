@@ -1,4 +1,6 @@
 
+/* hamburger menu mobile */
+
 .menuList {
     width: 100%;
 }
@@ -22,7 +24,7 @@
     justify-content: flex-end;
     margin-top: 15px;
     margin-right: 15px;
-    height: 50px;
+    height: 25px;
 }
 
 .exit i {

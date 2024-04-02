@@ -6,6 +6,8 @@ import finished_icon from './images/finished_icon.png';
 import delete_icon from './images/delete_icon.png'
 
 function Task(props) {
+    
+    // Sanitizing the input
     const sanitizedName = DOMPurify.sanitize(props.name);
     const sanizitedDescription = DOMPurify.sanitize(props.description);
     

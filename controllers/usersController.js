@@ -1,34 +1,36 @@
-
+// Functions that interact with the database
 const pool = require('../models/database');
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 const { addDefaultTasks } = require('./tasksController');
 
-const checkIfValidInput = ({ username, password }) => {
-    const usernameAllLetters = /^[a-zA-Z]+$/.test(username);
-    const usernameHasThreeCharacters = username.length >= 3;
-    const passwordHasEightCharacters = password.length >= 8;
-    const passwordHasOneCapitalLetter = /[A-Z]/.test(password);
-    const passwordHasOneNumber = /\d/.test(password);
-    const passwordHasOneSymbol = /[!@#$%^&*]/.test(password);
-
-    return (
-        usernameAllLetters &&
-        usernameHasThreeCharacters &&
-        passwordHasEightCharacters &&
-        passwordHasOneCapitalLetter &&
-        passwordHasOneNumber &&
-        passwordHasOneSymbol
-    );
-};
-
 exports.createUser = async (req, res) => {
+    // Check whether the input adheres to the same standards as those given on the front end when creating a user
+    const checkIfValidInput = ({ username, password }) => {
+        const usernameAllLetters = /^[a-zA-Z]+$/.test(username);
+        const usernameHasThreeCharacters = username.length >= 3;
+        const passwordHasEightCharacters = password.length >= 8;
+        const passwordHasOneCapitalLetter = /[A-Z]/.test(password);
+        const passwordHasOneNumber = /\d/.test(password);
+        const passwordHasOneSymbol = /[!@#$%^&*]/.test(password);
+
+        return (
+            usernameAllLetters &&
+            usernameHasThreeCharacters &&
+            passwordHasEightCharacters &&
+            passwordHasOneCapitalLetter &&
+            passwordHasOneNumber &&
+            passwordHasOneSymbol
+        );
+    };
+
     const { username, password } = req.body;
 
     if (!checkIfValidInput({ username, password })) {
         return res.status(400).json({ message: 'Invalid username or password' });
     }
 
+    // If successful, create an id and hashed password
     const id = uuidv4();
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);

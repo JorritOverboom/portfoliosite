@@ -1,5 +1,5 @@
 
-/* computer version */
+/* about me desktop */
 .about-me {
     height: 100%;
     width: 90%;
@@ -13,7 +13,7 @@
 }
 
 
-/* introduction computer */
+/* introduction box desktop */
 .intro {
     width: 100%;
     display: grid; 
@@ -40,29 +40,35 @@
     grid-area: about-me;
 }
 
-@media (max-width: 1700px) {
+@media (max-width: 1500px) {
+
+    .intro {
+        grid-template-columns: 40% 60%; 
+    }
+
     .about-me-description {
         width: 100%;
     }
+    
 }
 
-/* name */
+/* name desktop */
 
 .my-name {
+    grid-area: my-name;
     font-size: 2.5rem;
     background-color: RGB(98,195,219);
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-area: my-name;
 }
 
 .my-name h4 {
     margin: 0;
 }
 
-/* icons */
+/* icons desktop */
 
 .info-icons {
     grid-area: info-icons;
@@ -89,10 +95,10 @@
     margin: 0;
 }
 
+/* about me mobile */
 
 @media only screen and (max-width: 480px) {
     
-    /* introduction mobile */
     .about-me h2 {
         font-size: 1.75rem;
     }
@@ -122,7 +128,5 @@
     .info-icons ul {
         padding-left: 0;
     }
-    
-
     
 }

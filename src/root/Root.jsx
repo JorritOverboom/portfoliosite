@@ -8,9 +8,11 @@ import { NavLink, Link, Outlet, useOutlet, useLocation } from 'react-router-dom'
 
 const Root = () => {
 
+    // React hooks
     const outlet = useOutlet();
     const location = useLocation();
     
+    // This checks whether the path is on the root, if it is, it will change the className to make the home page look different
     const isHomePath = location.pathname === '/';
     const allClassName = isHomePath ? 'all home-path' : 'all';
     const outletHome = isHomePath ? 'outlet outlet-home' : 'outlet';

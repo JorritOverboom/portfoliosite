@@ -119,7 +119,7 @@ const Resume = () => {
                             <li>English: fluent</li>
                         </ul>
                     </div>
-                    <div className='hobbys'>
+                    <div className='hobbies'>
                         <h4>HOBBIES</h4>
                         <ul>
                             <li>Gaming</li>

@@ -9,6 +9,7 @@ const usersRoutes = require('./routes/usersRoutes.js');
 const app = express();
 const port = process.env.SERVER_PORT || 8000;
 
+// Creating a session
 const session = require('express-session');
 const store = new session.MemoryStore();
 const passport = require('passport');
@@ -29,8 +30,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
+// Middleware to check whether a user has a session happening
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -38,6 +38,7 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/login');
 }
 
+// Redirecting the api request to a specific route
 app.use('/api/users', usersRoutes);
 app.use('/api/tasks', ensureAuthenticated, tasksRoutes);
 

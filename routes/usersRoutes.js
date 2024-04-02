@@ -1,9 +1,8 @@
-
+// Routing for users
 const express = require('express');
 const usersRoutes = express.Router();
-const { createUser } = require('../controllers/usersController');
 const passport = require('passport');
-
+const { createUser } = require('../controllers/usersController');
 
 usersRoutes.get('/logout', (req, res) => {
     req.logout((err) => {
@@ -15,24 +14,7 @@ usersRoutes.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-usersRoutes.get('/login', (req, res) => {
-    res.render('login');
-});
-
-usersRoutes.get('/profile', (req, res) => {
-    if (req.isAuthenticated()) {
-        res.render('profile', { user });
-    }
-});
-
-// usersRoutes.get('/checkLoggedIn', (req, res) => {
-//     if (req.isAuthenticated()) {
-//         res.json({ loggedIn: true });
-//     } else {
-//         res.json({ loggedIn: false });
-//     }
-// });
-
+// Passport check to see if the user has a session happening
 usersRoutes.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user) => {
         if (err) {
@@ -50,6 +32,7 @@ usersRoutes.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
+// Route for changes to the database
 usersRoutes.post('/signup', createUser);
 
 

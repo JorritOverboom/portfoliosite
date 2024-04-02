@@ -1,10 +1,12 @@
 
-/* to do list computer */
+/* to do list desktop */
+
 .to-do-list {
     display: grid;
 }
 
-/* taskmaker computer */
+/* create a task desktop */
+
 .add-task {
     display: flex;
     justify-content: center;
@@ -39,7 +41,8 @@ input {
     align-self: center;
 }
 
-/* tasklist computer */
+/* tasklist desktop */
+
 .tasks {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -61,7 +64,8 @@ input {
     min-height: 100%;
 }
 
-/* individual task computer */
+/* individual task desktop */
+
 .task {
     border: 2px solid rgba(128, 128, 128, 0.2);
     border-radius: 25px;
@@ -89,6 +93,8 @@ input {
     display: none;
 }
 
+/* task text layout desktop */
+
 .task h3 {
     margin: 0 0 10px;
 }
@@ -96,6 +102,8 @@ input {
 .task p {
     margin: 0 0 15px;
 }
+
+/* task buttons desktop */
 
 .task-buttons {
     display: flex;
@@ -124,7 +132,7 @@ input {
     margin: 5px 0;
 }
 
-/* logout button computer */
+/* logout button desktop */
 
 .logout-container {
     display: flex;
@@ -138,6 +146,7 @@ input {
 }
 
 /* to do list mobile */
+
 @media only screen and (max-width: 480px) {
 
     /* taskmaker mobile */
@@ -178,6 +187,7 @@ input {
     }
 
     /* individual task mobile */
+
     .task h3 {
         font-size: 1.25rem;
     }

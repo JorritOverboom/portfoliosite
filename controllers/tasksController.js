@@ -1,11 +1,11 @@
-
+// Functions that interact with the database
 const pool = require('../models/database');
 const { v4: uuidv4 } = require('uuid');
 const xss = require('xss');
 
-exports.getToDoTasks = (req, res) => {
+exports.getTasks = (req, res) => {
     const user_id = req.user.id;
-    pool.query('SELECT * FROM tasks WHERE status = ($1) AND user_id = $2', ['todo', user_id], (error, results) => {
+    pool.query('SELECT * FROM tasks WHERE user_id = $1', [user_id], (error, results) => {
         if (error) {
             throw error;
         }
@@ -13,23 +13,18 @@ exports.getToDoTasks = (req, res) => {
     });
 };
 
-exports.getInProgressTasks = (req, res) => {
+exports.createTask = (req, res) => {
+    const { id, name, description } = req.body;
     const user_id = req.user.id;
-    pool.query('SELECT * FROM tasks WHERE status = ($1) AND user_id = $2', ['inprogress', user_id], (error, results) => {
+    const status = 'todo';
+    const sanitizedName = xss(name);
+    const sanitizedDescription = xss(description);
+    pool.query('INSERT INTO tasks (id, name, description, status, user_id) VALUES ($1, $2, $3, $4, $5)', [id, sanitizedName, sanitizedDescription, status, user_id], (error) => {
         if (error) {
             throw error;
         }
-        res.status(200).json(results.rows);
-    });
-}; 
-
-exports.getFinishedTasks = (req, res) => {
-    const user_id = req.user.id;
-    pool.query('SELECT * FROM tasks WHERE status = ($1) AND user_id = $2', ['finished', user_id], (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).json(results.rows);
+        
+        res.status(201).send('task added')
     });
 };
 
@@ -44,53 +39,20 @@ exports.deleteTask = (req, res) => {
     });
 };
 
-exports.updateTaskToToDo = (req, res) => {
+// Moves a task to a different list by updating its status
+exports.updateTask = (req, res) => {
+    const status = req.body.status;
     const id = req.params.id;
     const user_id = req.user.id;
-    pool.query('UPDATE tasks SET status = \'todo\' WHERE id = $1 AND user_id = $2', [id, user_id], (error, results) => {
+    pool.query('UPDATE tasks SET status = $1 WHERE id = $2 AND user_id = $3', [status, id, user_id], (error, results) => {
         if (error) {
             throw error;
         }
-        res.status(200).send(`Status of task with ID ${id} updated to todo`);
-    });
+        res.status(200).send(`Status of task with ID ${id} updated to ${status}`);
+    })
 };
 
-exports.updateTaskToInProgress = (req, res) => {
-    const id = req.params.id;
-    const user_id = req.user.id;
-    pool.query('UPDATE tasks SET status = \'inprogress\' WHERE id = $1 AND user_id = $2', [id, user_id], (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).send(`Status of task with ID ${id} updated to inprogress`);
-    });
-};
-
-exports.updateTaskToFinished = (req, res) => {
-    const id = req.params.id;
-    const user_id = req.user.id;
-    pool.query('UPDATE tasks SET status = \'finished\' WHERE id = $1 AND user_id = $2', [id, user_id], (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).send(`Status of task with ID ${id} updated to finished`);
-    });
-};
-
-exports.createTask = (req, res) => {
-    const { id, name, description } = req.body;
-    const user_id = req.user.id;
-    const status = 'todo';
-    const sanitizedName = xss(name);
-    const sanitizedDescription = xss(description);
-    pool.query('INSERT INTO tasks (id, name, description, status, user_id) VALUES ($1, $2, $3, $4, $5)', [id, sanitizedName, sanitizedDescription, status, user_id], (error) => {
-        if (error) {
-            throw error;
-        }
-        res.status(201).send(`Task added`);
-    });
-};
-
+// When a new user is created, three default tasks are made for that new user
 exports.addDefaultTasks = async (id) => {
     const user_id = id;
     const defaultTasks = [

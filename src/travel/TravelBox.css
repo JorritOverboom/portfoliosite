@@ -1,5 +1,5 @@
 
-/* travel computer */
+/* travel desktop */
 
 .travel {
     margin: 0 0 5%;
@@ -14,7 +14,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* travel introduction */
+/* travel introduction box desktop*/
 
 .travel-year-introduction {
     display: flex;
@@ -33,6 +33,8 @@
         "expand photo";
 }
 
+/* travel year number desktop */
+
 .travel-year {
     grid-area: year;
     font-weight: bold;
@@ -44,6 +46,8 @@
     font-family: 'space grotesk';
     font-size: 1.5rem;
 }
+
+/* travel title desktop */
 
 .travel-title {
     grid-area: title;
@@ -57,6 +61,8 @@
     margin: 0;
 }
 
+/* travel visited countries desktop */
+
 .travel-countries {
     grid-area: countries;
     padding-right: 5%;
@@ -64,20 +70,22 @@
 
 .flag {
     width: 20px;
-
+    margin-right: 3px;
 }
 
 .country-container {
     display: inline-flex;
-    margin: 0 10px 0 0;
-    padding: 0 5px;
-    background-color: rgba(0, 0, 0, 0.07);
+    margin: 0 10px 10px 0;
+    padding: 3px 10px;
+    background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
 }
 
 .country-container p {
     margin: 0;
 }
+
+/* travel read more button desktop */
 
 .travel-extend-box {
     grid-area: expand;
@@ -91,6 +99,8 @@
     border: 1px solid black;
     padding: 0 5px;
 }
+
+/* travel introduction photo desktop */
 
 .travel-year-intro-photo {
     height: 400px;
@@ -106,7 +116,7 @@
     max-width: 100%;
 }
 
-/* travel story */
+/* travel story desktop*/
 
 .year-story {
     width: 60%;
@@ -117,7 +127,7 @@
     margin: 0 0 15px;
 }
 
-/* travel photos */
+/* travel photos desktop*/
 
 .year-photos {
     display: flex;
@@ -162,6 +172,8 @@
     margin: 0;
 }
 
+/* travel select different photo desktop */
+
 .differentPhoto {
     width: 20px;
     height: auto;
@@ -170,6 +182,14 @@
 
 .previousPhoto {
     transform: rotate(180deg);
+}
+
+/* laptop screen */
+
+@media (max-width: 1500px) {
+    .year-photos {
+        padding: 10%;
+    }
 }
 
 /* travel mobile */
@@ -189,7 +209,7 @@
         margin-bottom: 20px;
     }
 
-    /* introduction travel mobile */
+    /* travel introduction box mobile */
 
     .travel-year-intro-info {
         padding-top: 20px;
@@ -206,6 +226,8 @@
         margin-bottom: 10px;
     }
 
+    /* travel introduction photo mobile */
+
     .travel-year-intro-photo {
         height: 250px;
         padding: 0;
@@ -217,6 +239,8 @@
         max-width: 100%;
     }
 
+    /* travel countries visited mobile */
+
     .travel-countries {
         margin-bottom: 20px;
     }
@@ -226,7 +250,7 @@
     }
     
 
-    /* content travel mobile */
+    /* travel story mobile */
 
     .year-story {
         column-count: 1;
@@ -263,6 +287,8 @@
     .photo-description {
         height: 70px;
     }
+
+    /* travel select different photo mobile */
 
     .previousPhoto {
         grid-area: previousPhoto;

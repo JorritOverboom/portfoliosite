@@ -2,12 +2,13 @@
 import './Signup.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUser } from '../utils/usersAPI';
+import { createUser } from '../APIs/usersAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
 
+    // React hooks
     const navigate = useNavigate();
 
     const [ username, setUsername ] = useState('');
@@ -34,6 +35,7 @@ const Signup = () => {
         setConfirmPassword(target.value);
     };
 
+    // Checking for valid username and password input
     useEffect(() => {
         setUsernameAllLetters(/^[a-zA-Z]+$/.test(username) && username.length > 0);
         setUsernameHasThreeCharacters(username.length >= 3);
@@ -56,10 +58,12 @@ const Signup = () => {
         );
     };
 
+    // Toastify creating messages
     const notifySuccess = () => toast.success('Account created');
     const notifyUsernameExists = () => toast.error('Username already exists');
     const notifyFailure = () => toast.error('Error creating account');
 
+    // Submitting the user to the database
     const submitUser = async (event) => {
         event.preventDefault();
         if (checkIfSubmitIsValid()) {
@@ -67,6 +71,7 @@ const Signup = () => {
                 const newUser = { username, password };
                 const response = await createUser(newUser);
                 
+                // Short delay to display the login attempt was successful
                 console.log(response);
                 if (response.ok) {
                     notifySuccess();

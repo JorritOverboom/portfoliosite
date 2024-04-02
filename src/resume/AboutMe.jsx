@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import './AboutMe.css';
 import profile_image from './Images/profile_picture.png';
 import location_image from './Images/location.png';
@@ -7,6 +8,15 @@ import license_image from './Images/license.png';
 import Resume from './Resume';
 
 const AboutMe = () => {
+
+    // Scroll to the top of the page upon landing on the page
+    useEffect(() => {
+        const element = document.getElementById('about-me');
+        if (element) {
+            element.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+    }, []);    
+
 
     return (
         <div className='about-me' id='about-me'>

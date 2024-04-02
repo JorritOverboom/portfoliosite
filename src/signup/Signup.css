@@ -1,4 +1,6 @@
 
+/* sign up desktop */
+
 .sign-up-form {
     display: flex;
     flex-direction: column;
@@ -19,6 +21,8 @@
 .red {
     color: red;
 } 
+
+/* sign up mobile */
 
 @media (max-width: 480px) {
     .sign-up {

@@ -1,4 +1,4 @@
-
+// API request functions for users
 export const createUser = async (newUser) => {
     try {
         const res = await fetch('/api/users/signup', {
@@ -62,25 +62,3 @@ export const logoutUser = async () => {
         console.log('Logout failed', error);
     }
 };
-
-// export const checkLoggedIn = async () => {
-//     try {
-//         const res = await fetch('/api/users/checkLoggedIn', {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//         });
-
-//         if(!res.ok) {
-//             throw new Error('Failed to check if user is logged in');
-//         }
-
-//         const data = await res.json();
-
-//         return data;
-//     }
-//     catch (error) {
-//         console.log('Check failed', error);
-//     }
-// }

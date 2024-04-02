@@ -1,6 +1,6 @@
 
 
-/* list */
+/* resume desktop */
 .resume h3 {
     margin: 50px 0;
 }
@@ -12,7 +12,7 @@
     column-gap: 20px;
 }
 
-/* working experiences */
+/* working experiences desktop */
 
 .working-experience {
     display: grid;
@@ -43,18 +43,16 @@
     margin-top: 0;
 }
 
-.working-space {
-    min-height: 50px;
-}
 
-/* description */
+/* description desktop */
+
 .working-description p {
     margin-top: 10px;
     padding-top: 5px;
 }
 
 
-/* skills */
+/* extra info desktop*/
 
 .extra-info {
     margin-left: 20px;
@@ -78,9 +76,10 @@
     margin-top: 10px;
 }
 
+/* resume mobile */
+
 @media only screen and (max-width: 480px) {
 
-    /* resume mobile */
     .resume {
         display: flex;
         flex-direction: column;

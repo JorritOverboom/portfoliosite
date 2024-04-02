@@ -1,9 +1,11 @@
 
 import './Menu.css'
+import exit from './exit_button.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const Menu = () => {
 
+    // React hooks
     const navigate = useNavigate();
 
     const exitMenu = () => {
@@ -13,7 +15,7 @@ const Menu = () => {
     return (
         <div className='menuList'>
             <div className='exit'>
-                <i onClick={exitMenu}>X</i>
+                <img src={exit} onClick={exitMenu} />
             </div>
             <ul className='menuMob'>
                 <li><NavLink to='/' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Home</NavLink></li>

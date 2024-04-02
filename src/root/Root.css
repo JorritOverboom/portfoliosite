@@ -21,15 +21,11 @@ h3 {
     font-size: 1.5rem;
 }
 
-
-
-/* root computer */
+/* root navigation bar desktop */
 
 .navMob {
     display: none;
 }
-
-/* root navigation bar computer */
 
 .navBar {
     display: flex;
@@ -40,6 +36,8 @@ h3 {
     font-size: 1.5rem;
     font-family: 'space grotesk', sans-serif;
 }
+
+/* name desktop */
 
 .name {
     display: flex;
@@ -57,15 +55,13 @@ h1 {
     text-decoration: none;
 }
 
-/* h1:hover {
-    color: RGB(98,195,219);
-} */
-
 .home-h1 {
     text-decoration: none;
     color: black;
     font-size: 2.5rem;
 }
+
+/* menu navigation bar desktop */
 
 .menu {
     display: flex;
@@ -98,7 +94,8 @@ h1 {
     text-underline-offset: 0.2em;
 }
 
-/* outlet computer */
+/* outlet desktop */
+
 .outlet {
     display: flex;
     flex-direction: column;
@@ -108,14 +105,22 @@ h1 {
     padding: 0 15% 0;
 }
 
-/* mobile version */
+/* laptop screen */
+
+@media only screen and (max-width: 1500px) {
+    .outlet {
+        padding: 0 10% 0;
+    }
+}
+
+/* root mobile */
 
 @media only screen and (max-width: 480px) {
     .navBar-parent {
         display: none;
     }
 
-    /* navigation bar mobile*/
+    /* navigation bar mobile */
 
     .navMob {
         display: flex;
@@ -137,7 +142,7 @@ h1 {
         height: 30px;
     }
 
-    /* content mobile*/
+    /* outlet mobile */
 
     .outlet {
         margin: 0;

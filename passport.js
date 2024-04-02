@@ -4,6 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const { findByUsername, findById } = require('./controllers/usersController');
 
+// Creating a passport session
 passport.use(new LocalStrategy(
     function(username, password, done) {
         findByUsername(username, (err, user) => {

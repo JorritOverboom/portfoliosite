@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../utils/usersAPI';
+import { loginUser } from '../APIs/usersAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import { login } from '../login/loginSlice';
 
 const Login = () => {
 
+    // React hooks
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -24,36 +25,40 @@ const Login = () => {
         setPassword(target.value);
     };
 
+    // Toastify create messages
     const notifySuccess = () => toast.success('Log in successful');
     const notifyFailure = () => toast.error('Failed to log in. Please try again');
     const notifyInputFailure = () => toast.error('Invalid username or password');
 
-    const checkIfValidInput = () => {
-        const usernameAllLetters = /^[a-zA-Z]+$/.test(username);
-        const usernameHasThreeCharacters = username.length >= 3;
-        const passwordHasEightCharacters = password.length >= 8;
-        const passwordHasOneCapitalLetter = /[A-Z]/.test(password);
-        const passwordHasOneNumber = /\d/.test(password);
-        const passwordHasOneSymbol = /[!@#$%^&*]/.test(password);
-
-        return (
-            usernameAllLetters &&
-            usernameHasThreeCharacters &&
-            passwordHasEightCharacters &&
-            passwordHasOneCapitalLetter &&
-            passwordHasOneNumber &&
-            passwordHasOneSymbol
-        );
-    };
-
+    // Submitting the login
     const submitLogin = async (event) => {
         event.preventDefault();
+
+        // Checking for valid input of the username and password
+        const checkIfValidInput = () => {
+            const usernameAllLetters = /^[a-zA-Z]+$/.test(username);
+            const usernameHasThreeCharacters = username.length >= 3;
+            const passwordHasEightCharacters = password.length >= 8;
+            const passwordHasOneCapitalLetter = /[A-Z]/.test(password);
+            const passwordHasOneNumber = /\d/.test(password);
+            const passwordHasOneSymbol = /[!@#$%^&*]/.test(password);
+
+            return (
+                usernameAllLetters &&
+                usernameHasThreeCharacters &&
+                passwordHasEightCharacters &&
+                passwordHasOneCapitalLetter &&
+                passwordHasOneNumber &&
+                passwordHasOneSymbol
+            );
+        };
 
         if (!checkIfValidInput()) {
             notifyInputFailure();
             return;
         }
 
+        // If input is valid, continuing with logging in
         try {
             const result = await loginUser({ username, password });
 
@@ -64,6 +69,7 @@ const Login = () => {
                 return;
             }
 
+            // Short delay to display that the login was successful
             if (result.ok) {
                 dispatch(login());
                 notifySuccess();

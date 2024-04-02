@@ -1,14 +1,11 @@
 
-import React, { useEffect } from 'react';
-import './Travel.css';
+import React, { useEffect, useState } from 'react';
 import TravelBox from './TravelBox';
 import { travelStories } from './travelStories' 
-import { useState } from 'react';
 
 const Travel = () => {
 
-    const [visibility, setVisibility] = useState({});
-
+    // Scroll to the top of the page upon landing on the page
     useEffect(() => {
         const element = document.getElementById('travel');
         if (element) {
@@ -16,6 +13,10 @@ const Travel = () => {
         }
     }, []);    
 
+    // React hooks
+    const [visibility, setVisibility] = useState({});
+
+    // Toggle the visibility of the box when clicking on 'read more'
     const toggleVisibility = (index) => {
         setVisibility((prevState) => ({
             ...prevState, [index]: !visibility[index]

@@ -1,8 +1,9 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, Suspense } from 'react';
 import './TravelBox.css';
 import arrow from './arrow.svg';
 
+// importing all the flags of the visited countries
 const flagComponents = {
     BE: React.lazy(() => import('country-flag-icons/react/3x2/BE')),
     DE: React.lazy(() => import('country-flag-icons/react/3x2/DE')),
@@ -43,22 +44,28 @@ const flagComponents = {
 
 const TravelBox = (props) => {
 
+    // React hooks
     const [currentPhoto, setCurrentPhoto] = useState(0);
+    const [enableScrollView, setEnableScrollView] = useState(false);
     const boxRef = useRef(null);
     const photoRef = useRef(null);
 
+    // Centering the screen on the year you are looking at when clicking on the 'read more' button
     useEffect(() => {
-        if (props.isVisible || !props.isVisible && boxRef.current) {
+        if (props.isVisible || (!props.isVisible && enableScrollView && boxRef.current)) {
+            setEnableScrollView(true);
             boxRef.current.scrollIntoView({ behavior: 'instant' });
         }
-    }, [props.isVisible]);
+    }, [props.isVisible, enableScrollView]);
 
+    // Centering the screen on the travel photos when changing the photos
     useEffect(() => {
         if (photoRef.current) {
             photoRef.current.scrollIntoView({ behavior: 'instant', block: 'center'});
         }
     }, [currentPhoto]);
 
+    // Changing the photos
     const nextPhoto = () => {
         setCurrentPhoto((currentPhoto + 1) % props.photos.length);
     };
@@ -67,6 +74,7 @@ const TravelBox = (props) => {
         setCurrentPhoto((currentPhoto - 1 + props.photos.length) % props.photos.length);
     };
 
+    // Checking if it is the last story
     const isLastStory = props.storyIndex === props.listLength - 1;
     
     return (
@@ -77,10 +85,10 @@ const TravelBox = (props) => {
                     <div className='travel-title'><h4>{props.title}</h4></div>
                     <div className='travel-countries'>
                         {props.countries.map((country, index) => {
-                            const FlagComponent = flagComponents[country.countryCode];
+                            const Flag = flagComponents[country.countryCode];
                             return (
                                 <div key={index} className='country-container'>
-                                    {FlagComponent && <FlagComponent className='flag' />}
+                                    {Flag && <Flag className="flag" />}
                                     <p>{country.name}</p>
                                 </div>
                             );
@@ -120,4 +128,15 @@ const TravelBox = (props) => {
     )
 }
 
-export default TravelBox;
+// This function will prevent the page from showing an error when it is still importing the flags
+const SuspenseFallback = () => (
+    <div>Loading...</div>
+);
+
+const TravelBoxWithSuspense = (props) => (
+    <Suspense fallback={<SuspenseFallback />}>
+        <TravelBox {...props} />
+    </Suspense>
+);
+
+export default TravelBoxWithSuspense;
