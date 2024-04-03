@@ -1,3 +1,4 @@
+// pull request example
 
 import DOMPurify from 'dompurify';
 import to_do_icon from './images/waiting_icon.png';

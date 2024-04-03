@@ -1,3 +1,4 @@
+// pull request example
 
 import './Skills.css';
 import certificate from './Images/certificate.png';

@@ -1,3 +1,4 @@
+// pull request example
 // Functions that interact with the database
 const pool = require('../models/database');
 const bcrypt = require('bcryptjs');
