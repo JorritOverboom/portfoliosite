@@ -114,6 +114,7 @@ input {
 .task-button {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .task-button-description {
