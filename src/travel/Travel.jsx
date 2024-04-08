@@ -1,4 +1,3 @@
-// pull request example
 
 import React, { useEffect, useState } from 'react';
 import TravelBox from './TravelBox';

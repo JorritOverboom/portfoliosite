@@ -1,4 +1,4 @@
-// pull request example
+
 // Routing and middleware for tasks
 const express = require('express');
 const tasksRoutes = express.Router();
@@ -47,9 +47,9 @@ const statusValidation = [
 ]
 
 // Routing for tasks that modify the database
-tasksRoutes.get('/getTasks', getTasks);
-tasksRoutes.post('/createTask', createTaskValidation, createTask);
-tasksRoutes.delete('/deleteTask/:id', idValidation, deleteTask);
+tasksRoutes.get('/tasks', getTasks);
+tasksRoutes.post('/task', createTaskValidation, createTask);
+tasksRoutes.delete('/task/:id', idValidation, deleteTask);
 tasksRoutes.put('/moveTask/:id', idValidation, statusValidation, updateTask);
 
 module.exports = tasksRoutes;

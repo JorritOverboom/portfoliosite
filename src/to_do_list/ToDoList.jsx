@@ -1,4 +1,3 @@
-// pull request example
 
 import './ToDoList.css';
 import Task from './Task.jsx';
@@ -17,6 +16,16 @@ const ToDoList = () => {
     // React hooks
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [ taskName, setTaskName ] = useState('');
+    const [ taskDescription, setTaskDescription ] = useState('');
+
+    const taskNameSetter = ({target}) => {
+        setTaskName(target.value);
+    };
+
+    const taskDescriptionSetter = ({target}) => {
+        setTaskDescription(target.value);
+    };
 
     const loggedIn = useSelector((state) => state.login.loggedIn);
     const toDoList = useSelector((state) => state.tasks.tasks.filter(task => task.status === 'todo'));
@@ -34,36 +43,6 @@ const ToDoList = () => {
             navigate('/login');
         };
     }, [loggedIn]);
-
-    // Toastify create message
-    const notifySuccess = () => toast.success('Log out successful');
-
-    // logout button handler with time delay to give feedback that user is logged out
-    const logoutHandler = async () => {
-        const result = await logoutUser();
-
-        // Short delay to display that logging out was successful
-        if (result.ok) {
-            notifySuccess();
-            setTimeout(() => {
-               dispatch(logout()); 
-            }, 1500);
-        }
-
-        return;
-    };
-
-    // React hooks
-    const [ taskName, setTaskName ] = useState('');
-    const [ taskDescription, setTaskDescription ] = useState('');
-
-    const taskNameSetter = ({target}) => {
-        setTaskName(target.value);
-    };
-
-    const taskDescriptionSetter = ({target}) => {
-        setTaskDescription(target.value);
-    };
 
     // Create a task
     const submitTask = (event) => {
@@ -90,6 +69,24 @@ const ToDoList = () => {
         const task = {id, status};
         dispatch(moveTask(task));
     }
+
+    // Toastify create message
+    const notifySuccess = () => toast.success('Log out successful');
+
+    // logout button handler with time delay to give feedback that user is logged out
+    const logoutHandler = async () => {
+        const result = await logoutUser();
+
+        // Short delay to display that logging out was successful
+        if (result.ok) {
+            notifySuccess();
+            setTimeout(() => {
+               dispatch(logout()); 
+            }, 1500);
+        }
+
+        return;
+    };
 
     return (
         <div className='to-do-list'>

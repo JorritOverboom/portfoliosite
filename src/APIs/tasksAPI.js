@@ -1,7 +1,7 @@
-// pull request example
+
 // API request functions for tasks
 export const fetchTasks = async () => {
-    const res = await fetch('/api/tasks/getTasks', {
+    const res = await fetch('/api/tasks/tasks', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export const fetchTasks = async () => {
 };
 
 export const addNewTask = async (newTask) => {
-    const res = await fetch('/api/tasks/createTask', {
+    const res = await fetch('/api/tasks/task', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const addNewTask = async (newTask) => {
 };
 
 export const deleteTask = async (id) => {
-    const res = await fetch(`/api/tasks/deleteTask/${id}`, {
+    const res = await fetch(`/api/tasks/task/${id}`, {
         method: 'DELETE'
     });
 

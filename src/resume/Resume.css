@@ -1,4 +1,3 @@
-/* pull request example */
 
 /* resume desktop */
 .resume h3 {
@@ -83,6 +82,14 @@
     .resume {
         display: flex;
         flex-direction: column;
+    }
+
+    .resume h3 {
+        margin: 1.5rem 0 0.5rem;
+    }
+
+    .resume-list {
+        grid-template-columns: 1fr;
     }
 
     .working-experience {

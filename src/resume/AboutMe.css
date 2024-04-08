@@ -1,4 +1,4 @@
-/* pull request example */
+
 /* about me desktop */
 .about-me {
     height: 100%;
@@ -98,6 +98,10 @@
 /* about me mobile */
 
 @media only screen and (max-width: 480px) {
+
+    .about-me {
+        width: 95%;
+    }
     
     .about-me h2 {
         font-size: 1.75rem;

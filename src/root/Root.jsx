@@ -1,4 +1,3 @@
-// pull request example
 
 import './Root.css'
 import Home from '../home/Home.jsx';
@@ -36,7 +35,7 @@ const Root = () => {
             </div>
             <div className='navMob'>
                 <Link to='/' className='link'><h1 className='nameMob'>Jorrit Overboom</h1></Link>
-                <Link to='/menu'><img className='menuIcon' src={homeMenu} /></Link>
+                <Link to='/menu'><img className='menuIcon' src={homeMenu} alt='menu icon' /></Link>
             </div>
             <div className={outletHome}>
                 { outlet ? (<Outlet />) : (<Home />)}

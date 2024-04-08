@@ -1,4 +1,3 @@
-// pull request example
 
 import DOMPurify from 'dompurify';
 import to_do_icon from './images/waiting_icon.png';
@@ -20,19 +19,19 @@ function Task(props) {
             </div>
             <div className='task-buttons'>
                 <div className='task-button' onClick={props.removeTaskFromToDo}>
-                    <img src={delete_icon}></img>
+                    <img src={delete_icon} alt='delete icon'></img>
                     <p className='task-button-description'>Delete</p>
                 </div>
                 <div className='task-button move-to-to-do' onClick={props.moveTaskToToDo}>
-                    <img src={to_do_icon}></img>
+                    <img src={to_do_icon} alt='move to to do icon'></img>
                     <p className='task-button-description'>Move to to do</p>
                 </div>
                 <div className='task-button move-to-in-progress' onClick={props.moveTaskToInProgress}>
-                    <img src={in_progress_icon}></img>
+                    <img src={in_progress_icon} alt='move to in progress icon'></img>
                     <p className='task-button-description'>Move to in progress</p>
                 </div>
                 <div className='task-button move-to-finished' onClick={props.moveTaskToFinished}>
-                    <img src={finished_icon}></img>
+                    <img src={finished_icon} alt='move to finished icon'></img>
                     <p className='task-button-description'>Move to finished</p>
                 </div>
             </div>

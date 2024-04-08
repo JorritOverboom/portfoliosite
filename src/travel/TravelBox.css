@@ -1,4 +1,3 @@
-/* pull request example */
 /* travel desktop */
 
 .travel {
@@ -90,7 +89,6 @@
 .travel-extend-box {
     grid-area: expand;
     display: flex;
-    align-items: end;
     align-self: end;
 }
 

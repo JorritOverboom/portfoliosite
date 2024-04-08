@@ -1,4 +1,3 @@
-// pull request example
 
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import Root from './root/Root.jsx';
@@ -10,6 +9,7 @@ import Login from './login/Login.jsx';
 import Signup from './signup/Signup.jsx';
 import Menu from './menu/Menu.jsx';
 import Travel from './travel/Travel.jsx';
+import NotFound from './not_found/NotFound.jsx';
 
 // All the URL routes
 const router = createBrowserRouter(createRoutesFromElements(
@@ -22,6 +22,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/login' element={ <Login /> } />
     <Route path='/sign-up' element={ <Signup /> } />
     <Route path='/menu' element={ <Menu /> } />
+    <Route path='*' element={ <NotFound /> } />
   </Route>
 ));
 

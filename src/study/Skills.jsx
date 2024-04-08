@@ -1,4 +1,3 @@
-// pull request example
 
 import './Skills.css';
 import certificate from './Images/certificate.png';
@@ -8,7 +7,7 @@ const Skills = () => {
         <div className='skills'>
             <h2>An overview of my code skills</h2>
             <div className='skills-intro'>
-                <h3>Skills I have learned through <a href='https://www.codecademy.com/' target='_blank'>Codecademy</a></h3>
+                <h3>Skills I have learned through <a href='https://www.codecademy.com/' target='_blank' rel='noreferrer'>Codecademy</a></h3>
                 <p>The skills below I have learned through the 'Full-stack Engineer career path' course on Codecademy which I completed to the very end. This course got me very excited about coding in general and I hope to keep learning and apply my skills to real projects.</p>
             </div>
             <div className='modules'>
@@ -58,13 +57,13 @@ const Skills = () => {
             <div className='certificate'>
                 <h3>My certificate for finishing the course</h3>
                 <div className='certificate-container'>
-                    <img src={certificate} />
+                    <img src={certificate} alt='certificate' />
                 </div>
             </div>
             <div className='github'>
                 <h3>My GitHub</h3>
                 <p>On my GitHub page you can read my README, where I describe the technical approach I have used for this website and where a display of the code used to build it, can be found via the link below:</p>
-                <p><a href='https://github.com/JorritOverboom/portfoliosite' target='_blank'>https://github.com/JorritOverboom/portfoliosite</a></p>
+                <p><a href='https://github.com/JorritOverboom/portfoliosite' target='_blank' rel='noreferrer'>https://github.com/JorritOverboom/portfoliosite</a></p>
             </div>
         </div>
     )

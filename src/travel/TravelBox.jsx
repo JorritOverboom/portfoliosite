@@ -1,4 +1,3 @@
-// pull request example
 
 import React, { useState, useRef, useEffect, Suspense } from 'react';
 import './TravelBox.css';
@@ -12,7 +11,6 @@ const flagComponents = {
     ES: React.lazy(() => import('country-flag-icons/react/3x2/ES')),
     PT: React.lazy(() => import('country-flag-icons/react/3x2/PT')),
     AU: React.lazy(() => import('country-flag-icons/react/3x2/AU')),
-    PT: React.lazy(() => import('country-flag-icons/react/3x2/PT')),
     NZ: React.lazy(() => import('country-flag-icons/react/3x2/NZ')),
     SG: React.lazy(() => import('country-flag-icons/react/3x2/SG')),
     TH: React.lazy(() => import('country-flag-icons/react/3x2/TH')),
@@ -96,7 +94,7 @@ const TravelBox = (props) => {
                         })}
                     </div>
                     <div className='travel-year-intro-photo'>
-                        <img src={props.introPhoto} />
+                        <img src={props.introPhoto} alt='travel intro' />
                     </div>
                     <div className='travel-extend-box' style={{ visibility: !isLastStory ? 'block' : 'hidden' }}>
                         <div onClick={() => props.toggleVisible(props.index)}>
@@ -113,15 +111,15 @@ const TravelBox = (props) => {
             <div className='year-photos' ref={photoRef} style={{ display: props.isVisible && props.photos.length > 0 ? 'flex' : 'none' }}>
                 {props.photos.length > 0 && (
                     <div className='travel-photo'>
-                        <img src={arrow} className='differentPhoto previousPhoto' style={{ display: props.photos.length === 1 ? 'none' : 'block' }} onClick={prevPhoto}></img>
+                        <img src={arrow} alt='previous' className='differentPhoto previousPhoto' style={{ display: props.photos.length === 1 ? 'none' : 'block' }} onClick={prevPhoto}></img>
                         <div className='photo-section'>
                             <div className='travel-photo-container'>
-                                <img src={props.photos[currentPhoto].path} />
+                                <img src={props.photos[currentPhoto].path} alt='travel' />
                             </div>
                             <p className='photo-description'>{props.photos[currentPhoto].description}</p>
                             <p style={{ display: props.photos.length > 1 ? 'block' : 'none' }}>{currentPhoto + 1} / {props.photos.length}</p>
                         </div>
-                        <img src={arrow} className='differentPhoto nextPhoto' style={{ display: props.photos.length === 1 ? 'none' : 'block' }} onClick={nextPhoto}></img>
+                        <img src={arrow} alt='next' className='differentPhoto nextPhoto' style={{ display: props.photos.length === 1 ? 'none' : 'block' }} onClick={nextPhoto}></img>
                     </div>
                 )}
             </div>        

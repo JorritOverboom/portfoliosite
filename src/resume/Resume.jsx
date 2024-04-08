@@ -1,4 +1,3 @@
-// pull request example
 
 import './Resume.css';
 

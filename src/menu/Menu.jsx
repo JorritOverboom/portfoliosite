@@ -1,4 +1,3 @@
-// pull request example
 
 import './Menu.css'
 import exit from './exit_button.png';
@@ -16,7 +15,7 @@ const Menu = () => {
     return (
         <div className='menuList'>
             <div className='exit'>
-                <img src={exit} onClick={exitMenu} />
+                <img src={exit} alt='exit icon' onClick={exitMenu} />
             </div>
             <ul className='menuMob'>
                 <li><NavLink to='/' className={ ({ isActive }) => isActive? 'activeNavLink' : 'inactiveNavLink'}>Home</NavLink></li>

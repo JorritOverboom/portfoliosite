@@ -1,8 +1,9 @@
-// pull request example
+
 // Functions that interact with the database
 const pool = require('../models/database');
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
+const xss = require('xss');
 const { addDefaultTasks } = require('./tasksController');
 
 exports.createUser = async (req, res) => {
@@ -27,7 +28,9 @@ exports.createUser = async (req, res) => {
 
     const { username, password } = req.body;
 
-    if (!checkIfValidInput({ username, password })) {
+    const sanitizedUsername = xss(username);
+
+    if (!checkIfValidInput({ username: sanitizedUsername, password })) {
         return res.status(400).json({ message: 'Invalid username or password' });
     }
 
