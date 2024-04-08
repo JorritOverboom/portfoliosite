@@ -16,7 +16,6 @@ exports.getTasks = (req, res) => {
 
 exports.createTask = (req, res) => {
     const { id, name, description } = req.body;
-    console.log(req.user.id);
     const user_id = req.user.id;
     const status = 'todo';
     const sanitizedName = xss(name);

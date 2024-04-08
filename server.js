@@ -22,7 +22,7 @@ app.use(helmet());
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: false},
+    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true},
     resave: false,
     saveUninitialized: false,
     store
@@ -33,8 +33,7 @@ app.use(passport.session());
 
 // Middleware to check whether a user has a session happening
 function ensureAuthenticated(req, res, next) {
-    console.log(req.isAuthenticated());
-    console.log(req.sessionID);
+    console.log(`session authentication is: req.isAuthenticated()`);
     if (req.isAuthenticated()) {
         return next();
     }
