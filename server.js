@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config();
+const path = require('path'); // Import path module
 const tasksRoutes = require('./routes/tasksRoutes.js');
 const usersRoutes = require('./routes/usersRoutes.js');
 
