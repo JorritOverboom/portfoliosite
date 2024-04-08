@@ -5,6 +5,7 @@ const helmet = require('helmet');
 require('dotenv').config();
 const tasksRoutes = require('./routes/tasksRoutes.js');
 const usersRoutes = require('./routes/usersRoutes.js');
+const path = require('path'); // Import the path module
 
 const app = express();
 const port = process.env.SERVER_PORT || 8000;
@@ -19,6 +20,8 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
 app.use(helmet());
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -42,6 +45,11 @@ function ensureAuthenticated(req, res, next) {
 // Redirecting the api request to a specific route
 app.use('/api/users', usersRoutes);
 app.use('/api/tasks', ensureAuthenticated, tasksRoutes);
+
+// Serve the index.html file when accessing the root URL
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.listen(port, () => {
     console.log(`Server is running at https://localhost:${port}`);
