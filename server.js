@@ -2,7 +2,6 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-require('dotenv').config();
 const tasksRoutes = require('./routes/tasksRoutes.js');
 const usersRoutes = require('./routes/usersRoutes.js');
 
@@ -23,7 +22,7 @@ app.use(helmet());
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: false},
+    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true},
     resave: false,
     saveUninitialized: false,
     store
