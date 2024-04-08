@@ -33,7 +33,7 @@ app.use(passport.session());
 
 // Middleware to check whether a user has a session happening
 function ensureAuthenticated(req, res, next) {
-    console.log(`session authentication is: req.isAuthenticated()`);
+    console.log(`session authentication is: ${req.isAuthenticated()}`);
     if (req.isAuthenticated()) {
         return next();
     }
