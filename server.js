@@ -42,6 +42,14 @@ function ensureAuthenticated(req, res, next) {
 app.use('/api/users', usersRoutes);
 app.use('/api/tasks', ensureAuthenticated, tasksRoutes);
 
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve index.html for all other routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(port, () => {
     console.log(`Server is running at https://localhost:${port}`);
 });
