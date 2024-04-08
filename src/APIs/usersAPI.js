@@ -14,7 +14,7 @@ export const createUser = async (newUser) => {
             const data = await res.json();
             return data;
         };
-        console.log(res);
+
         return res;
     }
     catch (error) {
