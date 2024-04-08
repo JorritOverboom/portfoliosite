@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static('build'));
 app.use(helmet());
 
-
+app.set('trust proxy', 1);
 app.use(session({
     secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true},
