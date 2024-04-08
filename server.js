@@ -22,7 +22,7 @@ app.use(helmet());
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true},
+    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: false},
     resave: false,
     saveUninitialized: false,
     store
