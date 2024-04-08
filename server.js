@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config();
-const path = require('path'); // Import path module
 const tasksRoutes = require('./routes/tasksRoutes.js');
 const usersRoutes = require('./routes/usersRoutes.js');
 
@@ -18,6 +17,7 @@ require('./passport');
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'));
 app.use(helmet());
 
 app.use(session({
@@ -42,14 +42,6 @@ function ensureAuthenticated(req, res, next) {
 // Redirecting the api request to a specific route
 app.use('/api/users', usersRoutes);
 app.use('/api/tasks', ensureAuthenticated, tasksRoutes);
-
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Serve index.html for all other routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
 
 app.listen(port, () => {
     console.log(`Server is running at https://localhost:${port}`);
