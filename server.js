@@ -15,8 +15,9 @@ const store = new session.MemoryStore();
 const passport = require('passport');
 require('./passport');
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+app.use(express.static('public'));
 app.use(helmet());
 
 
