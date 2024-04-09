@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const path = require('path');
 // require('dotenv').config(); // uncomment when in development, comment when live
 const tasksRoutes = require('./routes/tasksRoutes.js');
 const usersRoutes = require('./routes/usersRoutes.js');
@@ -34,7 +35,6 @@ app.use(passport.session());
 
 // Middleware to check whether a user has a session happening
 function ensureAuthenticated(req, res, next) {
-    console.log(`session authentication is: ${req.isAuthenticated()}`);
     if (req.isAuthenticated()) {
         return next();
     }
@@ -44,6 +44,14 @@ function ensureAuthenticated(req, res, next) {
 // Redirecting the api request to a specific route
 app.use('/api/users', usersRoutes);
 app.use('/api/tasks', ensureAuthenticated, tasksRoutes);
+
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'), function(err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
+});
 
 app.listen(port, () => {
     console.log(`Server is running at https://localhost:${port}`);
