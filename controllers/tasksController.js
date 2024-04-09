@@ -78,6 +78,13 @@ exports.addDefaultTasks = async (id) => {
             status: 'finished',
             user_id
         },
+        {
+            id: uuidv4(),
+            name: 'Hire Jorrit',
+            description: "Make him an offer he can't refuse",
+            status: 'todo',
+            user_id
+        },
     ];
 
     await Promise.all(defaultTasks.map(task => {
