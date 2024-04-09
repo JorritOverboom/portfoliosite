@@ -98,6 +98,16 @@
     padding: 0 5px;
 }
 
+.read-more-less {
+    display: flex;
+    align-items: center;
+}
+
+.read-more-less-arrow {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
 /* travel introduction photo desktop */
 
 .travel-year-intro-photo {

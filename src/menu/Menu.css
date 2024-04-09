@@ -31,3 +31,11 @@
     font-size: 2rem;
     height: 50px;
 }
+
+.inactiveNavLink {
+    font-family: 'space grotesk', sans-serif;
+}
+
+.activeNavLink {
+    font-family: 'space grotesk', sans-serif;
+}

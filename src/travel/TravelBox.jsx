@@ -97,8 +97,8 @@ const TravelBox = (props) => {
                         <img src={props.introPhoto} alt='travel intro' />
                     </div>
                     <div className='travel-extend-box' style={{ visibility: !isLastStory ? 'block' : 'hidden' }}>
-                        <div onClick={() => props.toggleVisible(props.index)}>
-                            {props.isVisible ? 'READ LESS ▲' : 'READ MORE ▼'}
+                        <div className='read-more-less' onClick={() => props.toggleVisible(props.index)}>
+                            <span className='read-more-less-text'>{props.isVisible ? 'READ LESS' : 'READ MORE'}</span><span className='read-more-less-arrow'>{props.isVisible ? '▲' : '▼'}</span>
                         </div>
                     </div>
                 </div>
