@@ -51,6 +51,16 @@
 }
 
 
+.education {
+    margin-top: 10px;
+}
+
+.education p {
+    margin: 0;
+    padding: 0;
+}
+
+
 /* extra info desktop*/
 
 .extra-info {
@@ -82,7 +92,6 @@
     .resume {
         display: flex;
         flex-direction: column;
-        padding-bottom: 100px;
     }
 
     .resume h3 {

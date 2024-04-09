@@ -78,25 +78,36 @@ const Resume = () => {
                     <div className='working-name'><h3>EDUCATION</h3></div>
                     <div></div>
                     <div className='working-name'>
+                        <h5>Codecademy</h5>
+                        <p>codecademy.com</p>
+                    </div>
+                    <div className='working-description education'>
+                        <p>Full-stack Engineer</p>
+                        <p>August 2023 - January 2024</p>
+                    </div>
+                    <div className='working-name'>
                         <h5>Florijn college</h5>
                         <p>Breda, The Netherlands</p>
                     </div>
-                    <div className='working-description'>
-                        <p>Retailmanagement niveau 4, started in 2008, graduated in 2011</p>
+                    <div className='working-description education'>
+                        <p>Retailmanagement niveau 4</p>
+                        <p>2008 - 2011</p>
                     </div>
                     <div className='working-name'>
                         <h5>Newmancollege</h5>
                         <p>Breda, The Netherlands</p>
                     </div>
-                    <div className='working-description'>
-                        <p>VMBO TL, started in 2004, graduated in 2008</p>
+                    <div className='working-description education'>
+                        <p>VMBO TL</p>
+                        <p>2004 - 2008</p>
                     </div>
                     <div className='working-name'>
                         <h5>De Griffioen</h5>
                         <p>Prinsenbeek, The Netherlands</p>
                     </div>
-                    <div className='working-description'>
-                        <p>Primary school, 1996 to 2004</p>
+                    <div className='working-description education'>
+                        <p>Primary school</p>
+                        <p>1996 - 2004</p>
                     </div>
                 </div>
                 <div className='extra-info'>
