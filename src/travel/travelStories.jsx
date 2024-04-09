@@ -8,7 +8,7 @@ export const travelStories = [
         ],
         introPhoto: '../Pictures/2013/hitchhiking.JPG',
         story: [
-            'At the age of 21, I started out as a bike messenger, a job that would turn out to be the job that would sponsor the majorit of my travels. Soon after I attempted my first hitchhiking journey: from Tilburg, The Netherlands, to Ghent, Belgium, accompanied by a friend who showed me the ropes. A while after I again attempted it: I hitched my way from Breda to Brussels in Belgium with another friend.',
+            'At the age of 21, I started out as a bike messenger, a job that would turn out to sponsor the majority of my travels. Soon after I attempted my first hitchhiking journey: from Tilburg, The Netherlands, to Ghent, Belgium, accompanied by a friend who showed me the ropes. A while after I again attempted it: I hitched my way from Breda to Brussels in Belgium with another friend.',
             'These experiences proved to be defining of my future travels, as it sparked my interest in hitchhiking and the freedom it offered.',
             'At the end of the year I grabbed my bike and cycled my way to Antwerp, Belgium and back again on the same day.',
         ],
