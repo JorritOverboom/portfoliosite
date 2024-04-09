@@ -203,10 +203,6 @@
 /* travel mobile */
 @media (max-width: 480px) {
 
-    .outlet {
-        padding: 0 2%;
-    }
-
     .travel {
         width: 95%;
         padding: 0;

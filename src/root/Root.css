@@ -146,7 +146,7 @@ h1 {
 
     .outlet {
         margin: 0;
-        padding: 3%;
+        padding: 0 2% 100px;
     }
 
     .outlet p {
