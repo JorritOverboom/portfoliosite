@@ -7,7 +7,7 @@ const Travel = () => {
 
     // Scroll to the top of the page upon landing on the page
     useEffect(() => {
-        const element = document.getElementById('travel');
+        const element = document.getElementById('navBar');
         if (element) {
             element.scrollIntoView({ behavior: 'instant', block: 'start' });
         }
