@@ -64,7 +64,7 @@ const Resume = () => {
                         <p>From 2010 until present I have been helping Breda Barst with a variety of functions. From setting up and tearing down the festival, stagemanaging and booking artists to building decorations.</p>
                         <p>From 2014 to 2017, I served as a bartender at Belcrum Beach in Breda.</p>
                         <p>Between 2012 and 2019, I was part of the team at Mezz in Breda. Starting from the wardrobe, I gradually transitioned to roles behind the cash register, ticket checking, and eventually became primarily a bartender.</p>
-                        <p>In the years 2011, 2012, and 2016, I contributed to setting up and tearing down the Boogiedown festival.</p>
+                        <p>In the years 2011, 2012, and 2016, I contributed to setting up and tearing down Boogiedown festival.</p>
                     </div>
                     <div className='working-name'>
                         <h5>Salesman</h5>
