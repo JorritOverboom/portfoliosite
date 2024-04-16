@@ -19,7 +19,7 @@ const AboutMe = () => {
         if (element) {
             element.scrollIntoView({ behavior: 'instant', block: 'start' });
         }
-        }, 10)
+        }, 500)
     }, []);    
 
         // scroll to top of page after a page transition.
