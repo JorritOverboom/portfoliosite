@@ -1,10 +1,20 @@
 
+import { useEffect } from 'react';
 import './Skills.css';
 import certificate from './Images/certificate.png';
 
 const Skills = () => {
+    
+    // Scroll to the top of the page upon landing on the page
+    useEffect(() => {
+        const element = document.getElementById('skills');
+        if (element && window.innerWidth > 480) {
+            element.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+    }, []);    
+
     return (
-        <div className='skills'>
+        <div className='skills' id='skills'>
             <h2>An overview of my code skills</h2>
             <div className='skills-intro'>
                 <h3>Skills I have learned through <a href='https://www.codecademy.com/' target='_blank' rel='noreferrer'>Codecademy</a></h3>

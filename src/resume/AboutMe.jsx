@@ -1,6 +1,5 @@
 
-import { useEffect, useLayoutEffect } from 'react';
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { useEffect } from 'react';
 import './AboutMe.css';
 import profile_image from './Images/profile_picture.png';
 import location_image from './Images/location.png';
@@ -10,25 +9,13 @@ import Resume from './Resume';
 
 const AboutMe = () => {
 
-    const location = useLocation();
-
     // Scroll to the top of the page upon landing on the page
     useEffect(() => {
         const element = document.getElementById('about-me');
-        setTimeout(() => {
-        if (element) {
+        if (element && window.innerWidth > 480) {
             element.scrollIntoView({ behavior: 'instant', block: 'start' });
         }
-        }, 500)
     }, []);    
-
-        // scroll to top of page after a page transition.
-        // useLayoutEffect(() => {
-        //     setTimeout(() => {
-        //         document.documentElement.scrollTo({ top:0, left:0, behavior: "instant" });
-        //     }, 100);
-        // }, [location.pathname]);
-
 
     return (
         <div className='about-me' id='about-me'>

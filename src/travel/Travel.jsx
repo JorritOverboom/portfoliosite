@@ -8,12 +8,10 @@ const Travel = () => {
     // Scroll to the top of the page upon landing on the page
     useEffect(() => {
         const element = document.getElementById('travel');
-        setTimeout(() => {
-        if (element) {
+        if (element && window.innerWidth > 480) {
             element.scrollIntoView({ behavior: 'instant', block: 'start' });
         }
-        }, 10)
-    }, []); 
+    }, []);    
 
     // React hooks
     const [visibility, setVisibility] = useState({});

@@ -3,7 +3,7 @@ import './Root.css'
 import Home from '../home/Home.jsx';
 import blackMenu from './images/black_hamburger_menu.png';
 import whiteMenu from "./images/white_hamburger_menu.png";
-import { React, useLayoutEffect, useEffect } from 'react';
+import { React } from 'react';
 import { NavLink, Link, Outlet, useOutlet, useLocation } from 'react-router-dom';
 
 const Root = () => {
@@ -17,21 +17,6 @@ const Root = () => {
     const allClassName = isHomePath ? 'all home-path' : 'all';
     const outletHome = isHomePath ? 'outlet outlet-home' : 'outlet';
     const homeMenu = isHomePath ? whiteMenu : blackMenu;
-
-    // scroll to top of page after a page transition.
-    // useLayoutEffect(() => {
-    //     setTimeout(() => {
-    //         document.documentElement.scrollTo({ top:0, left:0, behavior: "instant" });
-    //     }, 100);
-    // }, [location.pathname]);
-
-    // Scroll to the top of the page upon landing on the page
-    // useEffect(() => {
-    //     const element = document.querySelector('.outlet');
-    //     if (element) {
-    //         element.scrollIntoView({ behavior: 'instant', block: 'start' });
-    //     }
-    // }, [location]); 
 
     return (
         <div className={allClassName}>
@@ -52,7 +37,7 @@ const Root = () => {
                 <Link to='/' className='link'><h1 className='nameMob'>Jorrit Overboom</h1></Link>
                 <Link to='/menu'><img className='menuIcon' src={homeMenu} alt='menu icon' /></Link>
             </div>
-            <div className={outletHome} id='outlet'>
+            <div className={outletHome}>
                 { outlet ? (<Outlet />) : (<Home />)}
             </div>
         </div>
