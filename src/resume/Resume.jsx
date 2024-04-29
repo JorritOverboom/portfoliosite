@@ -47,7 +47,7 @@ const Resume = () => {
                         <p>Perth, Australia</p>
                     </div>
                     <div className='working-description'>
-                        <p>During late 2016, I worked as a mover in Perth. My responsibilities included visiting clients' homes throughout the city for several months, where I either loaded their belongings onto trucks or unloaded and placed them in their new residences. The job demanded long hours, typically lasting 12 hours a day, and exposed me to the intense summer heat, often reaching 40 degrees Celsius.</p>
+                        <p>During late 2015, I worked as a mover in Perth. My responsibilities included visiting clients' homes throughout the city for several months, where I either loaded their belongings onto trucks or unloaded and placed them in their new residences. The job demanded long hours, typically lasting 12 hours a day, and exposed me to the intense summer heat, often reaching 40 degrees Celsius.</p>
                     </div>
                     <div className='working-name'>
                         <h5>Volunteer</h5>
