@@ -3,7 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
-// require('dotenv').config(); // uncomment when in development, comment when live
+// uncomment when in development, comment when live:
+// require('dotenv').config(); 
 const tasksRoutes = require('./routes/tasksRoutes.js');
 const usersRoutes = require('./routes/usersRoutes.js');
 

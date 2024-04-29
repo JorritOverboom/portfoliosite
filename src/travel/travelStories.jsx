@@ -347,7 +347,7 @@ export const travelStories = [
         ],
         introPhoto: '../Pictures/2024/looking_ahead.jpg',
         story: [
-            "As I transition into a more settled phase focused on building a career, the prospect of future travel remains uncertain. However, I entertain the possibility of embarking on journeys equipped with a laptop, ready to work remotely once I have amassed sufficient years of experience. The allure of blending work and travel may beckon again in the future, offering new opportunities for exploration and adventures.",
+            "As I transition towards a more settled phase of building my career, my future travelplans are uncertain. My primary objective for the forthcoming years is to amass knowledge and experience within the field of software engineering, aspiring to become a proficient expert. With time, I might aim to leverage my accumulated knowledge and skills to transition into freelancing, unlocking doors to new business ventures.",
         ],
         photos: [
         ]
