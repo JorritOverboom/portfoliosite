@@ -50,13 +50,6 @@ const Resume = () => {
                         <p>During late 2016, I worked as a mover in Perth. My responsibilities included visiting clients' homes throughout the city for several months, where I either loaded their belongings onto trucks or unloaded and placed them in their new residences. The job demanded long hours, typically lasting 12 hours a day, and exposed me to the intense summer heat, often reaching 40 degrees Celsius.</p>
                     </div>
                     <div className='working-name'>
-                        <h5>Stagehand</h5>
-                        <p>The Netherlands and Belgium</p>
-                    </div>
-                    <div className='working-description'>
-                        <p>During the summer of 2012, I assisted in setting up and dismantling festivals and events such as Lowlands, Pukkelpop, Cirque Du Soleil, and various others. My tasks primarily revolved around carrying whatever was required of me throughout the event grounds.</p>
-                    </div>
-                    <div className='working-name'>
                         <h5>Volunteer</h5>
                         <p>Breda, The Netherlands</p>
                     </div>
@@ -90,24 +83,8 @@ const Resume = () => {
                         <p>Breda, The Netherlands</p>
                     </div>
                     <div className='working-description education'>
-                        <p>Retailmanagement niveau 4</p>
+                        <p>Retailmanagement</p>
                         <p>2008 - 2011</p>
-                    </div>
-                    <div className='working-name'>
-                        <h5>Newmancollege</h5>
-                        <p>Breda, The Netherlands</p>
-                    </div>
-                    <div className='working-description education'>
-                        <p>VMBO TL</p>
-                        <p>2004 - 2008</p>
-                    </div>
-                    <div className='working-name'>
-                        <h5>De Griffioen</h5>
-                        <p>Prinsenbeek, The Netherlands</p>
-                    </div>
-                    <div className='working-description education'>
-                        <p>Primary school</p>
-                        <p>1996 - 2004</p>
                     </div>
                 </div>
                 <div className='extra-info'>

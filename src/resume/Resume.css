@@ -69,6 +69,7 @@
 
 .extra-info div {
     height: auto;
+    margin-bottom: 50px;
 }
 
 .extra-info h2 {
@@ -123,6 +124,7 @@
 
     .extra-info {
         margin-left: 0;
+        margin-top: 40px;
     }
 
     .working-space {
