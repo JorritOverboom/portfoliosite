@@ -26,7 +26,7 @@ const Resume = () => {
                         <p>Breda, The Netherlands</p>
                     </div>
                     <div className='working-description'>
-                        <p>As a self-employed individual, I started my business on a simple bicycle powered by my own legs, delivering municipal documents up to packages to individuals' homes. Eventually, I switched to using electric cargo bikes.</p>
+                        <p>Being self-employed, I launched my venture back in 2013 with nothing more than a simple bicycle powered by my own legs. From delivering municipal documents to parcels, I traversed neighborhoods, making deliveries to doorsteps. Over time, I upgraded to electric cargo bikes, enhancing my efficiency. This served as my primary source of income for years, funding the majority of my travels. Currently, I still work occasionally, every now and then.</p>
                     </div>
                     <div className='working-name'>
                         <h5>Construction worker</h5>
