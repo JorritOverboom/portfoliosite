@@ -1,11 +1,11 @@
 
-.skills a {
+/* .skills a {
     color: RGB(98,195,219);
-}
+} */
 
 /* my skills desktop */
 
-.skills {
+/* .skills {
     width: 90%;
 }
 
@@ -28,10 +28,10 @@
 
 .skills-intro h3 {
     margin-bottom: 1%;
-}
+} */
 
 /* codecademy modules desktop */
-.modules {
+/* .modules {
     display: grid;
     grid-template-areas: 
         'module1 module2'
@@ -62,7 +62,7 @@
 .modules ul {
     margin-top: 10px;
     padding-left: 20px;
-}
+} */
 
 /* codecademy certificate desktop */
 .certificate-container {

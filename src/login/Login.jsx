@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../APIs/usersAPI';
 import { ToastContainer, toast } from 'react-toastify';
-import { login } from '../login/loginSlice';
+import { login } from './loginSlice';
 
 const Login = () => {
 

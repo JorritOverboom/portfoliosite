@@ -1,40 +1,40 @@
 
 /* home path desktop */
-.home-path {
+/* .home-path {
     background-image: url('../Pictures/jorritlandschap_high.jpg');
     background-size: auto 130%;
-}
+} */
 
-.home {
+/* .home {
     color: white;
-}
+} */
 
-.home p {
+/* .home p {
     font-family: 'space grotesk';
-}
+} */
 
-.home-link {
+/* .home-link {
     color: white;
-}
+} */
 
 /* outlet home desktop */
 
-.outlet-home {
+/* .outlet-home {
     justify-self: end;
     margin: 15% 0 0 0;
     padding: 0 10%;
     font-size: 2.5rem;
     width: 35%;
-}
+} */
 
-@media (max-width: 1500px) {
+/* @media (max-width: 1500px) {
     .outlet-home {
         margin: 10% 0 0 0;
     }
-}
+} */
 
 /* home path navigation bar desktop */
-.home-path .navBar-parent {
+/* .home-path .navBar-parent {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
 }
 
@@ -52,7 +52,7 @@
 
 .home-path .inactiveNavLink {
     color: white;
-}
+} */
 
 /* home path mobile */
 @media only screen and (max-width: 480px) {
