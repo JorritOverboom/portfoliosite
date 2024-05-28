@@ -18,18 +18,26 @@ const Root = () => {
     
     // This checks whether the path is on the root, if it is, it will change the className to make the home page look different
     const isHomePath = location.pathname === '/';
-    const darkAllClassName = isDark ? 'h-screen grid bg-black bg-normal font-spaceGrotesk text-white' : 'h-screen grid bg-normal font-spaceGrotesk bg-white text-black';
-    const homeAllClassName = isDark ? 'h-screen grid bg-bali bg-night bg-bottom font-spaceGrotesk' : 'h-screen grid bg-china bg-day font-spaceGrotesk';
+    const allClassTemplate = 'h-screen grid sm:grid-rows-11 grid-rows-16 font-spaceGrotesk'
+    const darkAllClassName = isDark ? `${allClassTemplate} bg-black text-white bg-normal` : `${allClassTemplate} bg-white text-black bg-normal`;
+    const homeAllClassName = isDark ? `${allClassTemplate} bg-bali bg-night bg-bottom bg-mobNight` : `${allClassTemplate} bg-china bg-day bg-mobDay`;
     const allClassName = isHomePath ? homeAllClassName : darkAllClassName;
-    const outletHome = isHomePath ? 'w-1/3 justify-self-end mt-40 text-4xl mr-48' : 'outlet';
-    const homeMenu = isHomePath ? whiteMenu : blackMenu;
-    const navBarParent = isHomePath ? 'px-6 bg-gradientToTop' : 'px-6';
-    const navBarStyle = isDark ? 'flex justify-between border-b border-white border-solid border-opacity-40 py-5 px-5' : 'flex justify-between border-b border-black border-solid border-opacity-40 py-5 px-5';
-    const homeNavBarStyle = isHomePath ? 'flex justify-between border-b border-white border-solid border-opacity-40 py-5 px-5' : navBarStyle;
-    const navBarLinks = isDark ? 'text-white ml-10 text-xl hover:underline underline-offset-4' : 'text-black ml-10 text-xl hover:underline underline-offset-4';
-    const homeNavBarLinks = isHomePath ? 'text-white ml-10 text-xl hover:underline underline-offset-4' : navBarLinks;
-    const navBarName = isDark ? 'text-white text-4xl font-bold hover:text-customBlue' : 'text-black text-4xl font-bold hover:text-customBlue';
-    const homeNavBarName = isHomePath ? 'text-white text-4xl font-bold hover:text-customBlue' : navBarName;
+    const outletHome = isHomePath ? 'sm:row-start-4 sm:row-end-10 sm:w-1/3 sm:justify-self-end mt-40 sm:text-4xl sm:mr-48 sm:items-start justify-self-center w-4/5 text-xl' : 'sm:row-start-2 sm:row-end-12 sm:flex sm:flex-col sm:items-center sm:flex-wrap overflow-y-auto px-2 sm:px-72';
+    const navBarParent = isHomePath ? 'px-6 bg-gradientToTop sm:block hidden row-span-1' : 'px-6 sm:block hidden';
+    const navBarTemplate = `flex justify-between border-b border-opacity-40 py-5 px-5`;
+    const navBarStyle = `${navBarTemplate} ${isDark ? `border-white` : `border-black`}`;
+    const homeNavBarStyle = isHomePath ? `${navBarTemplate} border-white` : navBarStyle;
+    const navBarLinksTemplate = `ml-10 text-xl hover:underline underline-offset-4`;
+    const navBarLinks = `${navBarLinksTemplate} ${isDark? `text-white` : `text-black`}`;
+    const homeNavBarLinks = isHomePath ? `${navBarLinksTemplate} text-white` : navBarLinks;
+    const navBarNameTemplate = `text-4xl font-bold hover:text-customBlue`;
+    const navBarName = `${navBarNameTemplate} ${isDark ? `text-white` : `text-black`}`;
+    const homeNavBarName = isHomePath ? `${navBarNameTemplate} text-white` : navBarName;
+    const darkMenu = isDark ? whiteMenu : blackMenu;
+    const homeMenu = isHomePath ? whiteMenu : darkMenu;
+    const darkNameMob = isDark ? `text-white` : `text-black`;
+    const homeNameMob = isHomePath ? `text-white` : darkNameMob;
+
 
     return (
         <div className={allClassName}>
@@ -39,7 +47,8 @@ const Root = () => {
                         <h1><Link to='/' className={homeNavBarName} id='name'>Jorrit Overboom</Link></h1>
                     </div>
                     <ul className='flex justify-right items-center mr-5 tracking-wider'>
-                        <li><label class="relative inline-flex cursor-pointer items-center">
+                        <li>
+                            <label class="relative inline-flex cursor-pointer items-center">
                                 <input id="switch" type="checkbox" class="peer sr-only" />
                                 <label for="switch" class="hidden"></label>
                                 <div onMouseUp={() => dispatch(switchToDark())} class="peer h-6 w-11 rounded-full border bg-slate-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-slate-800 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-green-300"></div>
@@ -56,12 +65,12 @@ const Root = () => {
                     </ul>
                 </div>
             </div>
-            <div className='navMob'>
-                <Link to='/' className='link'><h1 className='nameMob'>Jorrit Overboom</h1></Link>
-                <Link to='/menu'><img className='menuIcon' src={homeMenu} alt='menu icon' /></Link>
+            <div className='sm:hidden flex flex-row justify-between mr-4 ml-2 mt-2'>
+                <Link to='/' className='link'><h1 className={`nameMob text-2xl ${homeNameMob}`}>Jorrit Overboom</h1></Link>
+                <Link to='/menu'><img className='menuIcon w-7 mt-px' src={homeMenu} alt='menu icon' /></Link>
             </div>
             <div className={outletHome}>
-                { outlet ? (<Outlet />) : (<Home />)}
+                { outlet ? (<Outlet />) : (<Home />) }
             </div>
         </div>
     )

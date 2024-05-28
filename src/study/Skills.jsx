@@ -17,13 +17,13 @@ const Skills = () => {
     }, []);    
 
     return (
-        <div className={isDark ? 'w-11/12 bg-black text-white' : 'w-11/12'} id='skills'>
+        <div className='sm:w-11/12' id='skills'>
             <h2>An overview of my code skills</h2>
             <div className='skills-intro'>
-                <h3>Skills I have learned through <a className='text-customBlue underline' href='https://www.codecademy.com/' target='_blank' rel='noreferrer'>Codecademy</a></h3>
-                <p className='w-3/4'>The skills below I have learned through the 'Full-stack Engineer career path' course on Codecademy which I completed to the very end. This course got me very excited about coding in general and I hope to keep learning and apply my skills to real projects.</p>
+                <h3 className='mb-3'>Skills I have learned through <a className='text-customBlue underline' href='https://www.codecademy.com/' target='_blank' rel='noreferrer'>Codecademy</a></h3>
+                <p className='sm:w-3/4'>The skills below I have learned through the 'Full-stack Engineer career path' course on Codecademy which I completed to the very end. This course got me very excited about coding in general and I hope to keep learning and apply my skills to real projects.</p>
             </div>
-            <div className='w-4/5 grid-cols-2 grid grid-rows-2 gap-4 my-20'>
+            <div className='sm:w-4/5 sm:grid-cols-2 sm:grid sm:grid-rows-2 sm:gap-4 sm:my-20 mb-20'>
                 <div className='mb-5'>
                     <h4 className='mb-2'>WEB DEVELOPMENT FOUNDATIONS & INTERACTION</h4>
                     <ul className='list-disc ml-5'>
@@ -73,10 +73,10 @@ const Skills = () => {
                     <img src={certificate} alt='certificate' />
                 </div>
             </div>
-            <div className='github'>
+            <div className='github mb-40 text-sm'>
                 <h3>My GitHub</h3>
                 <p>On my GitHub page you can read my README, where I describe the technical approach I have used for this website and where a display of the code used to build it, can be found via the link below:</p>
-                <p><a className='text-customBlue underline mt-12' href='https://github.com/JorritOverboom/portfoliosite' target='_blank' rel='noreferrer'>https://github.com/JorritOverboom/portfoliosite</a></p>
+                <p className='mt-2'><a className='text-customBlue underline' href='https://github.com/JorritOverboom/portfoliosite' target='_blank' rel='noreferrer'>https://github.com/JorritOverboom/portfoliosite</a></p>
             </div>
         </div>
     )

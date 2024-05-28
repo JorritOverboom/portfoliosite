@@ -18,6 +18,7 @@ const ToDoList = () => {
     const dispatch = useDispatch();
     const [ taskName, setTaskName ] = useState('');
     const [ taskDescription, setTaskDescription ] = useState('');
+    const isDark = useSelector((state) => state.darkMode.darkMode);
 
     const taskNameSetter = ({target}) => {
         setTaskName(target.value);
@@ -91,19 +92,19 @@ const ToDoList = () => {
     return (
         <div className='to-do-list'>
             <ToastContainer hideProgressBar={true}/>
-            <div className='add-task'>
+            <div className='add-task flex flex-col items-center'>
                 <h2>Create a Task</h2>
-                <form className='task-input' onSubmit={submitTask}>
+                <form className='task-input flex flex-col w-1/5' onSubmit={submitTask}>
                     <label htmlFor='task-name'>Task name</label>
-                    <input type='text' id='task-name' required minlength='1' onChange={taskNameSetter} value={taskName}></input>
+                    <input className={`text-black p-px w-full mb-5 border ${isDark ? `border-white` : `border-black`}`} type='text' id='task-name' required minlength='1' onChange={taskNameSetter} value={taskName}></input>
                     <label htmlFor='task-description'>Task description</label>
-                    <textarea id='task-description' required minlength='1' onChange={taskDescriptionSetter} value={taskDescription}></textarea>
-                    <input className='add-task-button' type='submit' value='Add task' id='add-task-submit'></input>
+                    <textarea className={`text-black p-px w-full h-28 mb-5 border resize-none ${isDark ? `border-white` : `border-black`}`} id='task-description' required minlength='1' onChange={taskDescriptionSetter} value={taskDescription}></textarea>
+                    <input className={`add-task-button border cursor-pointer mb-10 ${isDark ? `bg-gray-500` : `bg-gray-200`}`} type='submit' value='Add task' id='add-task-submit'></input>
                 </form>
             </div>
-            <div className='tasks'>
-                <div className='to-do'>
-                    <h3>To do</h3>
+            <div className='tasks grid grid-cols-3'>
+                <div className='to-do min-w-96 mx-5'>
+                    <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >To do</h3>
                     <div className='task-list'>
                         {toDoList.map((task) => (
                             <Task
@@ -117,8 +118,8 @@ const ToDoList = () => {
                         ))}
                     </div>
                 </div>
-                <div className='in-progress'>
-                    <h3>In progress</h3>
+                <div className='in-progress min-w-96 mx-5'>
+                    <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >In progress</h3>
                     <div className='task-list'>
                         {inProgressList.map((task) => (
                             <Task
@@ -132,8 +133,8 @@ const ToDoList = () => {
                         ))}
                     </div>
                 </div>
-                <div className='finished'>
-                    <h3>Finished</h3>
+                <div className='finished min-w-96 mx-5'>
+                    <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >Finished</h3>
                     <div className='task-list'>
                         {finishedList.map((task) => (
                             <Task
@@ -148,8 +149,8 @@ const ToDoList = () => {
                     </div>
                 </div>
             </div>
-            <div className='logout-container'>
-                <button onClick={logoutHandler}>Logout</button>
+            <div className='flex justify-center mt-20 mb-40'>
+                <button className={`add-task-button border cursor-pointer mb-10 ${isDark ? `bg-gray-500` : `bg-gray-200`} w-24 text-2xl`} onClick={logoutHandler}>Logout</button>
             </div>
         </div>
     )

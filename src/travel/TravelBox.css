@@ -1,27 +1,27 @@
 /* travel desktop */
 
-.travel {
+/* .travel {
     margin: 0 0 5%;
     width: 90%;
-}
+} */
 
-.travel h2 {
+/* .travel h2 {
     margin: 50px 0;
-}
+} */
 
-.travel-box {
+/* .travel-box {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
-}
+} */
 
 /* travel introduction box desktop*/
 
-.travel-year-introduction {
+/* .travel-year-introduction {
     display: flex;
     flex-direction: row;
     padding: 3% 0;
-}
+} */
 
-.travel-year-intro-info {
+/* .travel-year-intro-info {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -30,11 +30,11 @@
         "title photo"
         "countries photo"
         "expand photo";
-}
+} */
 
 /* travel year number desktop */
 
-.travel-year {
+/* .travel-year {
     grid-area: year;
     font-weight: bold;
 }
@@ -44,11 +44,11 @@
     color: RGB(98,195,219);
     font-family: 'space grotesk';
     font-size: 1.5rem;
-}
+} */
 
 /* travel title desktop */
 
-.travel-title {
+/* .travel-title {
     grid-area: title;
     font-size: 2rem;
     display: flex;
@@ -58,11 +58,11 @@
 
 .travel-title h4 {
     margin: 0;
-}
+} */
 
 /* travel visited countries desktop */
 
-.travel-countries {
+/* .travel-countries {
     grid-area: countries;
     padding-right: 5%;
 }
@@ -82,11 +82,11 @@
 
 .country-container p {
     margin: 0;
-}
+} */
 
 /* travel read more button desktop */
 
-.travel-extend-box {
+/* .travel-extend-box {
     grid-area: expand;
     display: flex;
     align-self: end;
@@ -106,11 +106,11 @@
 .read-more-less-arrow {
     font-size: 12px;
     margin-left: 5px;
-}
+} */
 
 /* travel introduction photo desktop */
 
-.travel-year-intro-photo {
+/* .travel-year-intro-photo {
     height: 400px;
     grid-area: photo;
     width: 100%;
@@ -122,46 +122,46 @@
 .travel-year-intro-photo img {
     max-height: auto;
     max-width: 100%;
-}
+} */
 
 /* travel story desktop*/
 
-.year-story {
+/* .year-story {
     width: 60%;
     margin: 4% 0 5% 0;
 }
 
 .year-story p {
     margin: 0 0 15px;
-}
+} */
 
 /* travel photos desktop*/
 
-.year-photos {
+/* .year-photos {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #F0F0F0;
     padding: 5%;
     margin-bottom: 5%;
-}
+} */
 
-.travel-photo {
+/* .travel-photo {
     width: 110%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
-.photo-section {
+/* .photo-section {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 5%;
-}
+} */
 
-.photo-section p {
+/* .photo-section p {
     margin: 16px 0 0;
 }
 
@@ -178,11 +178,11 @@
     max-height: auto;
     max-width: 100%;
     margin: 0;
-}
+} */
 
 /* travel select different photo desktop */
 
-.differentPhoto {
+/* .differentPhoto {
     width: 20px;
     height: auto;
     cursor: pointer;
@@ -190,7 +190,7 @@
 
 .previousPhoto {
     transform: rotate(180deg);
-}
+} */
 
 /* laptop screen */
 

@@ -4,7 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
 // uncomment when in development, comment when live:
-// require('dotenv').config(); 
+require('dotenv').config(); 
 const tasksRoutes = require('./routes/tasksRoutes.js');
 const usersRoutes = require('./routes/usersRoutes.js');
 
@@ -25,7 +25,7 @@ app.use(helmet());
 app.set('trust proxy', 1);
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true}, // secure: false in development, secure: true when live
+    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: false}, // secure: false in development, secure: true when live
     resave: false,
     saveUninitialized: false,
     store

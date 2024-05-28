@@ -1,19 +1,19 @@
 
 /* resume desktop */
-.resume h3 {
+/* .resume h3 {
     margin: 50px 0;
-}
+} */
 
-.resume-list {
+/* .resume-list {
     display: grid;
     grid-template-columns: 3fr 1fr;
     padding-bottom: 10%;
     column-gap: 20px;
-}
+} */
 
 /* working experiences desktop */
 
-.working-experience {
+/* .working-experience {
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
@@ -40,12 +40,12 @@
 
 .working-name p {
     margin-top: 0;
-}
+} */
 
 
 /* description desktop */
 
-.working-description p {
+/* .working-description p {
     margin-top: 10px;
     padding-top: 5px;
 }
@@ -58,12 +58,12 @@
 .education p {
     margin: 0;
     padding: 0;
-}
+} */
 
 
 /* extra info desktop*/
 
-.extra-info {
+/* .extra-info {
     margin-left: 20px;
 }
 
@@ -84,7 +84,7 @@
 .extra-info li {
     list-style-type: none;
     margin-top: 10px;
-}
+} */
 
 /* resume mobile */
 

@@ -1,7 +1,7 @@
 
 import './Login.css';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../APIs/usersAPI';
@@ -13,6 +13,7 @@ const Login = () => {
     // React hooks
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isDark = useSelector((state) => state.darkMode.darkMode);
 
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -85,17 +86,17 @@ const Login = () => {
     };
 
     return (
-        <div className='log-in'>
+        <div className='log-in flex flex-col items-center mb-96'>
             <ToastContainer hideProgressBar={true}/>
-            <form className='log-in-form' onSubmit={submitLogin} >
+            <form className='log-in-form flex flex-col items-center' onSubmit={submitLogin} >
                 <h2>Log in to get access to the to do list</h2>
                 <label htmlFor='username'>Username</label>
-                <input type='text' id='username' name='username' onChange={ usernameSetter } value={username} required />
+                <input className='p-px text-black border-black border' type='text' id='username' name='username' onChange={ usernameSetter } value={username} required />
                 <label htmlFor='password'>Password</label>
-                <input type='password' id='password' name='password' onChange={ passwordSetter } value={password} required />
-                <input type='submit' id='log-in-submit' value='Log in' />
+                <input className='p-px text-black border-black border' type='password' id='password' name='password' onChange={ passwordSetter } value={password} required />
+                <input className={`border border-black w-20 mt-10 cursor-pointer ${isDark? `bg-gray-500` : `bg-gray-200`}`}type='submit' id='log-in-submit' value='Log in' />
             </form>
-            <p>If you have no account, <Link to='/sign-up' className='sign-up-link'>sign up</Link></p>
+            <p className='text-xl mt-5'>If you have no account, <Link to='/sign-up' className='sign-up-link text-customBlue underline'>sign up</Link></p>
         </div>
     )
 }

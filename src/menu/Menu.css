@@ -1,41 +1,41 @@
 
 /* hamburger menu mobile */
 
-.menuList {
+/* .menuList {
     width: 100%;
-}
+} */
 
-.menuMob {
+/* .menuMob {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding-left: 0;
-}
+} */
 
-.menuMob li {
+/* .menuMob li {
     list-style-type: none;
     margin-top: 20px;
     font-size: 2rem;
-}
+} */
 
-.exit {
+/* .exit {
     display: flex;
     justify-content: flex-end;
     margin-top: 15px;
     margin-right: 15px;
     height: 25px;
-}
+} */
 
-.exit i {
+/* .exit i {
     font-size: 2rem;
     height: 50px;
-}
+} */
 
-.inactiveNavLink {
+/* .inactiveNavLink {
     font-family: 'space grotesk', sans-serif;
 }
 
 .activeNavLink {
     font-family: 'space grotesk', sans-serif;
-}
+} */

@@ -1,20 +1,20 @@
 
 /* about me desktop */
-.about-me {
+/* .about-me {
     height: 100%;
     width: 90%;
     display: flex;
     flex-direction: column;
     align-content: center;
-}
+} */
 
-.about-me h2{
+/* .about-me h2{
     margin: 50px 0;
-}
+} */
 
 
 /* introduction box desktop */
-.intro {
+/* .intro {
     width: 100%;
     display: grid; 
     grid-template-columns: 30% 70%;       
@@ -22,9 +22,9 @@
         "profile-picture about-me"
         "my-name info-icons";  
     column-gap: 50px;             
-}
+} */
 
-.profile-picture {
+/* .profile-picture {
     display: flex;
     align-items: flex-end;
     grid-area: profile-picture;
@@ -38,8 +38,8 @@
 .about-me-description {
     width: 100%;
     grid-area: about-me;
-}
-
+} */
+/* 
 @media (max-width: 1500px) {
 
     .intro {
@@ -50,11 +50,11 @@
         width: 100%;
     }
     
-}
+} */
 
 /* name desktop */
 
-.my-name {
+/* .my-name {
     grid-area: my-name;
     font-size: 2.5rem;
     background-color: RGB(98,195,219);
@@ -62,15 +62,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
-.my-name h4 {
+/* .my-name h4 {
     margin: 0;
-}
+} */
 
 /* icons desktop */
 
-.info-icons {
+/* .info-icons {
     grid-area: info-icons;
 }
 
@@ -93,7 +93,7 @@
 
 .info-icons p {
     margin: 0;
-}
+} */
 
 /* about me mobile */
 

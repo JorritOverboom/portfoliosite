@@ -1,29 +1,29 @@
 /* to do list desktop */
 
-.to-do-list {
+/* .to-do-list {
     display: grid;
-}
+} */
 
 /* create a task desktop */
 
-.add-task {
+/* .add-task {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
+} */
 
-.task-input {
+/* .task-input {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
-}
+} */
 
-input {
+/* input {
     margin: 10px 0;
-}
+} */
 
-#task-name {
+/* #task-name {
     width: 300px;
 }
 
@@ -38,34 +38,34 @@ input {
     margin-top: 20px;
     font-size: 1.5rem;
     align-self: center;
-}
+} */
 
 /* tasklist desktop */
 
-.tasks {
+/* .tasks {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-}
+} */
 
-.to-do,
+/* .to-do,
 .in-progress,
 .finished {
     min-width: 400px;
     margin: 0 10px;
-}
+} */
 
-.tasks h3 {
+/* .tasks h3 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     padding-bottom: 5px;
-}
+} */
 
-.task-list {
+/* .task-list {
     min-height: 100%;
-}
+} */
 
 /* individual task desktop */
 
-.task {
+/* .task {
     border: 2px solid rgba(128, 128, 128, 0.2);
     border-radius: 25px;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
@@ -73,12 +73,12 @@ input {
     grid-template-rows: minmax(100px, 1fr) 30px;
     padding: 2% 5%;
     margin: 10px 0;
-}
+} */
 
-.task h4 {
+/* .task h4 {
     font-size: 1.25rem;
     margin: 20px 0;
-}
+} */
 
 .to-do .move-to-to-do {
     display: none;
@@ -94,17 +94,17 @@ input {
 
 /* task text layout desktop */
 
-.task h3 {
+/* .task h3 {
     margin: 0 0 10px;
-}
+} */
 
-.task p {
+/* .task p {
     margin: 0 0 15px;
-}
+} */
 
 /* task buttons desktop */
 
-.task-buttons {
+/* .task-buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -130,11 +130,11 @@ input {
     width: 20px;
     height: auto;
     margin: 5px 0;
-}
+} */
 
 /* logout button desktop */
 
-.logout-container {
+/* .logout-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,7 +143,7 @@ input {
 
 .logout-container button {
     font-size: 1.5rem;
-}
+} */
 
 /* to do list mobile */
 

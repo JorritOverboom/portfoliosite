@@ -1,13 +1,13 @@
 
 /* toastify notification message */
 
-.Toastify {
+/* .Toastify {
     top: 500px;
-}
+} */
 
 /* login page desktop */
 
-.log-in {
+/* .log-in {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,7 @@
 
 .log-in p {
     margin: 30px 0 0;
-}
+} */
 
 /* login page mobile */
 

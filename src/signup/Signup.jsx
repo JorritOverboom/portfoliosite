@@ -1,6 +1,7 @@
 
 import './Signup.css';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../APIs/usersAPI';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,6 +11,7 @@ const Signup = () => {
 
     // React hooks
     const navigate = useNavigate();
+    const isDark = useSelector((state) => state.darkMode.darkMode);
 
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -95,26 +97,26 @@ const Signup = () => {
     };
 
     return (
-        <div className='sign-up'>
+        <div className='sign-up mb-40'>
             <ToastContainer hideProgressBar={true}/>
-            <form className='sign-up-form' onSubmit={submitUser}>
-                <h2>Sign up</h2>
+            <form className='sign-up-form mb-10 flex flex-col' onSubmit={submitUser}>
+                <h2 className='self-center'>Sign up</h2>
                 <label htmlFor='username'>Username</label>
-                <input type='text' id='username' name='username' onChange={usernameSetter} value={username} required />
+                <input className='text-black p-px border-black border' type='text' id='username' name='username' onChange={usernameSetter} value={username} required />
                 <label htmlFor='password'>Password</label>
-                <input type='password' id='password' name='password' onChange={passwordSetter} value={password} required />
+                <input className='text-black p-px border-black border' type='password' id='password' name='password' onChange={passwordSetter} value={password} required />
                 <label htmlFor='password-confirm'>Confirm password</label>
-                <input type='password' id='password-confirm' name='password-confirm' onChange={confirmPasswordSetter} value={confirmPassword} required />
-                <input type='submit' id='sign-up-submit' value='Sign up' />
+                <input className='text-black p-px border-black border' type='password' id='password-confirm' name='password-confirm' onChange={confirmPasswordSetter} value={confirmPassword} required />
+                <input className={`${isDark ? `border-white bg-gray-500` : `border-black bg-gray-200`} mt-10 border w-24 self-center`} type='submit' id='sign-up-submit' value='Sign up' />
             </form>
             <ul>
-                <li className={usernameAllLetters ? 'green' : 'red'}>Username: Must contain only alphabet letters</li>
-                <li className={usernameHasThreeCharacters ? 'green' : 'red'}>Username: Must be at least 3 characters long</li>
-                <li className={passwordHasEightCharacters ? 'green' : 'red'}>Password: Must be at least 8 characters long</li>
-                <li className={passwordHasOneCapitalLetter ? 'green' : 'red'}>Password: Must contain at least 1 capital letter</li>
-                <li className={passwordHasOneNumber ? 'green' : 'red'}>Password: Must contain at least 1 number</li>
-                <li className={passwordHasOneSymbol ? 'green' : 'red'}>Password: Must contain at least 1 symbol</li>
-                <li className={passwordsMatch ? 'green' : 'red'}>Password and Confirm Password: Must match</li>
+                <li className={usernameAllLetters ? 'text-green-500' : 'text-red-500'}>Username: Must contain only alphabet letters</li>
+                <li className={usernameHasThreeCharacters ? 'text-green-500' : 'text-red-500'}>Username: Must be at least 3 characters long</li>
+                <li className={passwordHasEightCharacters ? 'text-green-500' : 'text-red-500'}>Password: Must be at least 8 characters long</li>
+                <li className={passwordHasOneCapitalLetter ? 'text-green-500' : 'text-red-500'}>Password: Must contain at least 1 capital letter</li>
+                <li className={passwordHasOneNumber ? 'text-green-500' : 'text-red-500'}>Password: Must contain at least 1 number</li>
+                <li className={passwordHasOneSymbol ? 'text-green-500' : 'text-red-500'}>Password: Must contain at least 1 symbol</li>
+                <li className={passwordsMatch ? 'text-green-500' : 'text-red-500'}>Password and Confirm Password: Must match</li>
             </ul>
         </div>
     )

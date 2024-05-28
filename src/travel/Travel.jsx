@@ -24,7 +24,7 @@ const Travel = () => {
     };
 
     return  (
-        <div className='travel' id='travel'>
+        <div className='travel w-11/12 mb-40' id='travel'>
             <h2>A timeline of my travels 2013 &mdash; 2023</h2>
             <div className='travel-list'>
                 { travelStories.map((story, index) => (

@@ -55,7 +55,7 @@
 } */
 
 /* home path mobile */
-@media only screen and (max-width: 480px) {
+/* @media only screen and (max-width: 480px) {
     
     .home-path {
         background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../Pictures/jorritlandschap_high.jpg');
@@ -82,4 +82,4 @@
         margin: 0;
         padding: 0;
     }
-}
+} */

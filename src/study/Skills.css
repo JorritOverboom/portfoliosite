@@ -65,7 +65,7 @@
 } */
 
 /* codecademy certificate desktop */
-.certificate-container {
+/* .certificate-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,13 +74,13 @@
 
 .certificate-container img {
     width: 100%;
-}
+} */
 
 /* github reference desktop */
-.github {
+/* .github {
     width: 70%;
     margin-bottom: 15%;
-}
+} */
 
 
 /* skills mobile */

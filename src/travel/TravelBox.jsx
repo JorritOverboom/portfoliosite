@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect, Suspense } from 'react';
 import './TravelBox.css';
 import arrow from './arrow.svg';
+import { useSelector } from 'react-redux';
 
 // importing all the flags of the visited countries
 const flagComponents = {
@@ -48,6 +49,7 @@ const TravelBox = (props) => {
     const [enableScrollView, setEnableScrollView] = useState(false);
     const boxRef = useRef(null);
     const photoRef = useRef(null);
+    const isDark = useSelector((state) => state.darkMode.darkMode);
 
     // Centering the screen on the year you are looking at when clicking on the 'read more' button
     useEffect(() => {
@@ -77,49 +79,56 @@ const TravelBox = (props) => {
     const isLastStory = props.storyIndex === props.listLength - 1;
     
     return (
-        <div className='travel-box' id={`year-${props.year}`} ref={boxRef}>
-            <div className='travel-year-introduction'>
-                <div className='travel-year-intro-info'>
-                    <div className='travel-year'><p>{props.year}</p></div>
-                    <div className='travel-title'><h4>{props.title}</h4></div>
-                    <div className='travel-countries'>
-                        {props.countries.map((country, index) => {
-                            const Flag = flagComponents[country.countryCode];
-                            return (
-                                <div key={index} className='country-container'>
-                                    {Flag && <Flag className="flag" />}
-                                    <p>{country.name}</p>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <div className='travel-year-intro-photo'>
-                        <img src={props.introPhoto} alt='travel intro' />
-                    </div>
-                    <div className='travel-extend-box' style={{ visibility: !isLastStory ? 'block' : 'hidden' }}>
-                        <div className='read-more-less' onClick={() => props.toggleVisible(props.index)}>
-                            <span className='read-more-less-text'>{props.isVisible ? 'READ LESS' : 'READ MORE'}</span><span className='read-more-less-arrow'>{props.isVisible ? '▲' : '▼'}</span>
+        <div className={`travel-box border-t ${isDark ? `border-white` : `border-black`}`} id={`year-${props.year}`} ref={boxRef}>
+            <div className='travel-year-introduction my-8'>
+                <div className='travel-year-intro-info grid grid-cols-2'>
+                    <div className='col-span-1 flex flex-col justify-between'>
+                        <div className='travel-year'><p className='text-customBlue text-2xl font-bold'>{props.year}</p></div>
+                        <div className='travel-title text-3xl'><h4>{props.title}</h4></div>
+                        <div className='travel-countries flex flex-wrap'>
+                            {props.countries.map((country, index) => {
+                                const Flag = flagComponents[country.countryCode];
+                                return (
+                                    <div key={index} className={`country-container flex mr-5 mb-2 rounded px-2 ${isDark ? `bg-gray-400` : `bg-gray-200`}`}>
+                                        {Flag && <Flag className="flag w-5 mr-1" />}
+                                        <p>{country.name}</p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className='travel-extend-box' style={{ visibility: !isLastStory ? 'block' : 'hidden' }}>
+                            <div className={`read-more-less ${isDark ? `border-white` : `border-black`} border-2 w-32 pl-3`} onClick={() => props.toggleVisible(props.index)}>
+                                <span className='read-more-less-text'>{props.isVisible ? 'READ LESS' : 'READ MORE'}</span><span className='read-more-less-arrow'>{props.isVisible ? '▲' : '▼'}</span>
+                            </div>
                         </div>
                     </div>
+                    <div className='travel-year-intro-photo col-span-1'>
+                        <img className='' src={props.introPhoto} alt='travel intro' />
+                    </div>
+
                 </div>
             </div>
-            <div className='year-story' style={{ display: isLastStory || props.isVisible ? 'block' : 'none' }}>
+            <div className={`year-story w-3/5 my-10`} style={{ display: isLastStory || props.isVisible ? 'block' : 'none' }}>
                 {props.story.map((paragraph) => (
-                    <p>{paragraph}</p>
+                    <p className='mb-4'>{paragraph}</p>
                 ))}
             </div>
-            <div className='year-photos' ref={photoRef} style={{ display: props.isVisible && props.photos.length > 0 ? 'flex' : 'none' }}>
+            <div className={`year-photos ${isDark ? `bg-black` : `bg-white`} mb-10 flex justify-center`} ref={photoRef} style={{ display: props.isVisible && props.photos.length > 0 ? 'flex' : 'none' }}>
                 {props.photos.length > 0 && (
-                    <div className='travel-photo'>
-                        <img src={arrow} alt='previous' className='differentPhoto previousPhoto' style={{ display: props.photos.length === 1 ? 'none' : 'block' }} onClick={prevPhoto}></img>
-                        <div className='photo-section'>
-                            <div className='travel-photo-container'>
-                                <img src={props.photos[currentPhoto].path} alt='travel' />
+                    <div className='travel-photo flex'>
+                        <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"  style={{ display: props.photos.length === 1 ? 'none' : 'block' }} onClick={prevPhoto} className={`${isDark ? `bg-black` : `bg-white`} w-20 mx-5`}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+                        </svg>
+                        <div className='photo-section flex flex-col items-center'>
+                            <div className='travel-photo-container flex justify-center mb-5'>
+                                <img className='w-5/6' src={props.photos[currentPhoto].path} alt='travel' />
                             </div>
-                            <p className='photo-description'>{props.photos[currentPhoto].description}</p>
+                            <p className='photo-description mb-2'>{props.photos[currentPhoto].description}</p>
                             <p style={{ display: props.photos.length > 1 ? 'block' : 'none' }}>{currentPhoto + 1} / {props.photos.length}</p>
                         </div>
-                        <img src={arrow} alt='next' className='differentPhoto nextPhoto' style={{ display: props.photos.length === 1 ? 'none' : 'block' }} onClick={nextPhoto}></img>
+                        <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ display: props.photos.length === 1 ? 'none' : 'block' }} onClick={nextPhoto} className={`${isDark ? `bg-black` : `bg-white`} w-20 mx-5`}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+                        </svg>
                     </div>
                 )}
             </div>        
