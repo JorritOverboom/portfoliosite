@@ -94,7 +94,7 @@ const ToDoList = () => {
             <ToastContainer hideProgressBar={true}/>
             <div className='add-task flex flex-col items-center'>
                 <h2>Create a Task</h2>
-                <form className='task-input flex flex-col w-1/5' onSubmit={submitTask}>
+                <form className='task-input flex flex-col sm:w-1/5 w-4/5' onSubmit={submitTask}>
                     <label htmlFor='task-name'>Task name</label>
                     <input className={`text-black p-px w-full mb-5 border ${isDark ? `border-white` : `border-black`}`} type='text' id='task-name' required minlength='1' onChange={taskNameSetter} value={taskName}></input>
                     <label htmlFor='task-description'>Task description</label>
@@ -102,8 +102,8 @@ const ToDoList = () => {
                     <input className={`add-task-button border cursor-pointer mb-10 ${isDark ? `bg-gray-500` : `bg-gray-200`}`} type='submit' value='Add task' id='add-task-submit'></input>
                 </form>
             </div>
-            <div className='tasks grid grid-cols-3'>
-                <div className='to-do min-w-96 mx-5'>
+            <div className='tasks sm:grid grid-cols-3 flex-col '>
+                <div className='to-do sm:min-w-96 mx-5 mb-5'>
                     <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >To do</h3>
                     <div className='task-list'>
                         {toDoList.map((task) => (
@@ -118,7 +118,7 @@ const ToDoList = () => {
                         ))}
                     </div>
                 </div>
-                <div className='in-progress min-w-96 mx-5'>
+                <div className='in-progress sm:min-w-96 mx-5 mb-5'>
                     <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >In progress</h3>
                     <div className='task-list'>
                         {inProgressList.map((task) => (
@@ -133,7 +133,7 @@ const ToDoList = () => {
                         ))}
                     </div>
                 </div>
-                <div className='finished min-w-96 mx-5'>
+                <div className='finished sm:min-w-96 mx-5 mb-5'>
                     <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >Finished</h3>
                     <div className='task-list'>
                         {finishedList.map((task) => (

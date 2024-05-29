@@ -99,7 +99,7 @@
 
 @media only screen and (max-width: 480px) {
 
-    .about-me {
+    /* .about-me {
         width: 95%;
     }
     
@@ -131,6 +131,6 @@
 
     .info-icons ul {
         padding-left: 0;
-    }
+    } */
     
 }

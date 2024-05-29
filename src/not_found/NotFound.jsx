@@ -5,7 +5,7 @@ import './NotFound.css';
 const NotFound = () => {
 
     return (
-        <div className='not-found'>
+        <div className='not-found flex text-center items-center h-screen'>
             <p>Oops! The page you're looking for doesn't exist. Go back <Link to='/'>home</Link>.</p>
         </div>
     )

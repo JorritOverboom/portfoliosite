@@ -151,7 +151,7 @@
 
     /* taskmaker mobile */
 
-    .logout-container {
+    /* .logout-container {
         margin: 0;
     }
 
@@ -166,16 +166,16 @@
     #submit-task-button {
         height: 50px;
         margin: 10px 33%;
-    }
+    } */
 
     /* tasklist mobile */
 
-    .tasks {
+    /* .tasks {
         display: flex;
         flex-direction: column;
-    }
+    } */
 
-    .to-do,
+    /* .to-do,
     .in-progress,
     .finished {
         min-width: 100%;
@@ -184,11 +184,11 @@
 
     .to-do-list h2 {
         text-align: center;
-    }
+    } */
 
     /* individual task mobile */
 
-    .task h3 {
+    /* .task h3 {
         font-size: 1.25rem;
     }
 
@@ -206,6 +206,6 @@
 
     .logout-container button {
         font-size: 1.5rem;
-    }
+    } */
 
 }

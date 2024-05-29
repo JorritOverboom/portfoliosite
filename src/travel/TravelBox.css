@@ -194,16 +194,16 @@
 
 /* laptop screen */
 
-@media (max-width: 1500px) {
+/* @media (max-width: 1500px) {
     .year-photos {
         padding: 10%;
     }
-}
+} */
 
 /* travel mobile */
 @media (max-width: 480px) {
 
-    .travel {
+    /* .travel {
         width: 95%;
         padding: 0;
     }
@@ -211,11 +211,11 @@
     .travel-box {
         width: 100%;
         margin-bottom: 20px;
-    }
+    } */
 
     /* travel introduction box mobile */
 
-    .travel-year-intro-info {
+    /* .travel-year-intro-info {
         padding-top: 20px;
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -228,11 +228,11 @@
 
     .travel-year-intro-info div {
         margin-bottom: 10px;
-    }
+    } */
 
     /* travel introduction photo mobile */
 
-    .travel-year-intro-photo {
+    /* .travel-year-intro-photo {
         height: 250px;
         padding: 0;
         max-width: 100%;
@@ -241,31 +241,31 @@
     .travel-year-intro-photo img {
         padding: 0;
         max-width: 100%;
-    }
+    } */
 
     /* travel countries visited mobile */
 
-    .travel-countries {
+    /* .travel-countries {
         margin-bottom: 20px;
     }
 
     .travel-countries p {
         font-size: 1rem;
-    }
+    } */
     
 
     /* travel story mobile */
 
-    .year-story {
+    /* .year-story {
         column-count: 1;
         padding: 0;
         text-align: justify;
         width: 100%;
-    }
+    } */
 
     /* travel photos mobile */
 
-    .year-photos {
+    /* .year-photos {
         padding: 50px 0 0;
     }
 
@@ -290,10 +290,10 @@
 
     .photo-description {
         height: 70px;
-    }
+    } */
 
     /* travel select different photo mobile */
-
+/* 
     .previousPhoto {
         grid-area: previousPhoto;
     }
@@ -307,6 +307,6 @@
         width: 30px;
         margin: 0 0 50px;
         padding: 0 20px;
-    }
+    } */
 
 }

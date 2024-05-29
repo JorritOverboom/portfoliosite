@@ -89,7 +89,7 @@
 /* resume mobile */
 
 @media only screen and (max-width: 480px) {
-
+/* 
     .resume {
         display: flex;
         flex-direction: column;
@@ -129,6 +129,6 @@
 
     .working-space {
         display: none;
-    }
+    } */
 
 }

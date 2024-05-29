@@ -89,7 +89,7 @@ const Login = () => {
         <div className='log-in flex flex-col items-center mb-96'>
             <ToastContainer hideProgressBar={true}/>
             <form className='log-in-form flex flex-col items-center' onSubmit={submitLogin} >
-                <h2>Log in to get access to the to do list</h2>
+                <h2 className='text-center'>Log in to get access to the to do list</h2>
                 <label htmlFor='username'>Username</label>
                 <input className='p-px text-black border-black border' type='text' id='username' name='username' onChange={ usernameSetter } value={username} required />
                 <label htmlFor='password'>Password</label>
