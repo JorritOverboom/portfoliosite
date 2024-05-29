@@ -1,6 +1,6 @@
 
-import './Menu.css'
-import exit from './exit_button.png';
+// import './Menu.css'
+// import exit from './exit_button.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { switchToDark } from '../root/darkModeSlice';
@@ -15,20 +15,23 @@ const Menu = () => {
         navigate(-1);
     }
 
+    // Recurring components styling
+    const listStyling = `text-4xl mt-5`;
+
     return (
-        <div className='menuList mb-40'>
-            <div className='exit w-full flex justify-end pr-3'>
+        <div className='mb-40'>
+            <div className='w-full flex justify-end pr-3'>
                 <svg className='w-8' onClick={() => exitMenu()} data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
                 </svg>
             </div>
-            <ul className='menuMob flex flex-col justify-center items-center'>
-                <li className='text-4xl mt-5'><NavLink to='/'>HOME</NavLink></li>
-                <li className='text-4xl mt-5'><NavLink to='/skills'>MY SKILLS</NavLink></li>
-                <li className='text-4xl mt-5'><NavLink to='/to-do-list'>DEMO: TO DO LIST</NavLink></li>
-                <li className='text-4xl mt-5'><NavLink to='/travel'>MY TRAVELS</NavLink></li>
-                <li className='text-4xl mt-5'><NavLink to='/about-me'>ABOUT ME</NavLink></li>
-                <li className='flex items-center flex-col text-4xl mt-5'>
+            <ul className='flex flex-col justify-center items-center'>
+                <li className={listStyling}><NavLink to='/'>HOME</NavLink></li>
+                <li className={listStyling}><NavLink to='/skills'>MY SKILLS</NavLink></li>
+                <li className={listStyling}><NavLink to='/to-do-list'>DEMO: TO DO LIST</NavLink></li>
+                <li className={listStyling}><NavLink to='/travel'>MY TRAVELS</NavLink></li>
+                <li className={listStyling}><NavLink to='/about-me'>ABOUT ME</NavLink></li>
+                <li className={`flex items-center flex-col ${listStyling}`}>
                     <p className='mt-10'>Dark Mode:</p>
                     <label class="relative inline-flex cursor-pointer items-center">
                         <input id="switch" type="checkbox" class="peer sr-only" />

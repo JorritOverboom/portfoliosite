@@ -1,5 +1,5 @@
 
-import './Signup.css';
+// import './Signup.css';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -96,27 +96,32 @@ const Signup = () => {
         }
     };
 
+    // Recurring components styling
+    const inputStyling = 'text-black p-px border-black border';
+    const greenStyling = 'text-green-500';
+    const redStyling = 'text-red-500';
+
     return (
         <div className='sign-up mb-40'>
             <ToastContainer hideProgressBar={true}/>
             <form className='sign-up-form mb-10 flex flex-col' onSubmit={submitUser}>
                 <h2 className='self-center'>Sign up</h2>
                 <label htmlFor='username'>Username</label>
-                <input className='text-black p-px border-black border' type='text' id='username' name='username' onChange={usernameSetter} value={username} required />
+                <input className={inputStyling} type='text' id='username' name='username' onChange={usernameSetter} value={username} required />
                 <label htmlFor='password'>Password</label>
-                <input className='text-black p-px border-black border' type='password' id='password' name='password' onChange={passwordSetter} value={password} required />
+                <input className={inputStyling} type='password' id='password' name='password' onChange={passwordSetter} value={password} required />
                 <label htmlFor='password-confirm'>Confirm password</label>
-                <input className='text-black p-px border-black border' type='password' id='password-confirm' name='password-confirm' onChange={confirmPasswordSetter} value={confirmPassword} required />
+                <input className={inputStyling} type='password' id='password-confirm' name='password-confirm' onChange={confirmPasswordSetter} value={confirmPassword} required />
                 <input className={`${isDark ? `border-white bg-gray-500` : `border-black bg-gray-200`} mt-10 border w-24 self-center`} type='submit' id='sign-up-submit' value='Sign up' />
             </form>
             <ul>
-                <li className={usernameAllLetters ? 'text-green-500' : 'text-red-500'}>Username: Must contain only alphabet letters</li>
-                <li className={usernameHasThreeCharacters ? 'text-green-500' : 'text-red-500'}>Username: Must be at least 3 characters long</li>
-                <li className={passwordHasEightCharacters ? 'text-green-500' : 'text-red-500'}>Password: Must be at least 8 characters long</li>
-                <li className={passwordHasOneCapitalLetter ? 'text-green-500' : 'text-red-500'}>Password: Must contain at least 1 capital letter</li>
-                <li className={passwordHasOneNumber ? 'text-green-500' : 'text-red-500'}>Password: Must contain at least 1 number</li>
-                <li className={passwordHasOneSymbol ? 'text-green-500' : 'text-red-500'}>Password: Must contain at least 1 symbol</li>
-                <li className={passwordsMatch ? 'text-green-500' : 'text-red-500'}>Password and Confirm Password: Must match</li>
+                <li className={usernameAllLetters ? `${greenStyling}` : `${redStyling}`}>Username: Must contain only alphabet letters</li>
+                <li className={usernameHasThreeCharacters ? `${greenStyling}` : `${redStyling}`}>Username: Must be at least 3 characters long</li>
+                <li className={passwordHasEightCharacters ? `${greenStyling}` : `${redStyling}`}>Password: Must be at least 8 characters long</li>
+                <li className={passwordHasOneCapitalLetter ? `${greenStyling}` : `${redStyling}`}>Password: Must contain at least 1 capital letter</li>
+                <li className={passwordHasOneNumber ? `${greenStyling}` : `${redStyling}`}>Password: Must contain at least 1 number</li>
+                <li className={passwordHasOneSymbol ? `${greenStyling}` : `${redStyling}`}>Password: Must contain at least 1 symbol</li>
+                <li className={passwordsMatch ? `${greenStyling}` : `${redStyling}`}>Password and Confirm Password: Must match</li>
             </ul>
         </div>
     )

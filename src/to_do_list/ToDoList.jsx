@@ -89,6 +89,11 @@ const ToDoList = () => {
         return;
     };
 
+    // Recurring components styling
+    const inputStyling = `text-black p-px w-full mb-5 border ${isDark ? `border-white` : `border-black`}`;
+    const listDivStyling = 'sm:min-w-96 mx-5 mb-5';
+    const h3Styling = `border-b mb-5 ${isDark ? `border-white` : `border-black`}`;
+
     return (
         <div className='to-do-list'>
             <ToastContainer hideProgressBar={true}/>
@@ -96,16 +101,16 @@ const ToDoList = () => {
                 <h2>Create a Task</h2>
                 <form className='task-input flex flex-col sm:w-1/5 w-4/5' onSubmit={submitTask}>
                     <label htmlFor='task-name'>Task name</label>
-                    <input className={`text-black p-px w-full mb-5 border ${isDark ? `border-white` : `border-black`}`} type='text' id='task-name' required minlength='1' onChange={taskNameSetter} value={taskName}></input>
+                    <input className={`${inputStyling}`} type='text' id='task-name' required minlength='1' onChange={taskNameSetter} value={taskName}></input>
                     <label htmlFor='task-description'>Task description</label>
-                    <textarea className={`text-black p-px w-full h-28 mb-5 border resize-none ${isDark ? `border-white` : `border-black`}`} id='task-description' required minlength='1' onChange={taskDescriptionSetter} value={taskDescription}></textarea>
+                    <textarea className={`h-28 resize-none ${inputStyling}`} id='task-description' required minlength='1' onChange={taskDescriptionSetter} value={taskDescription}></textarea>
                     <input className={`add-task-button border cursor-pointer mb-10 ${isDark ? `bg-gray-500` : `bg-gray-200`}`} type='submit' value='Add task' id='add-task-submit'></input>
                 </form>
             </div>
             <div className='tasks sm:grid grid-cols-3 flex-col '>
-                <div className='to-do sm:min-w-96 mx-5 mb-5'>
-                    <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >To do</h3>
-                    <div className='task-list'>
+                <div className={`to-do ${listDivStyling}`}>
+                    <h3 className={`${h3Styling}`} >To do</h3>
+                    <div>
                         {toDoList.map((task) => (
                             <Task
                                 key={task.id}
@@ -118,9 +123,9 @@ const ToDoList = () => {
                         ))}
                     </div>
                 </div>
-                <div className='in-progress sm:min-w-96 mx-5 mb-5'>
-                    <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >In progress</h3>
-                    <div className='task-list'>
+                <div className={`in-progress ${listDivStyling}`}>
+                    <h3 className={`${h3Styling}`} >In progress</h3>
+                    <div>
                         {inProgressList.map((task) => (
                             <Task
                                 key={task.id}
@@ -133,9 +138,9 @@ const ToDoList = () => {
                         ))}
                     </div>
                 </div>
-                <div className='finished sm:min-w-96 mx-5 mb-5'>
-                    <h3 className={`border-b mb-5 ${isDark ? `border-white` : `border-black`}`} >Finished</h3>
-                    <div className='task-list'>
+                <div className={`finished ${listDivStyling}`}>
+                    <h3 className={`${h3Styling}`} >Finished</h3>
+                    <div>
                         {finishedList.map((task) => (
                             <Task
                                 key={task.id}

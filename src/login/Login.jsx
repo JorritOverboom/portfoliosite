@@ -1,5 +1,5 @@
 
-import './Login.css';
+// import './Login.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -85,15 +85,18 @@ const Login = () => {
         }
     };
 
+    // Recurring components styling
+    const inputStyling = 'p-px text-black border-black border';
+
     return (
-        <div className='log-in flex flex-col items-center mb-96'>
+        <div className='flex flex-col items-center mb-96'>
             <ToastContainer hideProgressBar={true}/>
             <form className='log-in-form flex flex-col items-center' onSubmit={submitLogin} >
                 <h2 className='text-center'>Log in to get access to the to do list</h2>
                 <label htmlFor='username'>Username</label>
-                <input className='p-px text-black border-black border' type='text' id='username' name='username' onChange={ usernameSetter } value={username} required />
+                <input className={inputStyling} type='text' id='username' name='username' onChange={ usernameSetter } value={username} required />
                 <label htmlFor='password'>Password</label>
-                <input className='p-px text-black border-black border' type='password' id='password' name='password' onChange={ passwordSetter } value={password} required />
+                <input className={inputStyling} type='password' id='password' name='password' onChange={ passwordSetter } value={password} required />
                 <input className={`border border-black w-20 mt-10 cursor-pointer ${isDark? `bg-gray-500` : `bg-gray-200`}`}type='submit' id='log-in-submit' value='Log in' />
             </form>
             <p className='text-xl mt-5'>If you have no account, <Link to='/sign-up' className='sign-up-link text-customBlue underline'>sign up</Link></p>

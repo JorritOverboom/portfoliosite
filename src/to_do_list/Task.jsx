@@ -13,29 +13,34 @@ function Task(props) {
     // Sanitizing the input
     const sanitizedName = DOMPurify.sanitize(props.name);
     const sanizitedDescription = DOMPurify.sanitize(props.description);
+
+    // Recurring components styling
+    const buttonsDivStyling = 'flex cursor-pointer items-center';
+    const imgStyling = 'sm:w-5 w-3';
+    const pStyling = 'text-xs ml-px';
     
     return (
-        <div className={`task border-2 rounded-3xl py-2 sm:px-5 px-2 shadow-md ${isDark ? `bg-gray-400 shadow-white/70` : `bg-white shadow-black/30`}`}>
-            <div className='task-text' key={props.id}>
+        <div className={`border-2 rounded-3xl py-2 mb-5 sm:px-5 px-2 shadow-md ${isDark ? `bg-gray-400 shadow-white/70` : `bg-white shadow-black/30`}`}>
+            <div key={props.id}>
                 <h4 className='text-xl sm:my-5 my-2' dangerouslySetInnerHTML={{__html: sanitizedName}}></h4>
-                <p dangerouslySetInnerHTML={{__html: sanizitedDescription}}></p>
+                <p className='mb-2' dangerouslySetInnerHTML={{__html: sanizitedDescription}}></p>
             </div>
-            <div className='task-buttons mt-5 flex flex-row justify-between'>
-                <div className='task-button flex cursor-pointer items-center' onClick={props.removeTaskFromToDo}>
-                    <img className='sm:w-5 w-3' src={delete_icon} alt='delete icon'></img>
-                    <p className='task-button-description text-xs ml-px'>Delete</p>
+            <div className='tmt-5 flex flex-row justify-between'>
+                <div className={`task-button ${buttonsDivStyling}`} onClick={props.removeTaskFromToDo}>
+                    <img className={imgStyling} src={delete_icon} alt='delete icon'></img>
+                    <p className={pStyling}>Delete</p>
                 </div>
-                <div className='task-button move-to-to-do flex cursor-pointer items-center' onClick={props.moveTaskToToDo}>
-                    <img className='sm:w-5 w-3' src={to_do_icon} alt='move to to do icon'></img>
-                    <p className='task-button-description text-xs ml-px'>Move to to do</p>
+                <div className={`move-to-to-do ${buttonsDivStyling}`} onClick={props.moveTaskToToDo}>
+                    <img className={imgStyling} src={to_do_icon} alt='move to to do icon'></img>
+                    <p className={pStyling}>Move to to do</p>
                 </div>
-                <div className='task-button move-to-in-progress flex cursor-pointer items-center' onClick={props.moveTaskToInProgress}>
-                    <img className='sm:w-5 w-3' src={in_progress_icon} alt='move to in progress icon'></img>
-                    <p className='task-button-description text-xs ml-px'>Move to in progress</p>
+                <div className={`move-to-in-progress ${buttonsDivStyling}`} onClick={props.moveTaskToInProgress}>
+                    <img className={imgStyling} src={in_progress_icon} alt='move to in progress icon'></img>
+                    <p className={pStyling}>Move to in progress</p>
                 </div>
-                <div className='task-button move-to-finished flex cursor-pointer items-center' onClick={props.moveTaskToFinished}>
-                    <img className='sm:w-5 w-3' src={finished_icon} alt='move to finished icon'></img>
-                    <p className='task-button-description text-xs ml-px'>Move to finished</p>
+                <div className={`move-to-finished ${buttonsDivStyling}`} onClick={props.moveTaskToFinished}>
+                    <img className={imgStyling} src={finished_icon} alt='move to finished icon'></img>
+                    <p className={pStyling}>Move to finished</p>
                 </div>
             </div>
         </div>
