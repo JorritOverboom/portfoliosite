@@ -20,7 +20,7 @@ const Root = () => {
     const isHomePath = location.pathname === '/';
     const allClassTemplate = 'h-screen grid sm:grid-rows-11 grid-rows-16 font-spaceGrotesk'
     const darkAllClassName = isDark ? `${allClassTemplate} bg-black text-white bg-normal` : `${allClassTemplate} bg-white text-black bg-normal`;
-    const homeAllClassName = isDark ? `${allClassTemplate} bg-bali bg-night bg-bottom bg-mobNight` : `${allClassTemplate} bg-china bg-day bg-mobDay`;
+    const homeAllClassName = isDark ? `${allClassTemplate} bg-bali bg-night bg-bottom bg-mobNight` : `${allClassTemplate} sm:bg-china bg-chinaMob bg-day bg-mobDay`;
     const allClassName = isHomePath ? homeAllClassName : darkAllClassName;
     const outletHome = isHomePath ? 'sm:row-start-4 sm:row-end-10 sm:w-1/3 sm:justify-self-end mt-40 sm:text-4xl sm:mr-48 sm:items-start justify-self-center w-4/5 text-xl' : 'sm:row-start-2 sm:row-end-12 sm:flex sm:flex-col sm:items-center sm:flex-wrap overflow-y-auto px-2 sm:px-72';
     const navBarParent = isHomePath ? 'px-6 bg-gradientToTop sm:block hidden row-span-1' : 'px-6 sm:block hidden';

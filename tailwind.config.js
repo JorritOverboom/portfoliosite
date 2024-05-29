@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'china': "linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('./Pictures/jorritlandschap_high.jpg')",
+        'chinaMob': "linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('./Pictures/jorritlandschap_high.jpg')",
+        'china': "url('./Pictures/jorritlandschap_high.jpg')",
         'bali': "url('./Pictures/bali_sunset.jpg')",
         'gradientToTop': 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4))',
       },
