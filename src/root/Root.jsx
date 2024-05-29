@@ -18,26 +18,33 @@ const Root = () => {
     
     // This checks whether the path is on the root, if it is, it will change the className to make the home page look different
     const isHomePath = location.pathname === '/';
-    const allClassTemplate = 'h-screen grid sm:grid-rows-11 grid-rows-16 font-spaceGrotesk'
-    const darkAllClassName = isDark ? `${allClassTemplate} bg-black text-white bg-normal` : `${allClassTemplate} bg-white text-black bg-normal`;
-    const homeAllClassName = isDark ? `${allClassTemplate} bg-bali bg-night bg-bottom bg-mobNight` : `${allClassTemplate} sm:bg-china bg-chinaMob bg-day bg-mobDay`;
-    const allClassName = isHomePath ? homeAllClassName : darkAllClassName;
-    const outletHome = isHomePath ? 'sm:row-start-4 sm:row-end-10 sm:w-1/3 sm:justify-self-end mt-40 sm:text-4xl sm:mr-48 sm:items-start justify-self-center w-4/5 text-xl' : 'sm:row-start-2 sm:row-end-12 sm:flex sm:flex-col sm:items-center sm:flex-wrap overflow-y-auto px-2 sm:px-72';
-    const navBarParent = isHomePath ? 'px-6 bg-gradientToTop sm:block hidden row-span-1' : 'px-6 sm:block hidden';
-    const navBarTemplate = `flex justify-between border-b border-opacity-40 py-5 px-5`;
-    const navBarStyle = `${navBarTemplate} ${isDark ? `border-white` : `border-black`}`;
-    const homeNavBarStyle = isHomePath ? `${navBarTemplate} border-white` : navBarStyle;
-    const navBarLinksTemplate = `ml-10 text-xl hover:underline underline-offset-4`;
-    const navBarLinks = `${navBarLinksTemplate} ${isDark? `text-white` : `text-black`}`;
-    const homeNavBarLinks = isHomePath ? `${navBarLinksTemplate} text-white` : navBarLinks;
-    const navBarNameTemplate = `text-4xl font-bold hover:text-customBlue`;
-    const navBarName = `${navBarNameTemplate} ${isDark ? `text-white` : `text-black`}`;
-    const homeNavBarName = isHomePath ? `${navBarNameTemplate} text-white` : navBarName;
-    const darkMenu = isDark ? whiteMenu : blackMenu;
-    const homeMenu = isHomePath ? whiteMenu : darkMenu;
-    const darkNameMob = isDark ? `text-white` : `text-black`;
-    const homeNameMob = isHomePath ? `text-white` : darkNameMob;
 
+    // Template Tailwind classes
+    const allClassTemplate = 'h-screen grid sm:grid-rows-11 grid-rows-16 font-spaceGrotesk';
+    const navBarTemplate = `flex justify-between border-b border-opacity-40 py-5 px-5`;
+    const navBarLinksTemplate = `ml-10 text-xl hover:underline underline-offset-4`;
+    const navBarNameTemplate = `text-4xl font-bold hover:text-customBlue`;
+
+    // Dark mode Tailwind classes
+    const darkAllClassName = isDark ? `${allClassTemplate} bg-black text-white bg-normal` : `${allClassTemplate} bg-white text-black bg-normal`;
+    const darkModeText = isDark ? `text-white` : `text-black`;
+    const darkMenu = isDark ? whiteMenu : blackMenu;
+    const darkModeHome = isHomePath ? `text-white` : darkModeText;
+    const darkAllClassHome = isDark ? `${allClassTemplate} bg-bali bg-night bg-bottom bg-mobNight` : `${allClassTemplate} sm:bg-china bg-chinaMob bg-day bg-mobDay`;
+
+    // Outlet Tailwind classes styling    
+    const allClassName = isHomePath ? darkAllClassHome : darkAllClassName;
+    const navBarParent = isHomePath ? 'px-6 bg-gradientToTop sm:block hidden row-span-1' : 'px-6 sm:block hidden';
+    const navBarStyle = `${navBarTemplate} ${darkModeText}`;
+    const navBarLinks = `${navBarLinksTemplate} ${darkModeText}`;
+    const navBarName = `${navBarNameTemplate} ${darkModeText}`;
+    const outletHome = isHomePath ? 'sm:row-start-4 sm:row-end-10 sm:w-1/3 sm:justify-self-end mt-40 sm:text-4xl sm:mr-48 sm:items-start justify-self-center w-4/5 text-xl' : 'sm:row-start-2 sm:row-end-12 sm:flex sm:flex-col sm:items-center sm:flex-wrap overflow-y-auto px-2 sm:px-72';
+
+    // Home page Tailwind classes styling
+    const homeNavBarStyle = isHomePath ? `${navBarTemplate} border-white` : navBarStyle;
+    const homeNavBarLinks = isHomePath ? `${navBarLinksTemplate} text-white` : navBarLinks;
+    const homeNavBarName = isHomePath ? `${navBarNameTemplate} text-white` : navBarName;
+    const homeMenu = isHomePath ? whiteMenu : darkMenu;
 
     return (
         <div className={allClassName}>
@@ -47,7 +54,8 @@ const Root = () => {
                         <h1><Link to='/' className={homeNavBarName} id='name'>Jorrit Overboom</Link></h1>
                     </div>
                     <ul className='flex justify-right items-center mr-5 tracking-wider'>
-                        <li>
+                        <li className='flex'>
+                            <p className={`${darkModeHome} mr-2`}>DARK MODE:</p>
                             <label class="relative inline-flex cursor-pointer items-center">
                                 <input id="switch" type="checkbox" class="peer sr-only" />
                                 <label for="switch" class="hidden"></label>
@@ -66,7 +74,7 @@ const Root = () => {
                 </div>
             </div>
             <div className='sm:hidden flex flex-row justify-between mr-4 ml-2 mt-2'>
-                <Link to='/' className='link'><h1 className={`nameMob text-2xl ${homeNameMob}`}>Jorrit Overboom</h1></Link>
+                <Link to='/' className='link'><h1 className={`nameMob text-2xl ${darkModeHome}`}>Jorrit Overboom</h1></Link>
                 <Link to='/menu'><img className='menuIcon w-7 mt-px' src={homeMenu} alt='menu icon' /></Link>
             </div>
             <div className={outletHome}>

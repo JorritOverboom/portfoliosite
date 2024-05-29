@@ -29,7 +29,7 @@ const Menu = () => {
                 <li className='text-4xl mt-5'><NavLink to='/travel'>MY TRAVELS</NavLink></li>
                 <li className='text-4xl mt-5'><NavLink to='/about-me'>ABOUT ME</NavLink></li>
                 <li className='flex items-center flex-col text-4xl mt-5'>
-                    <p className='mt-10'>Dark Mode</p>
+                    <p className='mt-10'>Dark Mode:</p>
                     <label class="relative inline-flex cursor-pointer items-center">
                         <input id="switch" type="checkbox" class="peer sr-only" />
                         <label for="switch" class="hidden"></label>
